@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cybernex Innovatech - Desenvolvimento Web de Alta Performance</title>
+
     <meta name="description" content="Sites que transformam visitantes em clientes. Desenvolvimento web profissional e otimizado.">
     
+    <!-- SEO Otimizado: Meta Tags Sociais e Controle -->
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#7c3aed">
+    <link rel="canonical" href="https://www.cybernex.com.br/">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cybernex.com.br/">
+    <meta property="og:title" content="Cybernex Innovatech - Desenvolvimento Web de Alta Performance">
+    <meta property="og:description" content="Sites que transformam visitantes em clientes. Desenvolvimento web profissional e otimizado.">
+    <meta property="og:image" content="https://www.cybernex.com.br/social-share.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Cybernex Innovatech - Desenvolvimento Web de Alta Performance">
+    <meta property="twitter:description" content="Sites que transformam visitantes em clientes. Desenvolvimento web profissional e otimizado.">
+    <meta property="twitter:image" content="https://www.cybernex.com.br/social-share.jpg">
+
+    <!-- Performance: Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+
     <!-- Fonte Google (Inter para modernidade) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
     
@@ -26,6 +50,26 @@
     <div id="preloader">
         <div class="spinner"></div>
     </div>
+
+    <!-- JSON-LD Schema (Dados Estruturados para Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Cybernex Innovatech",
+      "image": "https://www.cybernex.com.br/logo.png",
+      "description": "Desenvolvimento web de alta performance, SEO e estratégias digitais.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "telephone": "+5511976678655",
+      "priceRange": "$$",
+      "url": "https://www.cybernex.com.br/"
+    }
+    </script>
 
     <!-- 1. Header -->
     <header>
@@ -50,6 +94,7 @@
         </div>
     </header>
 
+    <main>
     <!-- 2. Hero Section -->
     <section class="hero">
         <canvas id="particles-canvas"></canvas>
@@ -90,13 +135,13 @@
             <h3 class="partners-title">Empresas que confiam no meu trabalho</h3>
             <div class="logo-scroller">
                 <ul class="logo-scroller__inner">
-                    <li><img src="marca1.png" alt="Logo Marca 1"></li>
-                    <li><img src="marca2.png" alt="Logo Marca 2"></li>
-                    <li><img src="marca3.png" alt="Logo Marca 3"></li>
-                    <li><img src="marca4.png" alt="Logo Marca 4"></li>
-                    <li><img src="marca5.png" alt="Logo Marca 5"></li>
-                    <li><img src="marca6.png" alt="Logo Marca 6"></li>
-                    <li><img src="marca7.png" alt="Logo Marca 7"></li>
+                    <li><img src="marca1.png" alt="Logo Marca 1" loading="lazy"></li>
+                    <li><img src="marca2.png" alt="Logo Marca 2" loading="lazy"></li>
+                    <li><img src="marca3.png" alt="Logo Marca 3" loading="lazy"></li>
+                    <li><img src="marca4.png" alt="Logo Marca 4" loading="lazy"></li>
+                    <li><img src="marca5.png" alt="Logo Marca 5" loading="lazy"></li>
+                    <li><img src="marca6.png" alt="Logo Marca 6" loading="lazy"></li>
+                    <li><img src="marca7.png" alt="Logo Marca 7" loading="lazy"></li>
                 </ul>
             </div>
         </div>
@@ -158,21 +203,21 @@
             <div class="portfolio-grid">
                 <!-- Placeholder para Imagens -->
                 <div class="project-card hidden">
-                    <img src="site1.png" alt="Projeto Ventus">
+                    <img src="site1.png" alt="Projeto Ventus" loading="lazy">
                     <div class="project-info">
                         <h4>Ventus</h4>
                         <p>Site Institucional + Blog</p>
                     </div>
                 </div>
                 <div class="project-card hidden delay-100">
-                    <img src="site2.png" alt="Projeto Soluciona">
+                    <img src="site2.png" alt="Projeto Soluciona" loading="lazy">
                     <div class="project-info">
                         <h4>Soluciona</h4>
                         <p>Landing Page de Alta Conversão</p>
                     </div>
                 </div>
                 <div class="project-card hidden delay-200">
-                    <img src="site3.png" alt="Criativa Visual">
+                    <img src="site3.png" alt="Criativa Visual" loading="lazy">
                     <div class="project-info">
                         <h4>Criativa Visual</h4>
                         <p>E-commerce de Moda</p>
@@ -196,73 +241,91 @@
                 <!-- Artigo 1 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="SEO Básico">
+                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="SEO Básico" loading="lazy">
                         <span class="blog-category">SEO</span>
                     </div>
                     <div class="blog-content">
                         <h3>5 Dicas de SEO para Iniciantes</h3>
-                        <p>Descubra como colocar seu site no Google sem gastar com anúncios.</p>
-                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                        <div class="blog-meta">
+                            <span>12 Out 2023</span> • <span>5 min leitura</span>
+                        </div>
+                        <p>Aprenda as estratégias fundamentais de palavras-chave e otimização on-page para alcançar o topo do Google organicamente.</p>
+                        <a href="artigo.html?id=seo-basico" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 2 -->
                 <article class="blog-card hidden delay-100">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Performance Web">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Performance Web" loading="lazy">
                         <span class="blog-category">Performance</span>
                     </div>
                     <div class="blog-content">
                         <h3>Por que seu site está lento?</h3>
-                        <p>A velocidade de carregamento impacta diretamente nas suas vendas. Veja como resolver.</p>
-                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                        <div class="blog-meta">
+                            <span>15 Out 2023</span> • <span>4 min leitura</span>
+                        </div>
+                        <p>Sites lentos perdem clientes. Entenda como o Core Web Vitals afeta seu ranking e veja técnicas práticas para acelerar seu carregamento.</p>
+                        <a href="artigo.html?id=performance-web" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 3 -->
                 <article class="blog-card hidden delay-200">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80" alt="Marketing Digital">
+                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80" alt="Marketing Digital" loading="lazy">
                         <span class="blog-category">Marketing</span>
                     </div>
                     <div class="blog-content">
                         <h3>Landing Page vs Site Institucional</h3>
-                        <p>Entenda a diferença e saiba qual é a melhor estratégia para o seu momento.</p>
-                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                        <div class="blog-meta">
+                            <span>20 Out 2023</span> • <span>6 min leitura</span>
+                        </div>
+                        <p>Landing Page para conversão rápida ou Site Institucional para autoridade? Descubra qual estratégia se alinha melhor aos objetivos do seu negócio.</p>
+                        <a href="artigo.html?id=landing-vs-institucional" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 4 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80" alt="Web Design">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80" alt="Web Design" loading="lazy">
                         <span class="blog-category">Design</span>
                     </div>
                     <div class="blog-content">
                         <h3>Tendências de Web Design 2024</h3>
-                        <p>O que está em alta e o que você deve evitar no visual do seu site.</p>
-                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                        <div class="blog-meta">
+                            <span>25 Out 2023</span> • <span>3 min leitura</span>
+                        </div>
+                        <p>Do minimalismo ao modo escuro: explore as tendências visuais que estão dominando a web e saiba como aplicá-las para modernizar sua marca.</p>
+                        <a href="artigo.html?id=design-trends-2024" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 5 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Analytics">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Analytics" loading="lazy">
                         <span class="blog-category">Dados</span>
                     </div>
                     <div class="blog-content">
                         <h3>Entendendo o Google Analytics 4</h3>
-                        <p>Métricas essenciais para medir o sucesso do seu negócio online.</p>
-                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                        <div class="blog-meta">
+                            <span>28 Out 2023</span> • <span>8 min leitura</span>
+                        </div>
+                        <p>Pare de voar às cegas. Aprenda a configurar eventos, ler relatórios de conversão e tomar decisões baseadas em dados reais com o GA4.</p>
+                        <a href="artigo.html?id=ga4-guia" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 6 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Email Marketing">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Email Marketing" loading="lazy">
                         <span class="blog-category">Marketing</span>
                     </div>
                     <div class="blog-content">
                         <h3>Email Marketing ainda funciona?</h3>
-                        <p>Como criar campanhas que convertem e fidelizam clientes.</p>
-                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                        <div class="blog-meta">
+                            <span>01 Nov 2023</span> • <span>5 min leitura</span>
+                        </div>
+                        <p>O email não morreu. Descubra como a segmentação e a automação podem transformar sua lista de contatos em uma máquina de vendas recorrentes.</p>
+                        <a href="artigo.html?id=email-marketing" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
             </div>
@@ -422,6 +485,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- 9. Footer -->
     <footer>
