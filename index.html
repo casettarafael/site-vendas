@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybernex Innovatech - Desenvolvimento Web de Alta Performance</title>
+    <meta name="description" content="Sites que transformam visitantes em clientes. Desenvolvimento web profissional e otimizado.">
+    
+    <!-- Fonte Google (Inter para modernidade) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+
+    <!-- Overlay para Menu Mobile -->
+    <div class="overlay"></div>
+
+    <!-- Reading Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- 1. Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="Cybernex Innovatech">
+                    <span>Cybernex Innovatech</span>
+                </a>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="nav-links">
+                    <a href="#servicos">Serviços</a>
+                    <a href="#portfolio">Portfólio</a>
+                    <a href="#faq">Dúvidas</a>
+                    <a href="#contato" class="btn btn-primary">Solicitar Orçamento</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="hero">
+        <canvas id="particles-canvas"></canvas>
+        <div class="container">
+            <h1><span class="glitch" data-text="Sites que transformam">Sites que transformam</span><br><span class="typewriter-text"></span><span class="cursor">&nbsp;</span></h1>
+            <button id="toggle-sound" class="sound-btn" aria-label="Desligar som de digitação" title="Ligar/Desligar som">
+                <svg class="sound-icon on" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                <svg class="sound-icon off" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            </button>
+            <p>Design profissional e código otimizado para empresas que buscam o próximo nível de faturamento e autoridade digital.</p>
+            <a href="#contato" class="btn btn-cta">Quero um Site Profissional</a>
+        </div>
+    </section>
+
+    <!-- 2.5. Estatísticas -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item scale-up">
+                    <h3><span class="counter" data-target="120">0</span>+</h3>
+                    <p>Projetos Entregues</p>
+                </div>
+                <div class="stat-item scale-up delay-100">
+                    <h3><span class="counter" data-target="98">0</span>%</h3>
+                    <p>Satisfação dos Clientes</p>
+                </div>
+                <div class="stat-item scale-up delay-200">
+                    <h3><span class="counter" data-target="5">0</span>+</h3>
+                    <p>Anos de Experiência</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2.7. Parceiros (Logo Scroller) -->
+    <section class="partners-section">
+        <div class="container">
+            <h3 class="partners-title">Empresas que confiam no meu trabalho</h3>
+            <div class="logo-scroller">
+                <ul class="logo-scroller__inner">
+                    <li><img src="marca1.png" alt="Logo Marca 1"></li>
+                    <li><img src="marca2.png" alt="Logo Marca 2"></li>
+                    <li><img src="marca3.png" alt="Logo Marca 3"></li>
+                    <li><img src="marca4.png" alt="Logo Marca 4"></li>
+                    <li><img src="marca5.png" alt="Logo Marca 5"></li>
+                    <li><img src="marca6.png" alt="Logo Marca 6"></li>
+                    <li><img src="marca7.png" alt="Logo Marca 7"></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Seção de Serviços -->
+    <section id="servicos">
+        <div class="container">
+            <h2 class="section-title">Como posso ajudar sua empresa</h2>
+            <p class="section-subtitle">Não entrego apenas "um site". Entrego uma ferramenta de vendas pronta para o Google.</p>
+            
+            <div class="services-grid">
+                <div class="service-card hidden">
+                    <h3>Landing Pages</h3>
+                    <p>Páginas de alta conversão focadas em vender um produto ou serviço específico. Ideais para tráfego pago.</p>
+                    <ul class="service-list">
+                        <li>Foco em Conversão</li>
+                        <li>Copywriting Persuasivo</li>
+                        <li>Carregamento Rápido</li>
+                    </ul>
+                </div>
+                <div class="service-card hidden delay-100">
+                    <h3>Sites Institucionais</h3>
+                    <p>A sede digital da sua empresa. Apresente seus serviços, história e equipe com credibilidade.</p>
+                    <ul class="service-list">
+                        <li>Design Personalizado</li>
+                        <li>Painel Administrativo</li>
+                        <li>Blog Integrado</li>
+                    </ul>
+                </div>
+                <div class="service-card hidden delay-200">
+                    <h3>E-commerce</h3>
+                    <p>Lojas virtuais seguras e rápidas para você vender seus produtos 24 horas por dia.</p>
+                    <ul class="service-list">
+                        <li>Pagamento Seguro</li>
+                        <li>Gestão de Estoque</li>
+                        <li>Cálculo de Frete</li>
+                    </ul>
+                </div>
+                <div class="service-card hidden delay-300">
+                    <h3>Consultoria SEO</h3>
+                    <p>Estratégias para colocar seu site nas primeiras posições do Google. Um processo contínuo de acompanhamento.</p>
+                    <ul class="service-list">
+                        <li>Auditoria de Rankeamento</li>
+                        <li>Consultoria Mensal</li>
+                        <li>Otimização Técnica</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Portfólio Dinâmico -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Projetos Recentes</h2>
+            <p class="section-subtitle">Veja como resolvi problemas reais de outros clientes.</p>
+            
+            <div class="portfolio-grid">
+                <!-- Placeholder para Imagens -->
+                <div class="project-card hidden">
+                    <img src="site1.png" alt="Projeto Ventus">
+                    <div class="project-info">
+                        <h4>Ventus</h4>
+                        <p>Site Institucional + Blog</p>
+                    </div>
+                </div>
+                <div class="project-card hidden delay-100">
+                    <img src="site2.png" alt="Projeto Soluciona">
+                    <div class="project-info">
+                        <h4>Soluciona</h4>
+                        <p>Landing Page de Alta Conversão</p>
+                    </div>
+                </div>
+                <div class="project-card hidden delay-200">
+                    <img src="site3.png" alt="Criativa Visual">
+                    <div class="project-info">
+                        <h4>Criativa Visual</h4>
+                        <p>E-commerce de Moda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.5. Blog Section -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Blog & Dicas</h2>
+            <p class="section-subtitle">Conteúdo estratégico para você dominar o digital.</p>
+            
+            <div class="blog-search">
+                <input type="text" id="blog-search-input" placeholder="Buscar artigos...">
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Artigo 1 -->
+                <article class="blog-card hidden">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="SEO Básico">
+                        <span class="blog-category">SEO</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>5 Dicas de SEO para Iniciantes</h3>
+                        <p>Descubra como colocar seu site no Google sem gastar com anúncios.</p>
+                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                    </div>
+                </article>
+                <!-- Artigo 2 -->
+                <article class="blog-card hidden delay-100">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Performance Web">
+                        <span class="blog-category">Performance</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Por que seu site está lento?</h3>
+                        <p>A velocidade de carregamento impacta diretamente nas suas vendas. Veja como resolver.</p>
+                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                    </div>
+                </article>
+                <!-- Artigo 3 -->
+                <article class="blog-card hidden delay-200">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80" alt="Marketing Digital">
+                        <span class="blog-category">Marketing</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Landing Page vs Site Institucional</h3>
+                        <p>Entenda a diferença e saiba qual é a melhor estratégia para o seu momento.</p>
+                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                    </div>
+                </article>
+                <!-- Artigo 4 -->
+                <article class="blog-card hidden">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80" alt="Web Design">
+                        <span class="blog-category">Design</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Tendências de Web Design 2024</h3>
+                        <p>O que está em alta e o que você deve evitar no visual do seu site.</p>
+                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                    </div>
+                </article>
+                <!-- Artigo 5 -->
+                <article class="blog-card hidden">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Analytics">
+                        <span class="blog-category">Dados</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Entendendo o Google Analytics 4</h3>
+                        <p>Métricas essenciais para medir o sucesso do seu negócio online.</p>
+                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                    </div>
+                </article>
+                <!-- Artigo 6 -->
+                <article class="blog-card hidden">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Email Marketing">
+                        <span class="blog-category">Marketing</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Email Marketing ainda funciona?</h3>
+                        <p>Como criar campanhas que convertem e fidelizam clientes.</p>
+                        <a href="artigo.html" class="read-more">Ler Artigo →</a>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Paginação -->
+            <div class="blog-pagination">
+                <button id="prev-page" class="pagination-btn" disabled>&lt;</button>
+                <span id="page-indicator">Página 1</span>
+                <button id="next-page" class="pagination-btn">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Educação & 6. Diferenciais Técnicos -->
+    <section class="education-section">
+        <div class="container">
+            <h2 class="section-title">Por que investir em um site profissional?</h2>
+            <p class="section-subtitle">O Instagram é terreno alugado. O site é a sua casa própria na internet.</p>
+
+            <div class="features-grid">
+                <div class="feature-item hidden-left">
+                    <h4>🚀 Velocidade Extrema</h4>
+                    <p>Desenvolvo com código puro (HTML/JS). Sem construtores pesados que deixam o site lento e fazem você perder clientes.</p>
+                </div>
+                <div class="feature-item hidden-right delay-100">
+                    <h4>🔍 Otimizado para Google</h4>
+                    <p>Estrutura semântica correta para que o Google entenda e ranqueie seu conteúdo mais facilmente.</p>
+                </div>
+                <div class="feature-item hidden-left delay-200">
+                    <h4>📱 100% Responsivo</h4>
+                    <p>Seu site vai funcionar perfeitamente em celulares, tablets e computadores. Sem layouts quebrados.</p>
+                </div>
+                <div class="feature-item hidden-right delay-300">
+                    <h4>🔒 Segurança e Estabilidade</h4>
+                    <p>Sites estáticos são mais seguros contra invasões e não precisam de atualizações constantes de plugins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5. Depoimentos (Carrossel) -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">O que dizem meus clientes</h2>
+            <p class="section-subtitle">Histórias reais de quem já transformou seu negócio.</p>
+            
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Depoimento 1 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"O site ficou incrível! Minhas vendas aumentaram 30% no primeiro mês. O design é muito profissional e passa muita credibilidade."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MS</div>
+                            <div class="author-info">
+                                <h5>Maria Silva</h5>
+                                <span>CEO, Loja Modas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Depoimento 2 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Profissional extremamente atencioso. Entendeu exatamente o que eu precisava e entregou antes do prazo. Recomendo demais!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JP</div>
+                            <div class="author-info">
+                                <h5>João Pereira</h5>
+                                <span>Diretor, Tech Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Depoimento 3 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"A velocidade do site é impressionante. O Google começou a ranquear nossas páginas muito melhor depois da reestruturação."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AL</div>
+                            <div class="author-info">
+                                <h5>Ana Lima</h5>
+                                <span>Marketing, Agência X</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-btn prev-btn" aria-label="Anterior">&#10094;</button>
+                <button class="carousel-btn next-btn" aria-label="Próximo">&#10095;</button>
+                
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">Quanto tempo demora para ficar pronto? <span>+</span></button>
+                    <div class="faq-answer"><p>Depende do projeto. Landing Pages levam em média 5 a 7 dias. Sites institucionais cerca de 15 a 20 dias.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">O site será meu ou pago aluguel? <span>+</span></button>
+                    <div class="faq-answer"><p>O site é 100% seu. Após o pagamento e entrega, você tem total propriedade sobre os arquivos e domínio.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Eu consigo alterar textos depois? <span>+</span></button>
+                    <div class="faq-answer"><p>Sim! Posso configurar um painel administrativo simples ou oferecer pacotes de manutenção mensal.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Formulário de Briefing -->
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Vamos tirar seu projeto do papel?</h2>
+            <p class="section-subtitle">Preencha o formulário abaixo para receber uma proposta personalizada.</p>
+            
+            <div class="form-box">
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Seu Nome</label>
+                        <input type="text" id="nome" placeholder="Ex: João Silva" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Nome da Empresa</label>
+                        <input type="text" id="empresa" placeholder="Ex: Silva Consultoria">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone / WhatsApp</label>
+                        <input type="tel" id="telefone" placeholder="(00) 00000-0000" maxlength="15">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14">
+                    </div>
+                    <div class="form-group">
+                        <label for="objetivo">Qual o principal objetivo do site?</label>
+                        <select id="objetivo">
+                            <option>Vender um produto</option>
+                            <option>Gerar leads (orçamentos)</option>
+                            <option>Apresentar a empresa</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="orcamento">Orçamento Estimado</label>
+                        <select id="orcamento">
+                            <option>Até R$ 1.500</option>
+                            <option>R$ 1.500 - R$ 3.000</option>
+                            <option>R$ 3.000 - R$ 5.000</option>
+                            <option>Acima de R$ 5.000</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitação</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <img src="logo.png" alt="Cybernex Innovatech" class="footer-logo">
+                    <h4>Cybernex Innovatech</h4>
+                    <p>Desenvolvimento web estratégico focado em resultados reais para sua empresa.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                        <li><a href="#faq">Dúvidas Frequentes</a></li>
+                        <li><a href="#contato">Solicitar Orçamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <p>(11) 97667-8655</p>
+                    <p>São Paulo, SP</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Cybernex Innovatech. Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511976678655" class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="#ffffff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Voltar ao topo">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </a>
+
+    <!-- Discount Modal -->
+    <div id="discount-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Oferta Exclusiva!</h2>
+            <p>Feche seu projeto hoje e ganhe <strong>10% de desconto</strong> no desenvolvimento do seu site.</p>
+            <a href="#contato" class="btn btn-cta" id="claim-discount">Quero meu desconto</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
