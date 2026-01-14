@@ -63,9 +63,13 @@ if (contactForm) {
         event.preventDefault(); // Impede o envio padrão e recarregamento
 
         let nome = document.getElementById('nome').value;
-        let objetivo = document.getElementById('objetivo') ? document.getElementById('objetivo').value : '';
+        
+        // Verifica se o campo objetivo existe antes de validar
+        const objetivoEl = document.getElementById('objetivo');
+        let objetivo = objetivoEl ? objetivoEl.value : '';
 
-        if (nome === '' || objetivo === '') {
+        // Validação: Nome é sempre obrigatório. Objetivo só se existir o campo.
+        if (nome === '' || (objetivoEl && objetivo === '')) {
             contactForm.classList.add('shake');
             setTimeout(() => {
                 contactForm.classList.remove('shake');
@@ -78,17 +82,43 @@ if (contactForm) {
         const empresa = document.getElementById('empresa') ? document.getElementById('empresa').value : '';
         const telefone = document.getElementById('telefone') ? document.getElementById('telefone').value : '';
         const orcamento = document.getElementById('orcamento') ? document.getElementById('orcamento').value : '';
+        const cidadeOrigem = document.getElementById('cidade-origem') ? document.getElementById('cidade-origem').value : '';
 
         // Formata a mensagem para o WhatsApp
         let message = `*Novo Contato do Site*\n\n*Nome:* ${nome}\n`;
         if (empresa) message += `*Empresa:* ${empresa}\n`;
         if (telefone) message += `*Telefone:* ${telefone}\n`;
-        message += `*Objetivo:* ${objetivo}\n`;
+        if (cidadeOrigem) message += `*Cidade de Interesse:* ${cidadeOrigem}\n`;
+        if (objetivo) message += `*Objetivo:* ${objetivo}\n`;
         if (orcamento) message += `*Orçamento:* ${orcamento}`;
 
         // Envia para o WhatsApp (Substitua o número abaixo pelo seu)
         const phoneNumber = "5511976678655"; 
         window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+
+        // --- SALVAR NO GOOGLE SHEETS (AUTOMÁTICO) ---
+        // Cole a URL do seu Web App do Google Apps Script abaixo:
+        const scriptURL = 'SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI'; 
+        
+        if (scriptURL !== 'SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI') {
+            const formData = {
+                data: new Date().toLocaleString('pt-BR'),
+                nome: nome,
+                empresa: empresa,
+                telefone: telefone,
+                cidade: cidadeOrigem,
+                objetivo: objetivo,
+                orcamento: orcamento
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors', // Permite enviar dados sem bloqueio de segurança
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(formData)
+            }).catch(error => console.error('Erro ao salvar na planilha:', error));
+        }
+        // --------------------------------------------
 
         // Limpa o formulário após o envio
         contactForm.reset();

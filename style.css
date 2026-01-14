@@ -26,7 +26,7 @@ body {
 
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; display: block; height: auto; }
 
 /* Acessibilidade: Foco visível para navegação por teclado */
 :focus-visible {
@@ -106,6 +106,13 @@ img { max-width: 100%; display: block; }
 }
 
 section { padding: 80px 0; }
+
+/* Performance: Otimização de Renderização (Content Visibility) */
+/* O navegador pula a renderização dessas seções até que estejam perto da tela */
+.blog-section, .portfolio, .testimonials-section, .education-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px; /* Estimativa de altura para evitar scroll jumping */
+}
 
 /* --- 1. Header --- */
 header {

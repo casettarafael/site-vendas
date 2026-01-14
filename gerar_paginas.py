@@ -69,6 +69,12 @@ def gerar_paginas():
     # Troca a canonical da home pela URL do arquivo gerado
     template = template.replace('<link rel="canonical" href="https://www.cybernex.com.br/">', '<link rel="canonical" href="https://www.cybernex.com.br/[[FILENAME]]">')
 
+    # 5. Atualizações de Rodapé e Sociais (Failsafe)
+    # Garante que o link do Instagram esteja correto caso o template base seja antigo
+    template = template.replace('href="#" aria-label="Instagram"', 'href="https://www.instagram.com/cybernexinnovatech?igsh=eHF1OGNmNXlrbDYx" aria-label="Instagram" target="_blank"')
+    template = template.replace('href="#" aria-label="LinkedIn"', 'href="https://wa.me/5511976678655" aria-label="WhatsApp" target="_blank"')
+    template = template.replace(' CNPJ: 00.000.000/0001-00', '')
+
     print(f"Gerando {len(locais)} páginas estáticas otimizadas...")
 
     for local in locais:
