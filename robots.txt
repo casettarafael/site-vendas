@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Indica a localização do Sitemap para os buscadores
 Sitemap: https://www.cybernex.com.br/sitemap.xml

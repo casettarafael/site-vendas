@@ -696,6 +696,34 @@ if (window.location.pathname.includes('artigo.html')) {
         document.getElementById('article-img').src = post.image;
         document.getElementById('article-img').alt = post.title;
         document.getElementById('article-body').innerHTML = post.content;
+
+        // --- SEO: Injetar Schema de Artigo (BlogPosting) Dinamicamente ---
+        const articleSchema = {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "image": [post.image],
+            "datePublished": new Date().toISOString(), // Idealmente viria do post.date formatado
+            "author": {
+                "@type": "Organization",
+                "name": "Cybernex Innovatech"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Cybernex Innovatech",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.cybernex.com.br/logo.png"
+                }
+            },
+            "description": `Leia sobre ${post.title} no blog da Cybernex.`
+        };
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(articleSchema);
+        document.head.appendChild(script);
+
     } else {
         // Artigo não encontrado (Redireciona ou mostra erro)
         document.querySelector('.article-content').innerHTML = "<h1>Artigo não encontrado.</h1><p>O artigo que você procura não existe ou foi removido.</p>";
@@ -752,6 +780,27 @@ if (window.location.pathname.includes('local.html')) {
         // 3. Atualizar campo oculto do formulário
         const hiddenInput = document.getElementById('cidade-origem');
         if (hiddenInput) hiddenInput.value = cityName;
+
+        // --- SEO: Injetar Breadcrumb Schema Dinamicamente ---
+        const breadcrumbSchema = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.cybernex.com.br/"
+            }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": `Criação de Sites em ${cityName}`,
+                "item": window.location.href
+            }]
+        };
+        const scriptBC = document.createElement('script');
+        scriptBC.type = 'application/ld+json';
+        scriptBC.text = JSON.stringify(breadcrumbSchema);
+        document.head.appendChild(scriptBC);
 
         // 4. Enviar evento personalizado para o Google Analytics
         if (typeof gtag === 'function') {
