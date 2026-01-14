@@ -891,4 +891,28 @@ if (window.location.pathname.includes('local.html')) {
     }
 }
 
+// --- CRM Modal Logic ---
+const crmModal = document.getElementById('crm-modal');
+const crmBtn = document.getElementById('crm-learn-more-btn');
+const crmCloseBtn = document.getElementById('close-crm-modal');
+const crmCtaBtn = document.getElementById('crm-cta-modal');
+
+if (crmModal && crmBtn) {
+    crmBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        crmModal.classList.add('show');
+    });
+
+    const closeCrmModal = () => {
+        crmModal.classList.remove('show');
+    };
+
+    if (crmCloseBtn) crmCloseBtn.addEventListener('click', closeCrmModal);
+    if (crmCtaBtn) crmCtaBtn.addEventListener('click', closeCrmModal);
+
+    window.addEventListener('click', (e) => {
+        if (e.target === crmModal) closeCrmModal();
+    });
+}
+
 }); // Fim do DOMContentLoaded

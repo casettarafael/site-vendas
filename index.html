@@ -427,7 +427,10 @@
                         </li>
                     </ul>
                     
-                    <a href="#contato" class="btn btn-primary">Agendar Demonstração</a>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="#contato" class="btn btn-primary">Agendar Demonstração</a>
+                        <button id="crm-learn-more-btn" class="btn btn-secondary">Saiba Mais</button>
+                    </div>
                 </div>
                 <div class="crm-visual hidden-right">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard CRM e Financeiro" loading="lazy" width="600" height="400">
@@ -794,6 +797,22 @@
             <h2>Oferta Exclusiva!</h2>
             <p>Feche seu projeto hoje e ganhe <strong>10% de desconto</strong> no desenvolvimento do seu site.</p>
             <a href="#contato" class="btn btn-cta" id="claim-discount">Quero meu desconto</a>
+        </div>
+    </div>
+
+    <!-- CRM Details Modal -->
+    <div id="crm-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-crm-modal">&times;</span>
+            <h2 style="color: var(--primary-color);">Recursos do CRM</h2>
+            <p style="margin-bottom: 20px; color: var(--text-color);">Uma visão detalhada de como nosso sistema potencializa suas vendas:</p>
+            <ul style="text-align: left; margin-bottom: 25px; list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><span style="color: var(--primary-color);">✔</span> <strong>Pipeline Visual:</strong> Arraste e solte negociações entre etapas.</li>
+                <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><span style="color: var(--primary-color);">✔</span> <strong>Automação:</strong> Lembretes automáticos de follow-up por e-mail.</li>
+                <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><span style="color: var(--primary-color);">✔</span> <strong>Métricas:</strong> Taxas de conversão e previsão de faturamento.</li>
+                <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><span style="color: var(--primary-color);">✔</span> <strong>Integração:</strong> Leads do site caem direto no sistema.</li>
+            </ul>
+            <a href="#contato" class="btn btn-cta" id="crm-cta-modal">Quero Testar Agora</a>
         </div>
     </div>
 
