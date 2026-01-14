@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título e Descrição serão atualizados via JavaScript -->
+    <title>Criação de Sites Profissionais - Cybernex Innovatech</title>
+    <meta name="description" content="Desenvolvimento de sites de alta performance para sua empresa.">
+    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="" id="dynamic-canonical">
+
+    <!-- Google Analytics (GA4) - Substitua G-XXXXXXXXXX pelo seu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Estilos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <style>
+        /* Estilo específico para destacar a cidade */
+        .highlight-city {
+            color: var(--accent-color);
+            text-decoration: underline;
+            text-decoration-color: rgba(245, 158, 11, 0.3);
+        }
+        .hero-local {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader com Failsafe (Proteção contra tela branca) -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+    <script>
+        // Força o preloader a sumir após 3s mesmo se houver erro
+        setTimeout(function() {
+            var p = document.getElementById('preloader');
+            if(p) { p.style.opacity = 0; setTimeout(function(){ p.style.display = 'none'; }, 500); }
+        }, 3000);
+    </script>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="Cybernex Innovatech" width="150">
+                    <span>Cybernex</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#servicos">Serviços</a>
+                    <a href="index.html#portfolio">Portfólio</a>
+                    <a href="#contato" class="btn btn-primary">Pedir Orçamento</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section Dinâmica -->
+    <section class="hero-local">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2;">
+                Criação de Sites em <br><span id="city-name-hero" class="highlight-city">Sua Cidade</span>
+            </h1>
+            <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 40px; color: #cbd5e1;">
+                Ajudamos empresas de <span id="city-name-text">sua região</span> a venderem mais com sites rápidos, seguros e otimizados para o Google.
+            </p>
+            <a href="#contato" class="btn btn-cta">Orçamento para <span id="city-name-btn">Minha Empresa</span></a>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section class="education-section">
+        <div class="container">
+            <h2 class="section-title">Por que contratar a Cybernex?</h2>
+            <p class="section-subtitle">Atendimento remoto de excelência para <span id="city-name-subtitle">todo o Brasil</span>.</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>🚀 Performance Extrema</h4>
+                    <p>Seu site carregando rápido, superando a concorrência local.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📍 SEO Local Otimizado</h4>
+                    <p>Estratégias para aparecer quando clientes de <span id="city-name-seo">sua cidade</span> buscarem no Google.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💻 100% Online</h4>
+                    <p>Processo ágil com reuniões via Meet/Zoom e contrato digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário -->
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Vamos alavancar seu negócio em <span id="city-name-form">sua cidade</span>?</h2>
+            <div class="form-box">
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Seu Nome</label>
+                        <input type="text" id="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Nome da Empresa</label>
+                        <input type="text" id="empresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">WhatsApp</label>
+                        <input type="tel" id="telefone">
+                    </div>
+                    <!-- Campo oculto para saber a cidade -->
+                    <input type="hidden" id="cidade-origem" value="">
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Solicitar Proposta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 Cybernex Innovatech. Atendendo <span id="city-name-footer">todo o Brasil</span> com excelência.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
