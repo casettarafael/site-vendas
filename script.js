@@ -623,6 +623,48 @@ if (blogGrid) {
     }
 }
 
+// --- Services Pagination ---
+const servicesGrid = document.querySelector('.services-grid');
+if (servicesGrid) {
+    const serviceCards = Array.from(servicesGrid.querySelectorAll('.service-card'));
+    const prevServiceBtn = document.getElementById('prev-service-page');
+    const nextServiceBtn = document.getElementById('next-service-page');
+    const servicePageIndicator = document.getElementById('service-page-indicator');
+    const servicesPagination = document.querySelector('.services-pagination');
+
+    const itemsPerPage = 3;
+    let currentPage = 1;
+    const totalPages = Math.ceil(serviceCards.length / itemsPerPage);
+
+    function showServicePage(page) {
+        currentPage = page;
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        serviceCards.forEach((card, index) => {
+            if (index >= startIndex && index < endIndex) {
+                card.style.display = 'block';
+                setTimeout(() => card.classList.add('show'), 10);
+            } else {
+                card.style.display = 'none';
+                card.classList.remove('show');
+            }
+        });
+
+        if (servicePageIndicator) servicePageIndicator.textContent = `Página ${currentPage} de ${totalPages}`;
+        if (prevServiceBtn) prevServiceBtn.disabled = currentPage === 1;
+        if (nextServiceBtn) nextServiceBtn.disabled = currentPage === totalPages;
+    }
+
+    if (serviceCards.length > itemsPerPage) {
+        if (prevServiceBtn) prevServiceBtn.addEventListener('click', () => { if (currentPage > 1) showServicePage(currentPage - 1); });
+        if (nextServiceBtn) nextServiceBtn.addEventListener('click', () => { if (currentPage < totalPages) showServicePage(currentPage + 1); });
+        showServicePage(1);
+    } else if (servicesPagination) {
+        servicesPagination.style.display = 'none';
+    }
+}
+
 // Blog Search Filter
 const blogSearchInput = document.getElementById('blog-search-input');
 const blogCards = document.querySelectorAll('.blog-card');

@@ -351,6 +351,43 @@ body.loaded .hero .btn-cta:hover {
 
 .service-card h3 { margin-bottom: 15px; color: var(--secondary-color); }
 
+/* --- Service Icons --- */
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(124, 58, 237, 0.1); /* Primary color with opacity */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+/* --- Service Images (Standardized) --- */
+.service-img {
+    width: 100%;
+    height: 180px; /* Altura fixa para padronizar */
+    object-fit: cover; /* Corta a imagem para preencher sem distorcer */
+    border-radius: 8px;
+    margin: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: #e2e8f0; /* Cor de fundo enquanto carrega */
+}
+
 /* --- Service List Items Reveal --- */
 .service-list {
     margin-top: 20px;
@@ -1123,7 +1160,7 @@ footer {
 }
 
 /* --- Blog Pagination --- */
-.blog-pagination {
+.blog-pagination, .services-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1157,7 +1194,7 @@ footer {
     cursor: not-allowed;
 }
 
-#page-indicator {
+#page-indicator, #service-page-indicator {
     font-weight: 600;
     color: #64748b;
 }
@@ -1266,4 +1303,94 @@ footer {
     width: 50px;
     height: 50px;
     border: 5px solid #e2e8f0;
-    border-top
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- CRM Highlight Section --- */
+.crm-section {
+    background-color: #f8fafc; /* Fundo levemente diferente para destaque */
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.crm-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.crm-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.crm-content h2 {
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.crm-features-list {
+    margin-bottom: 40px;
+}
+
+.crm-features-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.crm-features-list li svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--primary-color);
+    margin-right: 15px;
+    background: rgba(124, 58, 237, 0.1);
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.crm-visual {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.crm-visual img {
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: transform 0.5s ease;
+}
+
+.crm-visual:hover img {
+    transform: scale(1.02);
+}
+
+@media (max-width: 900px) {
+    .crm-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .crm-content h2, .crm-content p, .crm-content .section-title, .crm-content .section-subtitle {
+        text-align: center !important;
+    }
+
+    .crm-features-list {
+        display: inline-block;
+        text-align: left;
+    }
+}
