@@ -14,6 +14,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 110px; /* Compensa a altura do header fixo */
+    overflow-x: hidden; /* Garante que nada saia da tela horizontalmente */
+    width: 100%;
 }
 
 body {
@@ -22,6 +24,9 @@ body {
     line-height: 1.6;
     background-color: var(--bg-light);
     overflow-x: hidden; /* Previne rolagem horizontal indesejada */
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -106,6 +111,7 @@ img { max-width: 100%; display: block; height: auto; }
 }
 
 section { padding: 80px 0; }
+section { padding: 80px 0; overflow: hidden; /* Previne que animações causem rolagem horizontal */ }
 
 /* Performance: Otimização de Renderização (Content Visibility) */
 /* O navegador pula a renderização dessas seções até que estejam perto da tela */
@@ -216,6 +222,7 @@ nav {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    word-wrap: break-word; /* Evita que palavras longas quebrem o layout no mobile */
 }
 
 .hero p {
@@ -639,6 +646,12 @@ footer {
     }
 
     .footer-content { flex-direction: column; gap: 30px; }
+
+    /* Ajuste de Logos no Mobile para não estourar a largura */
+    .logo-scroller img {
+        height: 80px;
+        max-width: 180px;
+    }
 }
 
 /* --- Fade-in Animation --- */
