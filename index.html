@@ -42,6 +42,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
+    <!-- Performance: DNS Prefetch para scripts externos -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <!-- Performance: Preload da Imagem Hero (LCP) -->
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" media="(min-width: 769px)" fetchpriority="high">
@@ -52,9 +55,6 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="logo.webp" type="image/png">
-
-    <!-- SEO AUTOMÁTICO: JSON-LD -->
-    
 
     <!-- SEO AUTOMÁTICO: JSON-LD -->
     <script type="application/ld+json">
@@ -224,7 +224,7 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">
-                    <img src="logo.webp" alt="Cybernex Innovatech" width="200" height="85">
+                    <img src="logo.webp" alt="Cybernex Innovatech" width="200" height="85" fetchpriority="high">
                     <span>Cybernex Innovatech</span>
                 </a>
                 <div class="hamburger">
@@ -283,13 +283,13 @@
             <h3 class="partners-title">Empresas que confiam no meu trabalho</h3>
             <div class="logo-scroller">
                 <ul class="logo-scroller__inner">
-                    <li><img src="marca1.webp" alt="Logo Marca 1" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca2.webp" alt="Logo Marca 2" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca3.webp" alt="Logo Marca 3" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca4.webp" alt="Logo Marca 4" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca5.webp" alt="Logo Marca 5" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca6.webp" alt="Logo Marca 6" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca7.webp" alt="Logo Marca 7" loading="lazy" width="150" height="80"></li>
+                    <li><img src="marca1.webp" alt="Logo Marca 1" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca2.webp" alt="Logo Marca 2" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca3.webp" alt="Logo Marca 3" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca4.webp" alt="Logo Marca 4" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca5.webp" alt="Logo Marca 5" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca6.webp" alt="Logo Marca 6" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca7.webp" alt="Logo Marca 7" loading="lazy" decoding="async" width="150" height="80"></li>
                 </ul>
             </div>
         </div>
@@ -308,7 +308,7 @@
                     </div>
                     <h3>Landing Pages</h3>
                     <p>Páginas de alta conversão focadas em vender um produto ou serviço específico. Ideais para tráfego pago.</p>
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Landing Pages" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Landing Pages" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Foco em Conversão</li>
                         <li>Copywriting Persuasivo</li>
@@ -321,7 +321,7 @@
                     </div>
                     <h3>Sites Institucionais</h3>
                     <p>A sede digital da sua empresa. Apresente seus serviços, história e equipe com credibilidade.</p>
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Sites Institucionais" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Sites Institucionais" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Design Personalizado</li>
                         <li>Painel Administrativo</li>
@@ -334,7 +334,7 @@
                     </div>
                     <h3>E-commerce</h3>
                     <p>Lojas virtuais seguras e rápidas para você vender seus produtos 24 horas por dia.</p>
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=500&q=80" alt="E-commerce" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=500&q=80" alt="E-commerce" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Pagamento Seguro</li>
                         <li>Gestão de Estoque</li>
@@ -347,7 +347,7 @@
                     </div>
                     <h3>Consultoria SEO</h3>
                     <p>Estratégias para colocar seu site nas primeiras posições do Google. Um processo contínuo de acompanhamento.</p>
-                    <img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=500&q=80" alt="Consultoria SEO" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=500&q=80" alt="Consultoria SEO" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Auditoria de Rankeamento</li>
                         <li>Consultoria Mensal</li>
@@ -360,7 +360,7 @@
                     </div>
                     <h3>Identidade Visual</h3>
                     <p>Dê uma cara profissional ao seu negócio. Criação de logotipos e identidade visual completa para sua marca.</p>
-                    <img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=500&q=80" alt="Identidade Visual" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=500&q=80" alt="Identidade Visual" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Logotipos Profissionais</li>
                         <li>Manual da Marca</li>
@@ -373,7 +373,7 @@
                     </div>
                     <h3>Google Meu Negócio</h3>
                     <p>Seja encontrado por clientes locais no Maps. Otimização completa do seu perfil para atrair mais visitas.</p>
-                    <img src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?auto=format&fit=crop&w=500&q=80" alt="Google Meu Negócio" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?auto=format&fit=crop&w=500&q=80" alt="Google Meu Negócio" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Configuração Completa</li>
                         <li>Otimização de Fotos</li>
@@ -386,7 +386,7 @@
                     </div>
                     <h3>Hospedagem & Manutenção</h3>
                     <p>Tranquilidade total. Mantenho seu site no ar, seguro e atualizado com planos mensais acessíveis.</p>
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80" alt="Hospedagem & Manutenção" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80" alt="Hospedagem & Manutenção" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Hospedagem Inclusa</li>
                         <li>Backups de Segurança</li>
@@ -399,7 +399,7 @@
                     </div>
                     <h3>Otimização de Velocidade</h3>
                     <p>Sites lentos perdem vendas. Melhoro o Core Web Vitals do seu site para ele carregar instantaneamente.</p>
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="Otimização de Velocidade" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="Otimização de Velocidade" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Otimização de Imagens</li>
                         <li>Cache e Minificação</li>
@@ -412,7 +412,7 @@
                     </div>
                     <h3>CRM & Gestão Financeira</h3>
                     <p>Sistemas personalizados para gestão de clientes e controle financeiro. Visualize seus dados em tempo real.</p>
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=500&q=80" alt="Dashboard Financeiro" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=500&q=80" alt="Dashboard Financeiro" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Gestão de Clientes (CRM)</li>
                         <li>Dashboards Financeiros</li>
@@ -459,7 +459,7 @@
                     </div>
                 </div>
                 <div class="crm-visual hidden-right">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard CRM e Financeiro" loading="lazy" width="600" height="400">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard CRM e Financeiro" loading="lazy" decoding="async" width="600" height="400">
                 </div>
             </div>
         </div>
@@ -474,21 +474,21 @@
             <div class="portfolio-grid">
                 <!-- Placeholder para Imagens -->
                 <div class="project-card hidden">
-                    <img src="site1.webp" alt="Projeto Ventus" loading="lazy" width="400" height="300">
+                    <img src="site1.webp" alt="Projeto Ventus" loading="lazy" decoding="async" width="400" height="300">
                     <div class="project-info">
                         <h4>Ventus</h4>
                         <p>Site Institucional + Blog</p>
                     </div>
                 </div>
                 <div class="project-card hidden delay-100">
-                    <img src="site2.webp" alt="Projeto Soluciona" loading="lazy" width="400" height="300">
+                    <img src="site2.webp" alt="Projeto Soluciona" loading="lazy" decoding="async" width="400" height="300">
                     <div class="project-info">
                         <h4>Soluciona</h4>
                         <p>Landing Page de Alta Conversão</p>
                     </div>
                 </div>
                 <div class="project-card hidden delay-200">
-                    <img src="site3.webp" alt="Criativa Visual" loading="lazy" width="400" height="300">
+                    <img src="site3.webp" alt="Criativa Visual" loading="lazy" decoding="async" width="400" height="300">
                     <div class="project-info">
                         <h4>Criativa Visual</h4>
                         <p>E-commerce de Moda</p>
@@ -512,7 +512,7 @@
                 <!-- Artigo 1 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="SEO Básico" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="SEO Básico" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">SEO</span>
                     </div>
                     <div class="blog-content">
@@ -527,7 +527,7 @@
                 <!-- Artigo 2 -->
                 <article class="blog-card hidden delay-100">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Performance Web" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Performance Web" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Performance</span>
                     </div>
                     <div class="blog-content">
@@ -542,7 +542,7 @@
                 <!-- Artigo 3 -->
                 <article class="blog-card hidden delay-200">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80" alt="Marketing Digital" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80" alt="Marketing Digital" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Marketing</span>
                     </div>
                     <div class="blog-content">
@@ -557,7 +557,7 @@
                 <!-- Artigo 4 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80" alt="Web Design" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80" alt="Web Design" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Design</span>
                     </div>
                     <div class="blog-content">
@@ -572,7 +572,7 @@
                 <!-- Artigo 5 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Analytics" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Analytics" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Dados</span>
                     </div>
                     <div class="blog-content">
@@ -587,7 +587,7 @@
                 <!-- Artigo 6 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Email Marketing" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Email Marketing" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Marketing</span>
                     </div>
                     <div class="blog-content">
@@ -811,7 +811,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <img src="logo.webp" alt="Cybernex Innovatech" class="footer-logo" width="150" height="64">
+                    <img src="logo.webp" alt="Cybernex Innovatech" class="footer-logo" loading="lazy" decoding="async" width="150" height="64">
                     <h4>Cybernex Innovatech</h4>
                     <p>Desenvolvimento web estratégico focado em resultados reais para sua empresa.</p>
                 </div>
