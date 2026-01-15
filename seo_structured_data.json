@@ -1,0 +1,121 @@
+{
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Cybernex Innovatech",
+    "image": "https://www.cybernex.com.br/logo.png",
+    "@id": "https://www.cybernex.com.br",
+    "url": "https://www.cybernex.com.br",
+    "telephone": "+5511976678655",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -23.55052,
+      "longitude": -46.633308
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.instagram.com/cybernexinnovatech",
+      "https://www.linkedin.com/company/cybernex"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços Web",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Criação de Sites Institucionais"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Landing Pages de Alta Conversão"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "E-commerce e Lojas Virtuais"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Consultoria SEO Especializada"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Otimização de Performance (Core Web Vitals)"
+          }
+        }
+      ]
+    }
+  },
+  "faq": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto tempo demora para criar um site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Landing Pages levam de 5 a 7 dias úteis. Sites institucionais completos, cerca de 15 a 20 dias."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O site é meu ou pago mensalidade?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O site é 100% seu. Não cobramos aluguel. Você paga apenas uma vez pelo desenvolvimento."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês fazem otimização para o Google (SEO)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim! Todos os nossos sites são entregues com estrutura otimizada para SEO técnico e performance."
+        }
+      }
+    ]
+  },
+  "website": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Cybernex Innovatech",
+    "url": "https://www.cybernex.com.br",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.cybernex.com.br/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+}
