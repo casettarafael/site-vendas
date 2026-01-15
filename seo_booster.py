@@ -56,6 +56,16 @@ def generate_json_ld():
             "latitude": -23.550520,
             "longitude": -46.633308
         },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Brazil"
+        },
+        "knowsAbout": [
+            "Web Development",
+            "SEO",
+            "Digital Marketing",
+            "E-commerce"
+        ],
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": [
