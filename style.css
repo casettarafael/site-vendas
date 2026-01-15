@@ -1394,3 +1394,99 @@ footer {
         text-align: left;
     }
 }
+
+/* --- Pricing Section (Consultoria SEO) --- */
+.pricing-section { background-color: var(--bg-light); }
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.pricing-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    position: relative;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+.pricing-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.pricing-card.featured { border: 2px solid var(--primary-color); transform: scale(1.05); z-index: 1; }
+.pricing-card.featured:hover { transform: scale(1.05) translateY(-10px); }
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);
+}
+.pricing-header { text-align: center; margin-bottom: 30px; }
+.pricing-header h3 { color: var(--secondary-color); font-size: 1.5rem; margin-bottom: 15px; }
+.price { font-size: 3rem; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; justify-content: center; gap: 5px; }
+.price span { font-size: 1rem; color: #94a3b8; font-weight: 500; }
+.pricing-features { list-style: none; margin-bottom: 30px; flex-grow: 1; }
+.pricing-features li { margin-bottom: 15px; color: var(--text-color); display: flex; align-items: center; gap: 10px; }
+.pricing-features li::before { content: '✓'; color: var(--primary-color); font-weight: bold; }
+.pricing-card .btn { width: 100%; }
+
+@media (max-width: 768px) {
+    .pricing-card.featured { transform: scale(1); }
+    .pricing-card.featured:hover { transform: translateY(-10px); }
+}
+
+/* --- Modal Grid & Link Button --- */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+@media (max-width: 600px) { .modal-grid { grid-template-columns: 1fr; } }
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #64748b;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+    transition: var(--transition);
+}
+.btn-link:hover { color: var(--primary-color); }
+
+/* --- Modal List Hover Effects --- */
+.modal-grid ul li {
+    transition: var(--transition);
+    cursor: default;
+}
+.modal-grid ul li:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* --- Acessibilidade: Redução de Movimento --- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

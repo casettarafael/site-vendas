@@ -176,7 +176,7 @@ window.addEventListener('scroll', () => {
     } else {
         header.classList.remove('scrolled');
     }
-});
+}, { passive: true });
 // Back to Top Button
 const backToTopButton = document.querySelector('.back-to-top');
 
@@ -912,6 +912,30 @@ if (crmModal && crmBtn) {
 
     window.addEventListener('click', (e) => {
         if (e.target === crmModal) closeCrmModal();
+    });
+}
+
+// --- SEO Modal Logic ---
+const seoModal = document.getElementById('seo-modal');
+const seoTriggers = document.querySelectorAll('.seo-details-trigger');
+const closeSeoBtn = document.getElementById('close-seo-modal');
+const seoCtaBtn = document.getElementById('seo-modal-cta');
+
+if (seoModal && seoTriggers.length > 0) {
+    const closeSeoModal = () => seoModal.classList.remove('show');
+
+    seoTriggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            seoModal.classList.add('show');
+        });
+    });
+
+    if (closeSeoBtn) closeSeoBtn.addEventListener('click', closeSeoModal);
+    if (seoCtaBtn) seoCtaBtn.addEventListener('click', closeSeoModal);
+    
+    window.addEventListener('click', (e) => {
+        if (e.target === seoModal) closeSeoModal();
     });
 }
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cybernex Innovatech - Criação de Sites para Todo o Brasil</title>
 
-    <meta name="description" content="Criação de sites profissionais e otimizados. Atendemos empresas de todos os estados do Brasil com desenvolvimento web de alta performance.">
+    <meta name="description" content="Desenvolvimento de sites de alta performance e SEO para empresas. Aumente suas vendas com um site rápido, seguro e otimizado para o Google. Orçamento online!">
     
     <!-- SEO Otimizado: Meta Tags Sociais e Controle -->
     <meta name="robots" content="index, follow">
@@ -43,8 +43,8 @@
     <link rel="preconnect" href="https://images.unsplash.com">
 
     <!-- Performance: Preload da Imagem Hero (LCP) -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" media="(min-width: 769px)">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" media="(max-width: 768px)" fetchpriority="high">
 
     <!-- Fonte Google (Inter para modernidade) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
@@ -662,6 +662,52 @@
         </div>
     </section>
 
+    <!-- 6.8. Planos SEO -->
+    <section id="planos-seo" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Consultoria SEO Especializada</h2>
+            <p class="section-subtitle">Otimização contínua para colocar sua empresa no topo do Google.</p>
+            
+            <div class="pricing-grid">
+                <!-- Plano Mensal -->
+                <div class="pricing-card hidden-left">
+                    <div class="pricing-header">
+                        <h3>Plano Mensal</h3>
+                        <div class="price">R$ 80<span>/mês</span></div>
+                        <p>Flexibilidade total para seu negócio.</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Auditoria Técnica Básica</li>
+                        <li>Pesquisa de Palavras-chave</li>
+                        <li>Relatório Mensal Simples</li>
+                        <li>Suporte via WhatsApp</li>
+                    </ul>
+                    <a href="#contato" class="btn btn-secondary" onclick="document.getElementById('objetivo').value='Consultoria SEO'">Escolher Mensal</a>
+                    <button class="btn-link seo-details-trigger">Saiba Mais</button>
+                </div>
+
+                <!-- Plano Anual (Destaque) -->
+                <div class="pricing-card featured hidden-right">
+                    <div class="badge">Melhor Valor</div>
+                    <div class="pricing-header">
+                        <h3>Plano Anual</h3>
+                        <div class="price">R$ 50<span>/mês</span></div>
+                        <p>Faturado anualmente (R$ 600).</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><strong>Tudo do Plano Mensal</strong></li>
+                        <li>Planejamento de Conteúdo</li>
+                        <li>Monitoramento de Concorrentes</li>
+                        <li>Ajustes de Performance</li>
+                        <li>Prioridade no Atendimento</li>
+                    </ul>
+                    <a href="#contato" class="btn btn-primary btn-cta" onclick="document.getElementById('objetivo').value='Consultoria SEO'">Escolher Anual</a>
+                    <button class="btn-link seo-details-trigger">Saiba Mais</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 7. FAQ -->
     <section id="faq">
         <div class="container">
@@ -713,6 +759,7 @@
                             <option>Vender um produto</option>
                             <option>Gerar leads (orçamentos)</option>
                             <option>Apresentar a empresa</option>
+                            <option>Consultoria SEO</option>
                             <option>Outro</option>
                         </select>
                     </div>
@@ -813,6 +860,41 @@
                 <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><span style="color: var(--primary-color);">✔</span> <strong>Integração:</strong> Leads do site caem direto no sistema.</li>
             </ul>
             <a href="#contato" class="btn btn-cta" id="crm-cta-modal">Quero Testar Agora</a>
+        </div>
+    </div>
+
+    <!-- SEO Details Modal -->
+    <div id="seo-modal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <span class="close-modal" id="close-seo-modal">&times;</span>
+            <h2 style="color: var(--primary-color);">Escopo Técnico SEO</h2>
+            <p style="margin-bottom: 20px; color: #64748b;">Detalhes do que está incluso na nossa consultoria de otimização:</p>
+            
+            <div class="modal-grid">
+                <div>
+                    <h4 style="color: var(--secondary-color); margin-bottom: 10px; font-size: 1.1rem;">On-Page (Técnico)</h4>
+                    <ul style="list-style: disc; padding-left: 20px; font-size: 0.9rem; color: var(--text-color); text-align: left;">
+                        <li style="margin-bottom: 5px;">Auditoria de Core Web Vitals</li>
+                        <li style="margin-bottom: 5px;">Correção de erros de rastreamento</li>
+                        <li style="margin-bottom: 5px;">Otimização de Meta Tags e Headings</li>
+                        <li style="margin-bottom: 5px;">Estrutura de URLs amigáveis</li>
+                        <li style="margin-bottom: 5px;">Configuração de Schema Markup</li>
+                        <li style="margin-bottom: 5px;">Otimização de imagens (WebP/Alt)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary-color); margin-bottom: 10px; font-size: 1.1rem;">Estratégia & Off-Page</h4>
+                    <ul style="list-style: disc; padding-left: 20px; font-size: 0.9rem; color: var(--text-color); text-align: left;">
+                        <li style="margin-bottom: 5px;">Pesquisa de Palavras-chave</li>
+                        <li style="margin-bottom: 5px;">Análise de Concorrentes</li>
+                        <li style="margin-bottom: 5px;">Planejamento de Pautas para Blog</li>
+                        <li style="margin-bottom: 5px;">Monitoramento de Backlinks</li>
+                        <li style="margin-bottom: 5px;">Configuração GA4 e Search Console</li>
+                        <li style="margin-bottom: 5px;">Relatório Mensal de Performance</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#contato" class="btn btn-primary btn-cta" id="seo-modal-cta" onclick="document.getElementById('objetivo').value='Consultoria SEO'">Solicitar Consultoria Agora</a>
         </div>
     </div>
 
