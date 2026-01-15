@@ -411,7 +411,7 @@ def gerar_paginas():
 
     # 4. Canonical Tag (CRUCIAL PARA SEO - Evita conteúdo duplicado)
     # Troca a canonical da home pela URL do arquivo gerado
-    template = template.replace('<link rel="canonical" href="https://www.cybernexinnovatech.com.br/">', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">')
+    template = re.sub(r'<link\s+rel=["\']canonical["\']\s+href=["\']https://www\.cybernexinnovatech\.com\.br/?["\']\s*/?>', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">', template)
 
     # 5. Atualizações de Rodapé e Sociais (Failsafe)
     # Garante que o link do Instagram esteja correto caso o template base seja antigo
@@ -450,7 +450,7 @@ def gerar_paginas():
     # FAQ e Canonical
     template_seg = template_seg.replace('Vocês atendem minha cidade?', 'Vocês criam sites para [[SEGMENTO_SINGULAR]]?')
     template_seg = template_seg.replace('Atendemos empresas de todos os estados do Brasil de forma 100% remota', 'Sim! Temos experiência na criação de sites para [[SEGMENTO_PLURAL]] com atendimento remoto.')
-    template_seg = template_seg.replace('<link rel="canonical" href="https://www.cybernexinnovatech.com.br/">', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">')
+    template_seg = re.sub(r'<link\s+rel=["\']canonical["\']\s+href=["\']https://www\.cybernexinnovatech\.com\.br/?["\']\s*/?>', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">', template_seg)
 
     for seg in segmentos:
         filename = f"site-para-{seg['slug']}.html"
