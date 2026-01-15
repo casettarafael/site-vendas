@@ -3,7 +3,7 @@ import os
 import re
 
 # --- Configurações do Site ---
-BASE_URL = "https://www.cybernex.com.br"
+BASE_URL = "https://www.cybernexinnovatech.com.br"
 BUSINESS_NAME = "Cybernex Innovatech"
 LOGO_URL = f"{BASE_URL}/logo.png"
 CONTACT_PHONE = "+5511976678655"

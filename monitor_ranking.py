@@ -11,7 +11,7 @@ except ImportError:
     sys.exit(1)
 
 # --- Configurações ---
-TARGET_DOMAIN = "cybernex.com.br"
+TARGET_DOMAIN = "cybernexinnovatech.com.br"
 KEYWORDS = [
     "Cybernex Innovatech",                  # Marca (Deve ser Top 1)
     "Criação de Sites Profissionais",       # Principal (Difícil, mas meta)
