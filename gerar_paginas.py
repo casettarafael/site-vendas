@@ -1,4 +1,5 @@
 import os
+import re
 
 # Configurações
 SOURCE_FILE = 'index.html'
@@ -390,6 +391,9 @@ def gerar_paginas():
     with open(SOURCE_FILE, 'r', encoding='utf-8') as f:
         html_base = f.read()
     
+    # CORREÇÃO AUTOMÁTICA: Substitui links antigos (local.html?geo=x) pelos novos estáticos
+    html_base = re.sub(r'local\.html\?geo=([a-z0-9-]+)', r'criacao-de-sites-em-\1.html', html_base)
+
     # --- PREPARAÇÃO DO TEMPLATE EM MEMÓRIA ---
     # Substituímos os textos genéricos da Home por placeholders [[VARIAVEL]]
     
@@ -407,7 +411,7 @@ def gerar_paginas():
 
     # 4. Canonical Tag (CRUCIAL PARA SEO - Evita conteúdo duplicado)
     # Troca a canonical da home pela URL do arquivo gerado
-    template = template.replace('<link rel="canonical" href="https://www.cybernex.com.br/">', '<link rel="canonical" href="https://www.cybernex.com.br/[[FILENAME]]">')
+    template = template.replace('<link rel="canonical" href="https://www.cybernexinnovatech.com.br/">', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">')
 
     # 5. Atualizações de Rodapé e Sociais (Failsafe)
     # Garante que o link do Instagram esteja correto caso o template base seja antigo
@@ -441,11 +445,12 @@ def gerar_paginas():
     template_seg = template_seg.replace('Atendemos empresas de todos os estados do Brasil', 'Especialistas em Sites para [[SEGMENTO_PLURAL]]')
     template_seg = template_seg.replace('empresas de todo o Brasil', '[[SEGMENTO_PLURAL]] de todo o Brasil')
     template_seg = template_seg.replace('Atendimento em todo o território nacional', 'Soluções web para [[SEGMENTO_SINGULAR]]')
+    template_seg = template_seg.replace('Soluções web para sua empresa', 'Soluções web para [[SEGMENTO_SINGULAR]]')
     
     # FAQ e Canonical
     template_seg = template_seg.replace('Vocês atendem minha cidade?', 'Vocês criam sites para [[SEGMENTO_SINGULAR]]?')
     template_seg = template_seg.replace('Atendemos empresas de todos os estados do Brasil de forma 100% remota', 'Sim! Temos experiência na criação de sites para [[SEGMENTO_PLURAL]] com atendimento remoto.')
-    template_seg = template_seg.replace('<link rel="canonical" href="https://www.cybernex.com.br/">', '<link rel="canonical" href="https://www.cybernex.com.br/[[FILENAME]]">')
+    template_seg = template_seg.replace('<link rel="canonical" href="https://www.cybernexinnovatech.com.br/">', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">')
 
     for seg in segmentos:
         filename = f"site-para-{seg['slug']}.html"
