@@ -354,6 +354,33 @@ locais = [
     {"nome": "Laranjeiras", "uf": "RJ", "slug": "laranjeiras"},
 ]
 
+# Lista de Segmentos Especializados
+segmentos = [
+    {"nome": "Advogados", "slug": "advogado", "singular": "Advogado"},
+    {"nome": "Clínicas", "slug": "clinica", "singular": "Clínica"},
+    {"nome": "Médicos", "slug": "medico", "singular": "Médico"},
+    {"nome": "Engenheiros", "slug": "engenheiro", "singular": "Engenheiro"},
+    {"nome": "Amarração Amorosa", "slug": "amarracao-amorosa", "singular": "Amarração Amorosa"},
+    {"nome": "Magia Amorosa", "slug": "magia-amorosa", "singular": "Magia Amorosa"},
+    {"nome": "Tarólogas", "slug": "tarologa", "singular": "Taróloga"},
+    {"nome": "Astrólogas", "slug": "astrologa", "singular": "Astróloga"},
+    {"nome": "Dentistas", "slug": "dentista", "singular": "Dentista"},
+    {"nome": "Arquitetos", "slug": "arquiteto", "singular": "Arquiteto"},
+    {"nome": "Contadores", "slug": "contador", "singular": "Contador"},
+    {"nome": "Imobiliárias", "slug": "imobiliaria", "singular": "Imobiliária"},
+    {"nome": "Restaurantes", "slug": "restaurante", "singular": "Restaurante"},
+    {"nome": "Delivery", "slug": "delivery", "singular": "Delivery"},
+    {"nome": "Academias", "slug": "academia", "singular": "Academia"},
+    {"nome": "Personal Trainers", "slug": "personal-trainer", "singular": "Personal Trainer"},
+    {"nome": "Psicólogos", "slug": "psicologo", "singular": "Psicólogo"},
+    {"nome": "Nutricionistas", "slug": "nutricionista", "singular": "Nutricionista"},
+    {"nome": "Barbearias", "slug": "barbearia", "singular": "Barbearia"},
+    {"nome": "Salões de Beleza", "slug": "salao-de-beleza", "singular": "Salão de Beleza"},
+    {"nome": "Pet Shops", "slug": "pet-shop", "singular": "Pet Shop"},
+    {"nome": "Oficinas Mecânicas", "slug": "oficina-mecanica", "singular": "Oficina Mecânica"},
+    {"nome": "Construtoras", "slug": "construtora", "singular": "Construtora"},
+]
+
 def gerar_paginas():
     if not os.path.exists(SOURCE_FILE):
         print(f"Erro: O arquivo '{SOURCE_FILE}' não foi encontrado na pasta.")
@@ -362,7 +389,7 @@ def gerar_paginas():
     print("Lendo index.html para usar como base...")
     with open(SOURCE_FILE, 'r', encoding='utf-8') as f:
         html_base = f.read()
-
+    
     # --- PREPARAÇÃO DO TEMPLATE EM MEMÓRIA ---
     # Substituímos os textos genéricos da Home por placeholders [[VARIAVEL]]
     
@@ -402,6 +429,35 @@ def gerar_paginas():
             f.write(conteudo_pagina)
         
     print(f"Sucesso! {len(locais)} arquivos gerados com prefixo '{OUTPUT_PREFIX}'.")
+    
+    # --- GERAÇÃO DE PÁGINAS DE SEGMENTOS ---
+    print(f"Gerando {len(segmentos)} páginas de segmentos...")
+    
+    # Template base para segmentos (Recarrega html_base limpo)
+    template_seg = html_base
+    
+    # Substituições Específicas para Segmentos
+    template_seg = template_seg.replace('Criação de Sites para Todo o Brasil', 'Criação de Sites para [[SEGMENTO_PLURAL]]')
+    template_seg = template_seg.replace('Atendemos empresas de todos os estados do Brasil', 'Especialistas em Sites para [[SEGMENTO_PLURAL]]')
+    template_seg = template_seg.replace('empresas de todo o Brasil', '[[SEGMENTO_PLURAL]] de todo o Brasil')
+    template_seg = template_seg.replace('Atendimento em todo o território nacional', 'Soluções web para [[SEGMENTO_SINGULAR]]')
+    
+    # FAQ e Canonical
+    template_seg = template_seg.replace('Vocês atendem minha cidade?', 'Vocês criam sites para [[SEGMENTO_SINGULAR]]?')
+    template_seg = template_seg.replace('Atendemos empresas de todos os estados do Brasil de forma 100% remota', 'Sim! Temos experiência na criação de sites para [[SEGMENTO_PLURAL]] com atendimento remoto.')
+    template_seg = template_seg.replace('<link rel="canonical" href="https://www.cybernex.com.br/">', '<link rel="canonical" href="https://www.cybernex.com.br/[[FILENAME]]">')
+
+    for seg in segmentos:
+        filename = f"site-para-{seg['slug']}.html"
+        
+        conteudo = template_seg.replace('[[SEGMENTO_SINGULAR]]', seg['singular'])
+        conteudo = conteudo.replace('[[SEGMENTO_PLURAL]]', seg['nome'])
+        conteudo = conteudo.replace('[[FILENAME]]', filename)
+        
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(conteudo)
+            
+    print(f"Sucesso! Páginas de segmentos geradas.")
 
 if __name__ == "__main__":
     gerar_paginas()

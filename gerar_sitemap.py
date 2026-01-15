@@ -39,6 +39,11 @@ locais = [
     "barra-da-tijuca", "recreio-dos-bandeirantes", "copacabana", "ipanema", "leblon", "humaita", "laranjeiras"
 ]
 
+# Lista de Segmentos (Mesma do gerar_paginas.py)
+segmentos = [
+    "advogado", "clinica", "medico", "engenheiro", "amarracao-amorosa", "magia-amorosa", "tarologa", "astrologa", "dentista", "arquiteto", "contador", "imobiliaria", "restaurante", "delivery", "academia", "personal-trainer", "psicologo", "nutricionista", "barbearia", "salao-de-beleza", "pet-shop", "oficina-mecanica", "construtora"
+]
+
 def gerar_xml():
     print("Gerando sitemap.xml...")
     
@@ -64,16 +69,23 @@ def gerar_xml():
     xml_content += '  </url>\n'
 
     # 3. Páginas Locais Dinâmicas (Prioridade Média-Alta)
-    # O Google indexa parâmetros de URL se estiverem no sitemap
+    # Aponta para as páginas estáticas geradas (Mais rápido e melhor SEO)
     for slug in locais:
-        # Nota: O caractere & deve ser escapado como &amp; em XML, 
-        # mas aqui usamos ?geo= que é seguro.
-        url = f"{BASE_URL}/local.html?geo={slug}"
+        url = f"{BASE_URL}/criacao-de-sites-em-{slug}.html"
         
         xml_content += '  <url>\n'
         xml_content += f'    <loc>{url}</loc>\n'
         xml_content += f'    <lastmod>{hoje}</lastmod>\n'
         xml_content += '    <priority>0.80</priority>\n'
+        xml_content += '  </url>\n'
+        
+    # 4. Páginas de Segmentos (Prioridade Alta)
+    for seg in segmentos:
+        url = f"{BASE_URL}/site-para-{seg}.html"
+        xml_content += '  <url>\n'
+        xml_content += f'    <loc>{url}</loc>\n'
+        xml_content += f'    <lastmod>{hoje}</lastmod>\n'
+        xml_content += '    <priority>0.90</priority>\n'
         xml_content += '  </url>\n'
 
     xml_content += '</urlset>'
@@ -81,7 +93,7 @@ def gerar_xml():
     with open('sitemap.xml', 'w', encoding='utf-8') as f:
         f.write(xml_content)
         
-    print(f"Sucesso! sitemap.xml gerado com {len(locais) + 2} URLs.")
+    print(f"Sucesso! sitemap.xml gerado com {len(locais) + len(segmentos) + 2} URLs.")
 
 if __name__ == "__main__":
     gerar_xml()
