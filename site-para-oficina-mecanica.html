@@ -6,7 +6,7 @@
     <title>Cybernex Innovatech - Criação de Sites para Oficinas Mecânicas</title>
 
     <meta name="description" content="Criação de sites profissionais e Landing Pages para Oficinas Mecânicas de todo o Brasil. Desenvolvimento web de alta performance, SEO e tráfego pago. Peça seu orçamento!">
-    <meta name="keywords" content="criação de sites, desenvolvimento web, landing page, site institucional, SEO, programador web, web design brasil">
+    <meta name="keywords" content="criação de sites para Oficinas Mecânicas, web design, marketing digital">
     
     <!-- SEO Otimizado: Meta Tags Sociais e Controle -->
     <meta name="robots" content="index, follow">
@@ -17,12 +17,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS Feed Blog Cybernex" href="/rss.xml">
 
     <!-- Google Analytics (GA4) - Substitua G-XXXXXXXXXX pelo seu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_ID_AQUI"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-SEU_ID_AQUI');
     </script>
 
     <!-- Open Graph / Facebook / WhatsApp -->
@@ -55,6 +55,9 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="logo.webp" type="image/png">
+
+    <!-- SEO AUTOMÁTICO: JSON-LD -->
+    
 
     <!-- SEO AUTOMÁTICO: JSON-LD -->
     <script type="application/ld+json">
@@ -233,7 +236,6 @@
                     <span class="bar"></span>
                 </div>
                 <div class="nav-links">
-                    <a href="index.html">Início</a>
                     <a href="#servicos">Serviços</a>
                     <a href="#portfolio">Portfólio</a>
                     <a href="#faq">Dúvidas</a>
@@ -258,7 +260,7 @@
                 <svg class="sound-icon off" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
             </button>
             <p>Design profissional e código otimizado para Oficinas Mecânicas de todo o Brasil que buscam o próximo nível de faturamento e autoridade digital.</p>
-            <a href="#contato" class="btn btn-cta">Falar com Especialista</a>
+            <a href="#contato" class="btn btn-cta">Quero meu Site no Topo</a>
         </div>
     </section>
 
@@ -313,7 +315,7 @@
                     </div>
                     <h3>Landing Pages</h3>
                     <p>Páginas de alta conversão focadas em vender um produto ou serviço específico. Ideais para tráfego pago.</p>
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Landing Pages" class="service-img" loading="lazy" decoding="async" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Landing Page para Oficina Mecânica" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Foco em Conversão</li>
                         <li>Copywriting Persuasivo</li>
@@ -326,7 +328,7 @@
                     </div>
                     <h3>Sites Institucionais</h3>
                     <p>A sede digital da sua empresa. Apresente seus serviços, história e equipe com credibilidade.</p>
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Sites Institucionais" class="service-img" loading="lazy" decoding="async" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Site Institucional para Oficina Mecânica" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Design Personalizado</li>
                         <li>Painel Administrativo</li>
@@ -745,7 +747,7 @@
         <div class="container">
             <h2 class="section-title">Marketing Digital para Oficinas Mecânicas</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #475569; font-size: 1.1rem; line-height: 1.8;">
-                Para <strong>Oficinas Mecânicas</strong>, a confiança é a base do negócio. Um site profissional transmite a credibilidade necessária para que o cliente escolha você.
+                Oferecemos soluções digitais sob medida para <strong>Oficinas Mecânicas</strong>. Desde o design até a funcionalidade, tudo é pensado para atrair o seu público-alvo.
             </p>
             <div style="margin-top: 30px; text-align: center;">
                 <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Atendemos também nas cidades vizinhas:</p>
@@ -787,7 +789,7 @@
             <p class="section-subtitle">Preencha o formulário abaixo para receber uma proposta personalizada.</p>
             
             <div class="form-box">
-                <form>
+                <form id="contact-form" onsubmit="enviarWhatsapp(event)">
                     <div class="form-group">
                         <label for="nome">Seu Nome</label>
                         <input type="text" id="nome" placeholder="Ex: João Silva" required>
@@ -1012,6 +1014,22 @@
                 }
             });
         });
+    </script>
+
+    <!-- Script de Envio do Formulário para WhatsApp -->
+    <script>
+        function enviarWhatsapp(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const empresa = document.getElementById('empresa').value;
+            const telefone = document.getElementById('telefone').value;
+            const objetivo = document.getElementById('objetivo').value;
+            const orcamento = document.getElementById('orcamento').value;
+            
+            const mensagem = `*Novo Lead pelo Site* 🚀\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*Telefone:* ${telefone}\n*Objetivo:* ${objetivo}\n*Orçamento:* ${orcamento}`;
+            const url = `https://wa.me/5511976678655?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>

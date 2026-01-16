@@ -21,8 +21,7 @@ def run_step(script_name, description):
 
 def main():
     print("--- 🚀 AUTO-BUILD & SERVER: Cybernex Innovatech ---")
-    print("Gerando todo o site estático e iniciando servidor...
-")
+    print("Gerando todo o site estático e iniciando servidor...\n")
 
     # Lista de scripts para rodar em ordem
     scripts = [
@@ -38,11 +37,9 @@ def main():
     for script, desc in scripts:
         run_step(script, desc)
 
-    print("
-✨ Geração concluída! Iniciando servidor local...")
+    print("\n✨ Geração concluída! Iniciando servidor local...")
     print("👉 Acesse: http://localhost:8000")
-    print("⌨️  Pressione Ctrl+C para encerrar.
-")
+    print("⌨️  Pressione Ctrl+C para encerrar.\n")
 
     # Abre o navegador automaticamente após 2 segundos
     def open_browser():
@@ -57,12 +54,10 @@ def main():
         httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
         httpd.serve_forever()
     except OSError as e:
-        print(f"
-❌ Erro ao iniciar servidor na porta 8000: {e}")
+        print(f"\n❌ Erro ao iniciar servidor na porta 8000: {e}")
         print("Tente fechar outros terminais ou usar outra porta.")
     except KeyboardInterrupt:
-        print("
-🛑 Servidor encerrado.")
+        print("\n🛑 Servidor encerrado.")
 
 if __name__ == "__main__":
     main()

@@ -17,12 +17,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS Feed Blog Cybernex" href="/rss.xml">
 
     <!-- Google Analytics (GA4) - Substitua G-XXXXXXXXXX pelo seu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_ID_AQUI"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-SEU_ID_AQUI');
     </script>
 
     <!-- Open Graph / Facebook / WhatsApp -->
@@ -42,6 +42,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
+    <!-- Performance: DNS Prefetch para scripts externos -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <!-- Performance: Preload da Imagem Hero (LCP) -->
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" media="(min-width: 769px)" fetchpriority="high">
@@ -52,6 +55,9 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="logo.webp" type="image/png">
+
+    <!-- SEO AUTOMÁTICO: JSON-LD -->
+    
 
     <!-- SEO AUTOMÁTICO: JSON-LD -->
     <script type="application/ld+json">
@@ -221,7 +227,7 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">
-                    <img src="logo.webp" alt="Cybernex Innovatech" width="200" height="85">
+                    <img src="logo.webp" alt="Cybernex Innovatech" width="200" height="85" fetchpriority="high">
                     <span>Cybernex Innovatech</span>
                 </a>
                 <div class="hamburger">
@@ -244,7 +250,11 @@
     <section class="hero">
         <canvas id="particles-canvas"></canvas>
         <div class="container">
-            <h1><span class="glitch" data-text="Sites que transformam">Sites que transformam</span><br><span class="typewriter-text"></span><span class="cursor">&nbsp;</span></h1>
+            <!-- H1 Otimizado para SEO: Palavra-chave principal visível -->
+            <h1>
+                <span class="glitch" data-text="Criação de Sites">Criação de Sites</span> <br>
+                <span class="highlight">Profissionais e Otimizados</span>
+            </h1>
             <button id="toggle-sound" class="sound-btn" aria-label="Desligar som de digitação" title="Ligar/Desligar som">
                 <svg class="sound-icon on" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
                 <svg class="sound-icon off" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
@@ -280,13 +290,13 @@
             <h3 class="partners-title">Empresas que confiam no meu trabalho</h3>
             <div class="logo-scroller">
                 <ul class="logo-scroller__inner">
-                    <li><img src="marca1.webp" alt="Logo Marca 1" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca2.webp" alt="Logo Marca 2" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca3.webp" alt="Logo Marca 3" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca4.webp" alt="Logo Marca 4" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca5.webp" alt="Logo Marca 5" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca6.webp" alt="Logo Marca 6" loading="lazy" width="150" height="80"></li>
-                    <li><img src="marca7.webp" alt="Logo Marca 7" loading="lazy" width="150" height="80"></li>
+                    <li><img src="marca1.webp" alt="Logo Marca 1" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca2.webp" alt="Logo Marca 2" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca3.webp" alt="Logo Marca 3" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca4.webp" alt="Logo Marca 4" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca5.webp" alt="Logo Marca 5" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca6.webp" alt="Logo Marca 6" loading="lazy" decoding="async" width="150" height="80"></li>
+                    <li><img src="marca7.webp" alt="Logo Marca 7" loading="lazy" decoding="async" width="150" height="80"></li>
                 </ul>
             </div>
         </div>
@@ -305,7 +315,7 @@
                     </div>
                     <h3>Landing Pages</h3>
                     <p>Páginas de alta conversão focadas em vender um produto ou serviço específico. Ideais para tráfego pago.</p>
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Landing Pages" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Landing Pages" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Foco em Conversão</li>
                         <li>Copywriting Persuasivo</li>
@@ -318,7 +328,7 @@
                     </div>
                     <h3>Sites Institucionais</h3>
                     <p>A sede digital da sua empresa. Apresente seus serviços, história e equipe com credibilidade.</p>
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Sites Institucionais" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80" alt="Sites Institucionais" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Design Personalizado</li>
                         <li>Painel Administrativo</li>
@@ -331,7 +341,7 @@
                     </div>
                     <h3>E-commerce</h3>
                     <p>Lojas virtuais seguras e rápidas para você vender seus produtos 24 horas por dia.</p>
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=500&q=80" alt="E-commerce" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=500&q=80" alt="E-commerce" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Pagamento Seguro</li>
                         <li>Gestão de Estoque</li>
@@ -344,7 +354,7 @@
                     </div>
                     <h3>Consultoria SEO</h3>
                     <p>Estratégias para colocar seu site nas primeiras posições do Google. Um processo contínuo de acompanhamento.</p>
-                    <img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=500&q=80" alt="Consultoria SEO" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=500&q=80" alt="Consultoria SEO" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Auditoria de Rankeamento</li>
                         <li>Consultoria Mensal</li>
@@ -357,7 +367,7 @@
                     </div>
                     <h3>Identidade Visual</h3>
                     <p>Dê uma cara profissional ao seu negócio. Criação de logotipos e identidade visual completa para sua marca.</p>
-                    <img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=500&q=80" alt="Identidade Visual" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=500&q=80" alt="Identidade Visual" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Logotipos Profissionais</li>
                         <li>Manual da Marca</li>
@@ -370,7 +380,7 @@
                     </div>
                     <h3>Google Meu Negócio</h3>
                     <p>Seja encontrado por clientes locais no Maps. Otimização completa do seu perfil para atrair mais visitas.</p>
-                    <img src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?auto=format&fit=crop&w=500&q=80" alt="Google Meu Negócio" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?auto=format&fit=crop&w=500&q=80" alt="Google Meu Negócio" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Configuração Completa</li>
                         <li>Otimização de Fotos</li>
@@ -383,7 +393,7 @@
                     </div>
                     <h3>Hospedagem & Manutenção</h3>
                     <p>Tranquilidade total. Mantenho seu site no ar, seguro e atualizado com planos mensais acessíveis.</p>
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80" alt="Hospedagem & Manutenção" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80" alt="Hospedagem & Manutenção" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Hospedagem Inclusa</li>
                         <li>Backups de Segurança</li>
@@ -396,7 +406,7 @@
                     </div>
                     <h3>Otimização de Velocidade</h3>
                     <p>Sites lentos perdem vendas. Melhoro o Core Web Vitals do seu site para ele carregar instantaneamente.</p>
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="Otimização de Velocidade" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="Otimização de Velocidade" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Otimização de Imagens</li>
                         <li>Cache e Minificação</li>
@@ -409,7 +419,7 @@
                     </div>
                     <h3>CRM & Gestão Financeira</h3>
                     <p>Sistemas personalizados para gestão de clientes e controle financeiro. Visualize seus dados em tempo real.</p>
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=500&q=80" alt="Dashboard Financeiro" class="service-img" loading="lazy" width="500" height="180">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=500&q=80" alt="Dashboard Financeiro" class="service-img" loading="lazy" decoding="async" width="500" height="180">
                     <ul class="service-list">
                         <li>Gestão de Clientes (CRM)</li>
                         <li>Dashboards Financeiros</li>
@@ -456,7 +466,7 @@
                     </div>
                 </div>
                 <div class="crm-visual hidden-right">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard CRM e Financeiro" loading="lazy" width="600" height="400">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard CRM e Financeiro" loading="lazy" decoding="async" width="600" height="400">
                 </div>
             </div>
         </div>
@@ -471,21 +481,21 @@
             <div class="portfolio-grid">
                 <!-- Placeholder para Imagens -->
                 <div class="project-card hidden">
-                    <img src="site1.webp" alt="Projeto Ventus" loading="lazy" width="400" height="300">
+                    <img src="site1.webp" alt="Projeto Ventus" loading="lazy" decoding="async" width="400" height="300">
                     <div class="project-info">
                         <h4>Ventus</h4>
                         <p>Site Institucional + Blog</p>
                     </div>
                 </div>
                 <div class="project-card hidden delay-100">
-                    <img src="site2.webp" alt="Projeto Soluciona" loading="lazy" width="400" height="300">
+                    <img src="site2.webp" alt="Projeto Soluciona" loading="lazy" decoding="async" width="400" height="300">
                     <div class="project-info">
                         <h4>Soluciona</h4>
                         <p>Landing Page de Alta Conversão</p>
                     </div>
                 </div>
                 <div class="project-card hidden delay-200">
-                    <img src="site3.webp" alt="Criativa Visual" loading="lazy" width="400" height="300">
+                    <img src="site3.webp" alt="Criativa Visual" loading="lazy" decoding="async" width="400" height="300">
                     <div class="project-info">
                         <h4>Criativa Visual</h4>
                         <p>E-commerce de Moda</p>
@@ -509,7 +519,7 @@
                 <!-- Artigo 1 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="SEO Básico" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="SEO Básico" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">SEO</span>
                     </div>
                     <div class="blog-content">
@@ -518,13 +528,13 @@
                             <span>12 Out 2023</span> • <span>5 min leitura</span>
                         </div>
                         <p>Aprenda as estratégias fundamentais de palavras-chave e otimização on-page para alcançar o topo do Google organicamente.</p>
-                        <a href="artigo.html?id=seo-basico" class="read-more">Ler Artigo →</a>
+                        <a href="artigo-seo-basico.html" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 2 -->
                 <article class="blog-card hidden delay-100">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Performance Web" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Performance Web" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Performance</span>
                     </div>
                     <div class="blog-content">
@@ -533,13 +543,13 @@
                             <span>15 Out 2023</span> • <span>4 min leitura</span>
                         </div>
                         <p>Sites lentos perdem clientes. Entenda como o Core Web Vitals afeta seu ranking e veja técnicas práticas para acelerar seu carregamento.</p>
-                        <a href="artigo.html?id=performance-web" class="read-more">Ler Artigo →</a>
+                        <a href="artigo-performance-web.html" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 3 -->
                 <article class="blog-card hidden delay-200">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80" alt="Marketing Digital" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80" alt="Marketing Digital" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Marketing</span>
                     </div>
                     <div class="blog-content">
@@ -548,13 +558,13 @@
                             <span>20 Out 2023</span> • <span>6 min leitura</span>
                         </div>
                         <p>Landing Page para conversão rápida ou Site Institucional para autoridade? Descubra qual estratégia se alinha melhor aos objetivos do seu negócio.</p>
-                        <a href="artigo.html?id=landing-vs-institucional" class="read-more">Ler Artigo →</a>
+                        <a href="artigo-landing-vs-institucional.html" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 4 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80" alt="Web Design" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80" alt="Web Design" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Design</span>
                     </div>
                     <div class="blog-content">
@@ -563,13 +573,13 @@
                             <span>25 Out 2023</span> • <span>3 min leitura</span>
                         </div>
                         <p>Do minimalismo ao modo escuro: explore as tendências visuais que estão dominando a web e saiba como aplicá-las para modernizar sua marca.</p>
-                        <a href="artigo.html?id=design-trends-2024" class="read-more">Ler Artigo →</a>
+                        <a href="artigo-design-trends-2024.html" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 5 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Analytics" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Analytics" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Dados</span>
                     </div>
                     <div class="blog-content">
@@ -578,13 +588,13 @@
                             <span>28 Out 2023</span> • <span>8 min leitura</span>
                         </div>
                         <p>Pare de voar às cegas. Aprenda a configurar eventos, ler relatórios de conversão e tomar decisões baseadas em dados reais com o GA4.</p>
-                        <a href="artigo.html?id=ga4-guia" class="read-more">Ler Artigo →</a>
+                        <a href="artigo-ga4-guia.html" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
                 <!-- Artigo 6 -->
                 <article class="blog-card hidden">
                     <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Email Marketing" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Email Marketing" loading="lazy" decoding="async" width="600" height="400">
                         <span class="blog-category">Marketing</span>
                     </div>
                     <div class="blog-content">
@@ -593,7 +603,7 @@
                             <span>01 Nov 2023</span> • <span>5 min leitura</span>
                         </div>
                         <p>O email não morreu. Descubra como a segmentação e a automação podem transformar sua lista de contatos em uma máquina de vendas recorrentes.</p>
-                        <a href="artigo.html?id=email-marketing" class="read-more">Ler Artigo →</a>
+                        <a href="artigo-email-marketing.html" class="read-more">Ler Artigo →</a>
                     </div>
                 </article>
             </div>
@@ -763,7 +773,7 @@
             <p class="section-subtitle">Preencha o formulário abaixo para receber uma proposta personalizada.</p>
             
             <div class="form-box">
-                <form>
+                <form id="contact-form" onsubmit="enviarWhatsapp(event)">
                     <div class="form-group">
                         <label for="nome">Seu Nome</label>
                         <input type="text" id="nome" placeholder="Ex: João Silva" required>
@@ -808,7 +818,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <img src="logo.webp" alt="Cybernex Innovatech" class="footer-logo" width="150" height="64">
+                    <img src="logo.webp" alt="Cybernex Innovatech" class="footer-logo" loading="lazy" decoding="async" width="150" height="64">
                     <h4>Cybernex Innovatech</h4>
                     <p>Desenvolvimento web estratégico focado em resultados reais para sua empresa.</p>
                 </div>
@@ -845,11 +855,11 @@
                 </p>
                 <h5>🛠️ Serviços e Termos Populares</h5>
                 <p>
-                    <a href="#contato"><strong>Criação de site por R$ 599,00</strong></a>, <a href="#contato">Criação de site customizado</a>, <a href="#contato">Criação de loja virtual</a>, <a href="#contato">Criação de site em WordPress</a>, <a href="#contato">Criação de blog de notícias</a>, <a href="#contato">Criação de portais</a>, <a href="#contato">SEO e otimizações</a>, <a href="#contato">Criação de site barato</a>, <a href="#contato">Design de sites</a>, <a href="#contato">Designer de sites</a>, <a href="#contato">Criar landing page profissional</a>, <a href="#contato">Criar landing page responsiva</a>, <a href="#contato">Desenvolvimento de site barato</a>, <a href="#contato">Quanto custa um site</a>, <a href="#contato">Criar site barato para empresa</a>, <a href="#contato">Fazer site barato para empresa</a>, <a href="#contato">Criação de site</a>, <a href="#contato">Criar site</a>, <a href="#contato">Criação de sites</a>, <a href="#contato">Construção de site</a>, <a href="#contato">Construção de site barato</a>, <a href="#contato">Criação de landing page</a>, <a href="#contato">Desenvolvimento de site</a>, <a href="#contato">Desenvolvimento de site profissional</a>, <a href="#contato">Desenvolvimento de website</a>, <a href="#contato">Desenvolver website</a>, <a href="#contato">Desenvolver website barato</a>, <a href="#contato">Desenvolver website profissional</a>, <a href="#contato">Quanto custa criar um site</a>, <a href="#contato">Qual valor da criação de um site</a>, <a href="#contato">Quanto custa a criação de um site</a>, <a href="#contato">Site profissional preço</a>.
+                    <a href="#contato"><strong>Criação de Sites Profissionais</strong></a>, <a href="#servicos">Landing Pages de Alta Conversão</a>, <a href="#servicos">Lojas Virtuais (E-commerce)</a>, <a href="#servicos">Otimização de Sites (SEO)</a>, <a href="#servicos">Desenvolvimento Web</a>, <a href="#contato">Orçamento de Site</a>.
                 </p>
                 <h5>🚀 Segmentos Especializados</h5>
                 <p>
-                    <a href="#contato">Site para Advogado</a>, <a href="#contato">Site para Clínica</a>, <a href="#contato">Site para Médico</a>, <a href="#contato">Site para Engenheiro</a>, <a href="#contato">Site para Amarração Amorosa</a>, <a href="#contato">Site para Magia Amorosa</a>, <a href="#contato">Site para Taróloga</a>, <a href="#contato">Site para Astróloga</a>.
+                    <a href="site-para-advogado.html">Site para Advogado</a>, <a href="site-para-clinica.html">Site para Clínica</a>, <a href="site-para-medico.html">Site para Médico</a>, <a href="site-para-engenheiro.html">Site para Engenheiro</a>, <a href="site-para-amarracao-amorosa.html">Site para Amarração Amorosa</a>, <a href="site-para-magia-amorosa.html">Site para Magia Amorosa</a>, <a href="site-para-tarologa.html">Site para Taróloga</a>, <a href="site-para-astrologa.html">Site para Astróloga</a>, <a href="site-para-dentista.html">Site para Dentista</a>, <a href="site-para-arquiteto.html">Site para Arquiteto</a>, <a href="site-para-contador.html">Site para Contador</a>, <a href="site-para-imobiliaria.html">Site para Imobiliária</a>, <a href="site-para-restaurante.html">Site para Restaurante</a>, <a href="site-para-delivery.html">Site para Delivery</a>, <a href="site-para-academia.html">Site para Academia</a>, <a href="site-para-personal-trainer.html">Site para Personal Trainer</a>, <a href="site-para-psicologo.html">Site para Psicólogo</a>, <a href="site-para-nutricionista.html">Site para Nutricionista</a>, <a href="site-para-barbearia.html">Site para Barbearia</a>, <a href="site-para-salao-de-beleza.html">Site para Salão de Beleza</a>, <a href="site-para-pet-shop.html">Site para Pet Shop</a>, <a href="site-para-oficina-mecanica.html">Site para Oficina Mecânica</a>, <a href="site-para-construtora.html">Site para Construtora</a>.
                 </p>
                 <h5>☁️ Hospedagem e Infraestrutura</h5>
                 <p>
@@ -859,10 +869,11 @@
             
             <!-- SEO: Cobertura Nacional (Estados e Capitais) -->
             <div class="footer-locations" style="border-top: 1px solid #334155; margin-top: 30px; padding-top: 20px; text-align: left;">
-                <h5 style="color: #e2e8f0; margin-bottom: 10px; font-size: 0.9rem;">Atendimento em todo o território nacional:</h5>
+                <h5 style="color: #e2e8f0; margin-bottom: 10px; font-size: 0.9rem;">Área de Cobertura:</h5>
                 <p style="font-size: 0.75rem; color: #64748b; line-height: 1.6;">
-                    <strong>AC:</strong> <a href="local.html?geo=rio-branco">Rio Branco</a> | <strong>AL:</strong> <a href="local.html?geo=maceio">Maceió</a> | <strong>AP:</strong> <a href="local.html?geo=macapa">Macapá</a> | <strong>AM:</strong> <a href="local.html?geo=manaus">Manaus</a> | <strong>BA:</strong> <a href="local.html?geo=salvador">Salvador</a> | <strong>CE:</strong> <a href="local.html?geo=fortaleza">Fortaleza</a> | <strong>DF:</strong> <a href="local.html?geo=brasilia">Brasília</a> | <strong>ES:</strong> <a href="local.html?geo=vitoria">Vitória</a> | <strong>GO:</strong> <a href="local.html?geo=goiania">Goiânia</a> | <strong>MA:</strong> <a href="local.html?geo=sao-luis">São Luís</a> | <strong>MT:</strong> <a href="local.html?geo=cuiaba">Cuiabá</a> | <strong>MS:</strong> <a href="local.html?geo=campo-grande">Campo Grande</a> | <strong>MG:</strong> <a href="local.html?geo=belo-horizonte">Belo Horizonte</a> | <strong>PA:</strong> <a href="local.html?geo=belem">Belém</a> | <strong>PB:</strong> <a href="local.html?geo=joao-pessoa">João Pessoa</a> | <strong>PR:</strong> <a href="local.html?geo=curitiba">Curitiba</a> | <strong>PE:</strong> <a href="local.html?geo=recife">Recife</a> | <strong>PI:</strong> <a href="local.html?geo=teresina">Teresina</a> | <strong>RJ:</strong> <a href="local.html?geo=rio-de-janeiro">Rio de Janeiro</a> | <strong>RN:</strong> <a href="local.html?geo=natal">Natal</a> | <strong>RS:</strong> <a href="local.html?geo=porto-alegre">Porto Alegre</a> | <strong>RO:</strong> <a href="local.html?geo=porto-velho">Porto Velho</a> | <strong>RR:</strong> <a href="local.html?geo=boa-vista">Boa Vista</a> | <strong>SC:</strong> <a href="local.html?geo=florianopolis">Florianópolis</a> | <strong>SP:</strong> <a href="local.html?geo=sao-paulo">São Paulo</a> | <strong>SE:</strong> <a href="local.html?geo=aracaju">Aracaju</a> | <strong>TO:</strong> <a href="local.html?geo=palmas">Palmas</a>. <br>
-                    <span style="display: block; margin-top: 5px;">Incluindo todas as cidades do interior e regiões metropolitanas, com destaque para: <a href="local.html?geo=campinas">Campinas</a>, <a href="local.html?geo=sao-jose-dos-campos">S. J. dos Campos</a>, <a href="local.html?geo=ribeirao-preto">Ribeirão Preto</a>, <a href="local.html?geo=sorocaba">Sorocaba</a> e <a href="local.html?geo=sao-jose-do-rio-preto">S. J. do Rio Preto</a>.</span>
+                    Atendemos empresas de todo o Brasil com soluções digitais de alta performance. 
+                    <br><br>
+                    <a href="cobertura.html" style="color: var(--primary-color); text-decoration: underline;">Ver todas as cidades atendidas</a>
                 </p>
             </div>
 
@@ -987,6 +998,22 @@
                 }
             });
         });
+    </script>
+
+    <!-- Script de Envio do Formulário para WhatsApp -->
+    <script>
+        function enviarWhatsapp(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const empresa = document.getElementById('empresa').value;
+            const telefone = document.getElementById('telefone').value;
+            const objetivo = document.getElementById('objetivo').value;
+            const orcamento = document.getElementById('orcamento').value;
+            
+            const mensagem = `*Novo Lead pelo Site* 🚀\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*Telefone:* ${telefone}\n*Objetivo:* ${objetivo}\n*Orçamento:* ${orcamento}`;
+            const url = `https://wa.me/5511976678655?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>

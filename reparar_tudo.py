@@ -8,7 +8,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 # --- 1. CONTEÚDO LIMPO DE GERAR_PAGINAS.PY ---
 # Usamos raw strings e concatenação para evitar erros de aspas
-code_paginas = r"""import os
+code_paginas = r'''import os
 import re
 import random
 
@@ -123,7 +123,7 @@ def gerar_paginas():
         "Empresas de <strong>[[CIDADE]]</strong> que não estão na internet estão perdendo dinheiro. Um site rápido é a chave para captar novos clientes."
     ]
 
-    template_secao_extra = \"\"\"
+    template_secao_extra = """
     <section class="local-market-section" style="background-color: #f8fafc; padding: 60px 0; border-bottom: 1px solid #e2e8f0;">
         <div class="container">
             <h2 class="section-title">[[TITULO_EXTRA]]</h2>
@@ -138,7 +138,7 @@ def gerar_paginas():
             </div>
         </div>
     </section>
-    \"\"\"
+    """
 
     for local in locais:
         filename = f"{OUTPUT_PREFIX}{local['slug']}.html"
@@ -204,7 +204,7 @@ def gerar_paginas():
 
 if __name__ == "__main__":
     gerar_paginas()
-"""
+'''
 
 # --- 2. CONTEÚDO DE GERAR_BLOG.PY ---
 code_blog = r"""import os
@@ -331,7 +331,7 @@ def main():
     run_step("gerar_robots.py")
     run_step("seo_booster.py")
 
-    print("\n✨ Site gerado! Iniciando servidor em http://localhost:8000")
+    print("\\n✨ Site gerado! Iniciando servidor em http://localhost:8000")
     
     def open_browser():
         time.sleep(2)

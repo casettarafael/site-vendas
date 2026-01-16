@@ -17,12 +17,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS Feed Blog Cybernex" href="/rss.xml">
 
     <!-- Google Analytics (GA4) - Substitua G-XXXXXXXXXX pelo seu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_ID_AQUI"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-SEU_ID_AQUI');
     </script>
 
     <!-- Open Graph / Facebook / WhatsApp -->
@@ -55,6 +55,9 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="logo.webp" type="image/png">
+
+    <!-- SEO AUTOMÁTICO: JSON-LD -->
+    
 
     <!-- SEO AUTOMÁTICO: JSON-LD -->
     <script type="application/ld+json">
@@ -771,7 +774,7 @@
             <p class="section-subtitle">Preencha o formulário abaixo para receber uma proposta personalizada.</p>
             
             <div class="form-box">
-                <form>
+                <form id="contact-form" onsubmit="enviarWhatsapp(event)">
                     <div class="form-group">
                         <label for="nome">Seu Nome</label>
                         <input type="text" id="nome" placeholder="Ex: João Silva" required>
@@ -996,6 +999,22 @@
                 }
             });
         });
+    </script>
+
+    <!-- Script de Envio do Formulário para WhatsApp -->
+    <script>
+        function enviarWhatsapp(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const empresa = document.getElementById('empresa').value;
+            const telefone = document.getElementById('telefone').value;
+            const objetivo = document.getElementById('objetivo').value;
+            const orcamento = document.getElementById('orcamento').value;
+            
+            const mensagem = `*Novo Lead pelo Site* 🚀\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*Telefone:* ${telefone}\n*Objetivo:* ${objetivo}\n*Orçamento:* ${orcamento}`;
+            const url = `https://wa.me/5511976678655?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>
