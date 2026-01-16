@@ -3,7 +3,7 @@ import html
 
 # Configurações do Feed
 BASE_URL = "https://www.cybernex.com.br"
-BLOG_URL = f"{BASE_URL}/artigo.html"
+BLOG_URL = BASE_URL
 TITLE = "Blog Cybernex Innovatech"
 DESCRIPTION = "Dicas de SEO, Performance Web e Marketing Digital para alavancar seu negócio."
 LANGUAGE = "pt-br"
@@ -66,7 +66,7 @@ def gerar_rss():
     }
 
     for slug, post in posts.items():
-        link = f"{BLOG_URL}?id={slug}"
+        link = f"{BLOG_URL}/artigo-{slug}.html"
         
         # Converter data (Ex: "12 Out 2023") para formato padrão RSS (RFC 822)
         dia, mes_str, ano = post['date'].split()

@@ -140,8 +140,7 @@ def gerar_blog():
         html = html.replace('<img id="article-img" src="" alt="">', f'<img src="{post["imagem"]}" alt="{post["titulo"]}" width="800" height="400" style="width:100%; height:auto;">')
         
         # Corpo do Texto
-        html = html.replace('<div id="article-body" class="article-content">', f'<div class="article-content">
-{post["conteudo"]}')
+        html = html.replace('<div id="article-body" class="article-content">', f'<div class="article-content">\n{post["conteudo"]}')
         html = html.replace('<div class="spinner" style="margin: 50px auto;"></div>', '') 
 
         # Remove script JS desnecessário para página estática
