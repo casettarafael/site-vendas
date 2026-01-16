@@ -5,7 +5,7 @@ import re
 # --- Configurações do Site ---
 BASE_URL = "https://www.cybernexinnovatech.com.br"
 BUSINESS_NAME = "Cybernex Innovatech"
-LOGO_URL = f"{BASE_URL}/logo.png"
+LOGO_URL = f"{BASE_URL}/logo.webp"
 CONTACT_PHONE = "+5511976678655"
 
 # --- Dados para JSON-LD ---
@@ -152,9 +152,13 @@ def inject_into_html(json_data):
     print("[OK] Backup criado: index_backup.html")
 
     # 2. Remover scripts JSON-LD antigos (limpeza)
-    # Remove qualquer bloco <script type="application/ld+json">...</script> existente
-    content = re.sub(r'<script type="application/ld\+json">.*?</script>', '', content, flags=re.DOTALL)
+    # Remove qualquer bloco <script type="application/ld+json">...</script> existente E os comentários acumulados
+    content = re.sub(r'<!-- SEO AUTOMÁTICO: JSON-LD -->\s*', '', content)
+    content = re.sub(r'<script type="application/ld\+json">.*?</script>\s*', '', content, flags=re.DOTALL)
     
+    # Failsafe: Garante que o ID do Analytics esteja atualizado na Home
+    content = content.replace('G-SEU_ID_AQUI', 'G-XQ3E4D0VRJ')
+
     # 3. Preparar o novo bloco de script
     json_string = json.dumps(json_data, indent=2, ensure_ascii=False)
     new_script = f'\n    <!-- SEO AUTOMÁTICO: JSON-LD -->\n    <script type="application/ld+json">\n{json_string}\n    </script>\n'

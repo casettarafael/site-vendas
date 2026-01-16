@@ -25,12 +25,12 @@ def main():
 
     # Lista de scripts para rodar em ordem
     scripts = [
+        ("seo_booster.py", "Otimizando a Home (Base)"),
         ("gerar_paginas.py", "Gerando Cidades e Segmentos"),
         ("gerar_blog.py", "Gerando Artigos do Blog"),
         ("gerar_sitemap.py", "Atualizando Sitemap.xml"),
         ("gerar_rss.py", "Gerando Feed RSS"),
         ("gerar_robots.py", "Criando Robots.txt"),
-        ("seo_booster.py", "Injetando Dados Estruturados na Home"),
         ("verificar_deploy.py", "Verificação Final de Segurança")
     ]
 
