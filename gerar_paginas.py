@@ -1,5 +1,6 @@
 import os
 import re
+import random
 
 # Configurações
 SOURCE_FILE = 'index.html'
@@ -382,6 +383,13 @@ segmentos = [
     {"nome": "Construtoras", "slug": "construtora", "singular": "Construtora"},
 ]
 
+# DDDs Principais por Estado (Simplificado para "Dados Reais")
+ddds_por_estado = {
+    "AC": "68", "AL": "82", "AP": "96", "AM": "92", "BA": "71", "CE": "85", "DF": "61", "ES": "27",
+    "GO": "62", "MA": "98", "MT": "65", "MS": "67", "MG": "31", "PA": "91", "PB": "83", "PR": "41",
+    "PE": "81", "PI": "86", "RJ": "21", "RN": "84", "RS": "51", "RO": "69", "RR": "95", "SC": "48", "SP": "11", "SE": "79", "TO": "63"
+}
+
 def gerar_paginas():
     if not os.path.exists(SOURCE_FILE):
         print(f"Erro: O arquivo '{SOURCE_FILE}' não foi encontrado na pasta.")
@@ -405,6 +413,24 @@ def gerar_paginas():
     template = template.replace('empresas de todo o Brasil', 'empresas de [[CIDADE]]')
     template = template.replace('Atendimento em todo o território nacional', 'Atendimento especializado em [[CIDADE]]')
     
+    # Otimização do H1 para SEO Local
+    template = template.replace('>Sites que transformam<', '>Criação de Sites em [[CIDADE]]<')
+    template = template.replace('data-text="Sites que transformam"', 'data-text="Criação de Sites em [[CIDADE]]"')
+
+    # CORREÇÃO DE SEO: Garante que o H1 tenha a cidade, caso o texto base seja diferente
+    template = template.replace('>Criação de Sites<', '>Criação de Sites em [[CIDADE]]<')
+    template = template.replace('data-text="Criação de Sites"', 'data-text="Criação de Sites em [[CIDADE]]"')
+    
+    # OTIMIZAÇÃO DE IMAGENS E META: Localização profunda
+    template = template.replace('alt="Sites Institucionais"', 'alt="Criação de Sites Institucionais em [[CIDADE]]"')
+    template = template.replace('alt="Landing Pages"', 'alt="Landing Pages para empresas de [[CIDADE]]"')
+    template = template.replace('web design brasil', 'web design em [[CIDADE]]')
+    
+    # 2.1 Palavras-chave Dinâmicas (Novo)
+    # Substitui a meta tag keywords genérica por uma específica da cidade
+    # OTIMIZAÇÃO ANTI-SPAM: Reduzimos a quantidade de palavras-chave para evitar "keyword stuffing".
+    template = template.replace('content="criação de sites, desenvolvimento web, landing page, site institucional, SEO, programador web, web design brasil"', 'content="criação de sites, desenvolvimento web, [[CIDADE]]"')
+
     # 3. Ajuste no FAQ para parecer mais personalizado
     template = template.replace('Vocês atendem minha cidade?', 'Vocês atendem em [[CIDADE]]?')
     template = template.replace('Atendemos empresas de todos os estados do Brasil de forma 100% remota', 'Sim! Atendemos empresas de [[CIDADE]] de forma 100% remota')
@@ -421,11 +447,124 @@ def gerar_paginas():
 
     print(f"Gerando {len(locais)} páginas estáticas otimizadas...")
 
+    # --- VARIAÇÕES DE TEXTO (SPINTAX) PARA EVITAR CONTEÚDO DUPLICADO ---
+    variacoes_hero = [
+        "Design profissional e código otimizado para empresas de [[CIDADE]] que buscam o próximo nível de faturamento e autoridade digital.",
+        "Desenvolvimento de sites de alta performance para negócios em [[CIDADE]] que desejam crescer e vender mais na internet.",
+        "Soluções web estratégicas para empresas de [[CIDADE]]. Sites rápidos, seguros e prontos para converter visitantes em clientes reais.",
+        "Criação de sites modernos e otimizados para o Google, focados em gerar resultados reais para empresas de [[CIDADE]].",
+        "Transforme sua presença digital em [[CIDADE]] com um site profissional que carrega rápido e converte mais.",
+        "Sua empresa em [[CIDADE]] merece um site de elite. Desenvolvimento web focado em performance e SEO local."
+    ]
+    
+    variacoes_cta = [
+        "Quero um Site Profissional",
+        "Solicitar Orçamento Agora",
+        "Aumentar Minhas Vendas",
+        "Falar com Especialista",
+        "Quero meu Site no Topo",
+        "Orçamento sem Compromisso"
+    ]
+
+    variacoes_atendimento = [
+        "Atendimento especializado em [[CIDADE]]",
+        "Suporte dedicado para empresas de [[CIDADE]]",
+        "Soluções digitais completas em [[CIDADE]]",
+        "Parceiro de tecnologia em [[CIDADE]]",
+        "Consultoria web para [[CIDADE]]",
+        "Desenvolvimento web em [[CIDADE]]"
+    ]
+
+    # --- NOVAS VARIAÇÕES PARA SEÇÃO EXTRA (MERCADO LOCAL) ---
+    variacoes_titulo_extra = [
+        "Por que sua empresa em [[CIDADE]] precisa de um site?",
+        "Destaque-se no mercado de [[CIDADE]]",
+        "Soluções Web para o comércio de [[CIDADE]]",
+        "Aumente suas vendas em [[CIDADE]] com um site profissional",
+        "Como crescer seu negócio em [[CIDADE]] na internet",
+        "A importância de um site para empresas de [[CIDADE]]"
+    ]
+    
+    variacoes_texto_extra = [
+        "O mercado em <strong>[[CIDADE]]</strong> está cada vez mais digital. Consumidores locais buscam produtos e serviços no Google diariamente. Ter um site otimizado garante que sua empresa seja encontrada no momento exato da decisão de compra.",
+        "Não deixe seu negócio fora do mapa digital de <strong>[[CIDADE]]</strong> (DDD [[DDD]]). Com a concorrência crescendo na região, ter uma presença online forte é fundamental. Nossos sites são desenvolvidos pensando no comportamento do consumidor local.",
+        "Seja você um prestador de serviços ou comerciante em <strong>[[CIDADE]]</strong>, a internet é a sua maior vitrine. Desenvolvemos estratégias digitais personalizadas para alavancar negócios locais em [[CIDADE]].",
+        "Empresas de <strong>[[CIDADE]]</strong> que não estão na internet estão perdendo dinheiro. Um site rápido e responsivo é a chave para captar novos clientes na região e fidelizar os atuais.",
+        "Você sabia que a maioria dos clientes em <strong>[[CIDADE]]</strong> pesquisa no Google antes de comprar? Se sua empresa não tem um site profissional, você está entregando clientes para a concorrência. Mude isso hoje.",
+        "Para se destacar em <strong>[[CIDADE]]</strong>, não basta apenas ter um site; é preciso ter uma estratégia digital. Nossa equipe cria soluções focadas na realidade do mercado local.",
+        "Aumente a visibilidade da sua marca em <strong>[[CIDADE]]</strong>. Utilizamos as melhores práticas de SEO e Design para garantir que seu negócio seja referência na região.",
+        "Conecte-se com o público de <strong>[[CIDADE]]</strong> de forma eficiente. Um site bem estruturado é o primeiro passo para construir autoridade e gerar novos negócios."
+    ]
+
+    # Template para a nova seção
+    template_secao_extra = """
+    <section class="local-market-section" style="background-color: #f8fafc; padding: 60px 0; border-bottom: 1px solid #e2e8f0;">
+        <div class="container">
+            <h2 class="section-title">[[TITULO_EXTRA]]</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #475569; font-size: 1.1rem; line-height: 1.8;">
+                [[TEXTO_EXTRA]]
+            </p>
+            <div style="margin-top: 30px; text-align: center;">
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Atendemos também nas cidades vizinhas:</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                    [[LINKS_VIZINHOS]]
+                </div>
+            </div>
+        </div>
+    </section>
+    """
+
     for local in locais:
         filename = f"{OUTPUT_PREFIX}{local['slug']}.html"
         
-        # Aplica os dados da cidade no template
-        conteudo_pagina = template.replace('[[CIDADE]]', local['nome'])
+        # 1. Aplica variações aleatórias ANTES de substituir a cidade
+        conteudo_pagina = template
+        
+        # Substitui o texto padrão do Hero por uma variação aleatória
+        texto_padrao_hero = "Design profissional e código otimizado para empresas de [[CIDADE]] que buscam o próximo nível de faturamento e autoridade digital."
+        if texto_padrao_hero in conteudo_pagina:
+            conteudo_pagina = conteudo_pagina.replace(texto_padrao_hero, random.choice(variacoes_hero))
+            
+        # Substitui o botão CTA
+        conteudo_pagina = conteudo_pagina.replace("Quero um Site Profissional", random.choice(variacoes_cta))
+        
+        # Substitui o texto de atendimento
+        conteudo_pagina = conteudo_pagina.replace("Atendimento especializado em [[CIDADE]]", random.choice(variacoes_atendimento))
+
+        # --- INTERLINKAGEM INTELIGENTE ---
+        # Encontra cidades do mesmo estado
+        cidades_mesmo_estado = [l for l in locais if l['uf'] == local['uf'] and l['slug'] != local['slug']]
+        # Seleciona até 4 cidades aleatórias para linkar
+        vizinhos = random.sample(cidades_mesmo_estado, min(len(cidades_mesmo_estado), 4))
+        links_vizinhos_html = ""
+        for v in vizinhos:
+            links_vizinhos_html += f'<a href="{OUTPUT_PREFIX}{v["slug"]}.html" style="color: #2563eb; text-decoration: none; background: #e0e7ff; padding: 5px 10px; border-radius: 15px; font-size: 0.85rem;">{v["nome"]}</a>'
+
+        # INSERÇÃO DA NOVA SEÇÃO DE CONTEÚDO LOCAL
+        # Escolhe um título e um texto aleatórios
+        ddd_local = ddds_por_estado.get(local['uf'], "XX")
+        secao_extra = template_secao_extra.replace('[[TITULO_EXTRA]]', random.choice(variacoes_titulo_extra))
+        secao_extra = secao_extra.replace('[[TEXTO_EXTRA]]', random.choice(variacoes_texto_extra))
+        secao_extra = secao_extra.replace('[[DDD]]', ddd_local)
+        secao_extra = secao_extra.replace('[[LINKS_VIZINHOS]]', links_vizinhos_html)
+        
+        # Insere antes do FAQ (procura pela tag de comentário ou ID)
+        if '<section id="faq">' in conteudo_pagina:
+            conteudo_pagina = conteudo_pagina.replace('<section id="faq">', secao_extra + '\n<section id="faq">')
+
+        # ATUALIZAÇÃO DO SCHEMA.ORG (JSON-LD) PARA SEO LOCAL
+        # Troca "Brazil" pela cidade específica no areaServed
+        conteudo_pagina = conteudo_pagina.replace('"name": "Brazil"', f'"name": "{local["nome"]} - {local["uf"]}"')
+        conteudo_pagina = conteudo_pagina.replace('"@type": "Country"', '"@type": "City"')
+
+        # OTIMIZAÇÃO DE IMAGENS E META: Localização profunda (Aplicado aqui para garantir variação se necessário)
+        # OTIMIZAÇÃO ANTI-SPAM: Textos alternativos mais naturais e descritivos.
+        conteudo_pagina = conteudo_pagina.replace('alt="Sites Institucionais"', 'alt="Exemplo de Site Institucional - Atendimento em [[CIDADE]]"')
+        conteudo_pagina = conteudo_pagina.replace('alt="Landing Pages"', 'alt="Landing Page otimizada para negócios de [[CIDADE]]"')
+        conteudo_pagina = conteudo_pagina.replace('web design brasil', 'web design focado em [[CIDADE]]')
+
+        # 2. Aplica os dados da cidade no template já variado
+        conteudo_pagina = conteudo_pagina.replace('[[CIDADE]]', local['nome'])
         conteudo_pagina = conteudo_pagina.replace('[[UF]]', local['uf'])
         conteudo_pagina = conteudo_pagina.replace('[[FILENAME]]', filename)
 
@@ -434,12 +573,42 @@ def gerar_paginas():
         
     print(f"Sucesso! {len(locais)} arquivos gerados com prefixo '{OUTPUT_PREFIX}'.")
     
+    # --- GERAÇÃO DA PÁGINA DE COBERTURA (SITEMAP HTML) ---
+    print("Gerando página de Cobertura (cobertura.html)...")
+    template_cobertura = html_base
+    template_cobertura = template_cobertura.replace('Criação de Sites para Todo o Brasil', 'Área de Cobertura - Cidades Atendidas')
+    template_cobertura = template_cobertura.replace('Atendemos empresas de todos os estados do Brasil', 'Confira todas as cidades onde a Cybernex atua.')
+    template_cobertura = template_cobertura.replace('Sites que transformam', 'Área de Cobertura')
+    template_cobertura = template_cobertura.replace('data-text="Sites que transformam"', 'data-text="Área de Cobertura"')
+    template_cobertura = template_cobertura.replace('Design profissional e código otimizado para empresas de todo o Brasil que buscam o próximo nível de faturamento e autoridade digital.', 'Confira abaixo a lista completa de cidades e segmentos atendidos pela Cybernex Innovatech.')
+    template_cobertura = template_cobertura.replace('<div class="nav-links">', '<div class="nav-links">\n                    <a href="index.html">Início</a>')
+    template_cobertura = re.sub(r'<link\s+rel=["\']canonical["\']\s+href=["\']https://www\.cybernexinnovatech\.com\.br/?["\']\s*/?>', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/cobertura.html">', template_cobertura)
+
+    # Remove seções desnecessárias para a página de cobertura e insere a lista
+    lista_html = '<section style="padding: 60px 0;"><div class="container"><h2 class="section-title">Cidades Atendidas</h2><div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;">'
+    
+    # Ordena por UF e depois por Nome
+    locais_ordenados = sorted(locais, key=lambda x: (x['uf'], x['nome']))
+    for local in locais_ordenados:
+        lista_html += f'<a href="{OUTPUT_PREFIX}{local["slug"]}.html" style="text-decoration: none; color: #334155; padding: 10px; background: #f8fafc; border-radius: 5px; border: 1px solid #e2e8f0; display: block; transition: all 0.3s;">{local["nome"]} - {local["uf"]}</a>'
+    lista_html += '</div></div></section>'
+
+    # Substitui o conteúdo principal (mantendo header e footer)
+    # Uma abordagem simples: substituir a section hero e remover o resto até o footer, ou apenas injetar após o hero.
+    # Vamos substituir a section 'stats-section' pela lista e esconder o resto via CSS inline ou replace
+    if '<section class="stats-section">' in template_cobertura:
+        template_cobertura = template_cobertura.replace('<section class="stats-section">', lista_html + '<div style="display:none;">')
+        template_cobertura = template_cobertura.replace('<footer>', '</div><footer>')
+
+    with open('cobertura.html', 'w', encoding='utf-8') as f:
+        f.write(template_cobertura)
+
     # --- GERAÇÃO DE PÁGINAS DE SEGMENTOS ---
     print(f"Gerando {len(segmentos)} páginas de segmentos...")
     
     # Template base para segmentos (Recarrega html_base limpo)
     template_seg = html_base
-    
+
     # Substituições Específicas para Segmentos
     template_seg = template_seg.replace('Criação de Sites para Todo o Brasil', 'Criação de Sites para [[SEGMENTO_PLURAL]]')
     template_seg = template_seg.replace('Atendemos empresas de todos os estados do Brasil', 'Especialistas em Sites para [[SEGMENTO_PLURAL]]')
@@ -447,15 +616,63 @@ def gerar_paginas():
     template_seg = template_seg.replace('Atendimento em todo o território nacional', 'Soluções web para [[SEGMENTO_SINGULAR]]')
     template_seg = template_seg.replace('Soluções web para sua empresa', 'Soluções web para [[SEGMENTO_SINGULAR]]')
     
+    # OTIMIZAÇÃO ANTI-SPAM PARA SEGMENTOS
+    # Remove keywords excessivas também nos segmentos
+    template_seg = template_seg.replace('content="criação de sites, desenvolvimento web, landing page, site institucional, SEO, programador web, web design brasil"', 'content="criação de sites para [[SEGMENTO_PLURAL]], web design, marketing digital"')
+
+    # Otimização do H1 para Segmentos
+    template_seg = template_seg.replace('>Sites que transformam<', '>Sites para [[SEGMENTO_PLURAL]]<')
+    template_seg = template_seg.replace('data-text="Sites que transformam"', 'data-text="Sites para [[SEGMENTO_PLURAL]]"')
+    
     # FAQ e Canonical
     template_seg = template_seg.replace('Vocês atendem minha cidade?', 'Vocês criam sites para [[SEGMENTO_SINGULAR]]?')
     template_seg = template_seg.replace('Atendemos empresas de todos os estados do Brasil de forma 100% remota', 'Sim! Temos experiência na criação de sites para [[SEGMENTO_PLURAL]] com atendimento remoto.')
     template_seg = re.sub(r'<link\s+rel=["\']canonical["\']\s+href=["\']https://www\.cybernexinnovatech\.com\.br/?["\']\s*/?>', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">', template_seg)
 
+    # Variações para Segmentos
+    variacoes_hero_seg = [
+        "Soluções web para [[SEGMENTO_SINGULAR]] que buscam o próximo nível de faturamento.",
+        "Sites otimizados para [[SEGMENTO_PLURAL]] que desejam atrair mais clientes.",
+        "Aumente a autoridade do seu [[SEGMENTO_SINGULAR]] com um site profissional.",
+        "Marketing digital e sites de alta performance para [[SEGMENTO_PLURAL]]."
+    ]
+
+    # Variações de texto extra para Segmentos
+    variacoes_texto_extra_seg = [
+        "Para <strong>[[SEGMENTO_PLURAL]]</strong>, a confiança é a base do negócio. Um site profissional transmite a credibilidade necessária para que o cliente escolha você.",
+        "Aumente sua carteira de clientes. A maioria das pessoas procura por <strong>[[SEGMENTO_SINGULAR]]</strong> no Google. Se você não estiver lá, seu concorrente estará.",
+        "Oferecemos soluções digitais sob medida para <strong>[[SEGMENTO_PLURAL]]</strong>. Desde o design até a funcionalidade, tudo é pensado para atrair o seu público-alvo."
+    ]
+
     for seg in segmentos:
         filename = f"site-para-{seg['slug']}.html"
         
-        conteudo = template_seg.replace('[[SEGMENTO_SINGULAR]]', seg['singular'])
+        conteudo = template_seg
+        
+        # Variação no Hero dos Segmentos
+        # O texto original no template_seg (após as substituições da linha 266) é:
+        # "Soluções web para [[SEGMENTO_SINGULAR]] que buscam o próximo nível de faturamento e autoridade digital."
+        # (Nota: O replace da linha 266 mudou "Atendimento em todo o território nacional" para "Soluções web para [[SEGMENTO_SINGULAR]]")
+        # Mas o texto longo do parágrafo (linha 245 original) virou "[[SEGMENTO_PLURAL]] de todo o Brasil..."
+        
+        # Vamos variar o CTA também para segmentos
+        conteudo = conteudo.replace("Quero um Site Profissional", random.choice(variacoes_cta))
+        
+        # Inserir Seção Extra para Segmentos
+        secao_extra_seg = template_secao_extra.replace('[[TITULO_EXTRA]]', f"Marketing Digital para {seg['nome']}")
+        secao_extra_seg = secao_extra_seg.replace('[[TEXTO_EXTRA]]', random.choice(variacoes_texto_extra_seg))
+        secao_extra_seg = secao_extra_seg.replace('[[LINKS_VIZINHOS]]', '') # Sem vizinhos para segmentos
+        
+        if '<section id="faq">' in conteudo:
+            conteudo = conteudo.replace('<section id="faq">', secao_extra_seg + '\n<section id="faq">')
+
+        # Ajuste de ALT tags para segmentos
+        conteudo = conteudo.replace('alt="Sites Institucionais"', 'alt="Site Institucional para [[SEGMENTO_SINGULAR]]"')
+        conteudo = conteudo.replace('alt="Landing Pages"', 'alt="Landing Page para [[SEGMENTO_SINGULAR]]"')
+        conteudo = conteudo.replace('web design brasil', 'web design para [[SEGMENTO_PLURAL]]')
+
+        # Aplica os dados do segmento
+        conteudo = conteudo.replace('[[SEGMENTO_SINGULAR]]', seg['singular'])
         conteudo = conteudo.replace('[[SEGMENTO_PLURAL]]', seg['nome'])
         conteudo = conteudo.replace('[[FILENAME]]', filename)
         
