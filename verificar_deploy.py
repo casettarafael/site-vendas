@@ -24,6 +24,10 @@ def verificar():
                 if p in content:
                     print(f"❌ ERRO: Placeholder {p} encontrado em {f}")
                     erros += 1
+            
+            if '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/">' in content or '<link rel="canonical" href="https://www.cybernexinnovatech.com.br">' in content:
+                print(f"❌ ERRO CRÍTICO SEO: Canonical apontando para Home em {f}")
+                erros += 1
 
     # 3. Verificar Analytics
     if os.path.exists('index.html'):

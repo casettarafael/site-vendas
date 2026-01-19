@@ -1,5 +1,6 @@
 import datetime
 from gerar_paginas import locais, segmentos
+from gerar_blog import artigos
 
 # Configurações
 BASE_URL = "https://www.cybernexinnovatech.com.br"
@@ -20,13 +21,13 @@ def gerar_xml():
     xml_content += '    <priority>1.00</priority>\n'
     xml_content += '  </url>\n'
 
-    # 2. Página de Artigo (Exemplo genérico ou lista de artigos se tiver)
-    # Se quiser listar artigos específicos, adicione aqui
-    xml_content += '  <url>\n'
-    xml_content += f'    <loc>{BASE_URL}/artigo.html</loc>\n'
-    xml_content += f'    <lastmod>{hoje}</lastmod>\n'
-    xml_content += '    <priority>0.80</priority>\n'
-    xml_content += '  </url>\n'
+    # 2. Artigos do Blog (Reais)
+    for post in artigos:
+        xml_content += '  <url>\n'
+        xml_content += f'    <loc>{BASE_URL}/{post["slug"]}.html</loc>\n'
+        xml_content += f'    <lastmod>{hoje}</lastmod>\n'
+        xml_content += '    <priority>0.80</priority>\n'
+        xml_content += '  </url>\n'
 
     # 2.1 Página de Cobertura
     xml_content += '  <url>\n'

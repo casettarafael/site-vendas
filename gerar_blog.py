@@ -1,3 +1,4 @@
+import re
 import os
 
 # Configurações
@@ -130,7 +131,7 @@ def gerar_blog():
         # Substituições no Template
         html = html.replace('Blog Cybernex - Carregando Artigo...', f"{post['titulo']} - Blog Cybernex")
         html = html.replace('content="Aprenda as melhores estratégias de SEO para colocar seu site no topo do Google."', f'content="{post["titulo"]} - Leia mais no Blog da Cybernex."')
-        html = html.replace('<link rel="canonical" href="https://www.cybernexinnovatech.com.br/">', f'<link rel="canonical" href="https://www.cybernexinnovatech.com.br/{filename}">')
+        html = re.sub(r'<link\s+rel=["\']canonical["\'].*?>', f'<link rel="canonical" href="https://www.cybernexinnovatech.com.br/{filename}">', html)
         
         # Conteúdo Visível
         html = html.replace('<h1 id="article-title">Carregando artigo...</h1>', f'<h1>{post["titulo"]}</h1>')
