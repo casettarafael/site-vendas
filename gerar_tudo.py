@@ -6,58 +6,42 @@ import sys
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import threading
 
-def run_step(script_name, description):
-    print(f"🔄 {description} ({script_name})...")
+def run_step(script_name):
+    print(f"🔄 Executando {script_name}...")
     if os.path.exists(script_name):
         try:
-            # Usa sys.executable para garantir que usa o mesmo Python que está rodando este script
             subprocess.run([sys.executable, script_name], check=True)
-            print("✅ Concluído.")
-        except subprocess.CalledProcessError as e:
-            print(f"❌ Erro ao executar {script_name}: {e}")
+            print("✅ OK.")
+        except Exception as e:
+            print(f"❌ Erro: {e}")
     else:
-        print(f"⚠️ Arquivo {script_name} não encontrado. Pulando.")
-    print("-" * 40)
+        print(f"⚠️ {script_name} não encontrado.")
 
 def main():
-    print("--- 🚀 AUTO-BUILD & SERVER: Cybernex Innovatech ---")
-    print("Gerando todo o site estático e iniciando servidor...\n")
+    print("--- 🚀 AUTO-BUILD & SERVER ---")
+    
+    run_step("seo_booster.py") # Executa primeiro para atualizar o index.html
+    run_step("gerar_paginas.py")
+    run_step("gerar_blog.py")
+    run_step("gerar_sitemap.py")
+    run_step("gerar_rss.py")
+    run_step("gerar_robots.py")
+    run_step("seo_booster.py")
 
-    # Lista de scripts para rodar em ordem
-    scripts = [
-        ("seo_booster.py", "Otimizando a Home (Base)"),
-        ("gerar_paginas.py", "Gerando Cidades e Segmentos"),
-        ("gerar_blog.py", "Gerando Artigos do Blog"),
-        ("gerar_sitemap.py", "Atualizando Sitemap.xml"),
-        ("gerar_rss.py", "Gerando Feed RSS"),
-        ("gerar_robots.py", "Criando Robots.txt"),
-        ("verificar_deploy.py", "Verificação Final de Segurança")
-    ]
-
-    for script, desc in scripts:
-        run_step(script, desc)
-
-    print("\n✨ Geração concluída! Iniciando servidor local...")
-    print("👉 Acesse: http://localhost:8000")
-    print("⌨️  Pressione Ctrl+C para encerrar.\n")
-
-    # Abre o navegador automaticamente após 2 segundos
+    print("\\n✨ Site gerado! Iniciando servidor em http://localhost:8000")
+    
     def open_browser():
         time.sleep(2)
         webbrowser.open("http://localhost:8000")
     
     threading.Thread(target=open_browser).start()
 
-    # Inicia o servidor na porta 8000
     server_address = ('', 8000)
     try:
         httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
         httpd.serve_forever()
-    except OSError as e:
-        print(f"\n❌ Erro ao iniciar servidor na porta 8000: {e}")
-        print("Tente fechar outros terminais ou usar outra porta.")
-    except KeyboardInterrupt:
-        print("\n🛑 Servidor encerrado.")
+    except Exception as e:
+        print(f"Erro no servidor: {e}")
 
 if __name__ == "__main__":
     main()

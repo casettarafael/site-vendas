@@ -33,9 +33,6 @@ FAQ_ITEMS = [
 ]
 
 def generate_json_ld():
-    """Gera os dados estruturados (Rich Snippets) em formato JSON."""
-    
-    # 1. Schema de Organização (LocalBusiness/ProfessionalService)
     organization_schema = {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
@@ -58,19 +55,14 @@ def generate_json_ld():
         },
         "areaServed": {
             "@type": "Country",
-            "name": "Brazil"
+            "name": "Brasil"
         },
         "knowsAbout": [
-            "Web Development",
-            "SEO",
-            "Digital Marketing",
-            "E-commerce"
+            "Web Development", "SEO", "Digital Marketing", "E-commerce", "QA Automation", "Performance Tuning"
         ],
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
-            ],
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "09:00",
             "closes": "18:00"
         },
@@ -84,103 +76,51 @@ def generate_json_ld():
             "itemListElement": []
         }
     }
-
-    # Adiciona serviços ao catálogo
     for service in SERVICES:
         organization_schema["hasOfferCatalog"]["itemListElement"].append({
-            "@type": "Offer",
-            "itemOffered": {
-                "@type": "Service",
-                "name": service
-            }
+            "@type": "Offer", "itemOffered": { "@type": "Service", "name": service }
         })
 
-    # 2. Schema de FAQ
-    faq_schema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": []
-    }
-
+    faq_schema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [] }
     for item in FAQ_ITEMS:
         faq_schema["mainEntity"].append({
-            "@type": "Question",
-            "name": item["question"],
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": item["answer"]
-            }
+            "@type": "Question", "name": item["question"], "acceptedAnswer": { "@type": "Answer", "text": item["answer"] }
         })
 
-    # 3. Schema de WebSite (Sitelinks Search Box)
     website_schema = {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": BUSINESS_NAME,
-        "url": BASE_URL,
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": f"{BASE_URL}/search?q={{search_term_string}}",
-            "query-input": "required name=search_term_string"
-        }
+        "@context": "https://schema.org", "@type": "WebSite", "name": BUSINESS_NAME, "url": BASE_URL,
+        "potentialAction": { "@type": "SearchAction", "target": f"{BASE_URL}/search?q={{search_term_string}}", "query-input": "required name=search_term_string" }
     }
 
-    # Retorna usando @graph para agrupar múltiplos schemas em um único JSON-LD
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            organization_schema,
-            faq_schema,
-            website_schema
-        ]
-    }
+    return { "@context": "https://schema.org", "@graph": [organization_schema, faq_schema, website_schema] }
 
 def inject_into_html(json_data):
-    """Injeta o JSON-LD diretamente no index.html, substituindo os antigos."""
     html_file = 'index.html'
+    if not os.path.exists(html_file): return
+
+    with open(html_file, 'r', encoding='utf-8') as f: content = f.read()
+
+    # --- ATUALIZAÇÃO ESTRATÉGICA (QA & Performance) ---
+    content = content.replace('<h3>Landing Pages</h3>', '<h3>LPs de Alta Performance</h3>')
+    content = content.replace('<p>Páginas de alta conversão focadas em vender um produto ou serviço específico. Ideais para tráfego pago.</p>', '<p>Landing Pages para Infoprodutores e Lançamentos. Foco total em taxa de conversão e velocidade de carregamento.</p>')
     
-    if not os.path.exists(html_file):
-        print(f"[ERRO] {html_file} não encontrado.")
-        return
+    content = content.replace('<h3>Hospedagem & Manutenção</h3>', '<h3>Manutenção & QA (Quality Assurance)</h3>')
+    content = content.replace('<p>Tranquilidade total. Mantenho seu site no ar, seguro e atualizado com planos mensais acessíveis.</p>', '<p>Inclui testes de regressão, auditoria de bugs e validação de performance mensal. Seu site sempre impecável.</p>')
+    
+    content = content.replace('<h3>CRM & Gestão Financeira</h3>', '<h3>Sistemas CRM Personalizados</h3>')
+    content = content.replace('<p>Sistemas personalizados para gestão de clientes e controle financeiro. Visualize seus dados em tempo real.</p>', '<p>CRM sob medida superior aos de mercado. Gestão de clientes e financeiro com foco na sua regra de negócio.</p>')
 
-    with open(html_file, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    # 1. Criar Backup
-    with open('index_backup.html', 'w', encoding='utf-8') as f:
-        f.write(content)
-    print("[OK] Backup criado: index_backup.html")
-
-    # 2. Remover scripts JSON-LD antigos (limpeza)
-    # Remove qualquer bloco <script type="application/ld+json">...</script> existente E os comentários acumulados
+    # Limpeza e Injeção JSON-LD
     content = re.sub(r'<!-- SEO AUTOMÁTICO: JSON-LD -->\s*', '', content)
     content = re.sub(r'<script type="application/ld\+json">.*?</script>\s*', '', content, flags=re.DOTALL)
-    
-    # Failsafe: Garante que o ID do Analytics esteja atualizado na Home
     content = content.replace('G-SEU_ID_AQUI', 'G-XQ3E4D0VRJ')
 
-    # 3. Preparar o novo bloco de script
     json_string = json.dumps(json_data, indent=2, ensure_ascii=False)
     new_script = f'\n    <!-- SEO AUTOMÁTICO: JSON-LD -->\n    <script type="application/ld+json">\n{json_string}\n    </script>\n'
-
-    # 4. Inserir antes do fechamento do </head>
+    
     if '</head>' in content:
         content = content.replace('</head>', f'{new_script}</head>')
-        
-        with open(html_file, 'w', encoding='utf-8') as f:
-            f.write(content)
-        print("[SUCESSO] index.html atualizado automaticamente com SEO!")
-    else:
-        print("[ERRO] Tag </head> não encontrada no HTML.")
-
-def main():
-    print("--- Iniciando Otimizador de SEO Cybernex ---")
-    
-    # 1. Gerar JSON-LD
-    data = generate_json_ld()
-    
-    # 2. Injetar no HTML
-    inject_into_html(data)
+        with open(html_file, 'w', encoding='utf-8') as f: f.write(content)
 
 if __name__ == "__main__":
-    main()
+    inject_into_html(generate_json_ld())

@@ -6,6 +6,135 @@ import webbrowser
 import threading
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
+# --- 0. CONTEÚDO DE SEO_BOOSTER.PY (Estratégia Nacional & QA) ---
+code_seo_booster = r'''import json
+import os
+import re
+
+# --- Configurações do Site ---
+BASE_URL = "https://www.cybernexinnovatech.com.br"
+BUSINESS_NAME = "Cybernex Innovatech"
+LOGO_URL = f"{BASE_URL}/logo.webp"
+CONTACT_PHONE = "+5511976678655"
+
+# --- Dados para JSON-LD ---
+SERVICES = [
+    "Criação de Sites Institucionais",
+    "Landing Pages de Alta Conversão",
+    "E-commerce e Lojas Virtuais",
+    "Consultoria SEO Especializada",
+    "Otimização de Performance (Core Web Vitals)"
+]
+
+FAQ_ITEMS = [
+    {
+        "question": "Quanto tempo demora para criar um site?",
+        "answer": "Landing Pages levam de 5 a 7 dias úteis. Sites institucionais completos, cerca de 15 a 20 dias."
+    },
+    {
+        "question": "O site é meu ou pago mensalidade?",
+        "answer": "O site é 100% seu. Não cobramos aluguel. Você paga apenas uma vez pelo desenvolvimento."
+    },
+    {
+        "question": "Vocês fazem otimização para o Google (SEO)?",
+        "answer": "Sim! Todos os nossos sites são entregues com estrutura otimizada para SEO técnico e performance."
+    }
+]
+
+def generate_json_ld():
+    organization_schema = {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": BUSINESS_NAME,
+        "image": LOGO_URL,
+        "@id": BASE_URL,
+        "url": BASE_URL,
+        "telephone": CONTACT_PHONE,
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -23.550520,
+            "longitude": -46.633308
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Brasil"
+        },
+        "knowsAbout": [
+            "Web Development", "SEO", "Digital Marketing", "E-commerce", "QA Automation", "Performance Tuning"
+        ],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "sameAs": [
+            "https://www.instagram.com/cybernexinnovatech",
+            "https://www.linkedin.com/company/cybernex"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços Web",
+            "itemListElement": []
+        }
+    }
+    for service in SERVICES:
+        organization_schema["hasOfferCatalog"]["itemListElement"].append({
+            "@type": "Offer", "itemOffered": { "@type": "Service", "name": service }
+        })
+
+    faq_schema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [] }
+    for item in FAQ_ITEMS:
+        faq_schema["mainEntity"].append({
+            "@type": "Question", "name": item["question"], "acceptedAnswer": { "@type": "Answer", "text": item["answer"] }
+        })
+
+    website_schema = {
+        "@context": "https://schema.org", "@type": "WebSite", "name": BUSINESS_NAME, "url": BASE_URL,
+        "potentialAction": { "@type": "SearchAction", "target": f"{BASE_URL}/search?q={{search_term_string}}", "query-input": "required name=search_term_string" }
+    }
+
+    return { "@context": "https://schema.org", "@graph": [organization_schema, faq_schema, website_schema] }
+
+def inject_into_html(json_data):
+    html_file = 'index.html'
+    if not os.path.exists(html_file): return
+
+    with open(html_file, 'r', encoding='utf-8') as f: content = f.read()
+
+    # --- ATUALIZAÇÃO ESTRATÉGICA (QA & Performance) ---
+    content = content.replace('<h3>Landing Pages</h3>', '<h3>LPs de Alta Performance</h3>')
+    content = content.replace('<p>Páginas de alta conversão focadas em vender um produto ou serviço específico. Ideais para tráfego pago.</p>', '<p>Landing Pages para Infoprodutores e Lançamentos. Foco total em taxa de conversão e velocidade de carregamento.</p>')
+    
+    content = content.replace('<h3>Hospedagem & Manutenção</h3>', '<h3>Manutenção & QA (Quality Assurance)</h3>')
+    content = content.replace('<p>Tranquilidade total. Mantenho seu site no ar, seguro e atualizado com planos mensais acessíveis.</p>', '<p>Inclui testes de regressão, auditoria de bugs e validação de performance mensal. Seu site sempre impecável.</p>')
+    
+    content = content.replace('<h3>CRM & Gestão Financeira</h3>', '<h3>Sistemas CRM Personalizados</h3>')
+    content = content.replace('<p>Sistemas personalizados para gestão de clientes e controle financeiro. Visualize seus dados em tempo real.</p>', '<p>CRM sob medida superior aos de mercado. Gestão de clientes e financeiro com foco na sua regra de negócio.</p>')
+
+    # Limpeza e Injeção JSON-LD
+    content = re.sub(r'<!-- SEO AUTOMÁTICO: JSON-LD -->\s*', '', content)
+    content = re.sub(r'<script type="application/ld\+json">.*?</script>\s*', '', content, flags=re.DOTALL)
+    content = content.replace('G-SEU_ID_AQUI', 'G-XQ3E4D0VRJ')
+
+    json_string = json.dumps(json_data, indent=2, ensure_ascii=False)
+    new_script = f'\n    <!-- SEO AUTOMÁTICO: JSON-LD -->\n    <script type="application/ld+json">\n{json_string}\n    </script>\n'
+    
+    if '</head>' in content:
+        content = content.replace('</head>', f'{new_script}</head>')
+        with open(html_file, 'w', encoding='utf-8') as f: f.write(content)
+
+if __name__ == "__main__":
+    inject_into_html(generate_json_ld())
+'''
+
 # --- 1. CONTEÚDO LIMPO DE GERAR_PAGINAS.PY ---
 # Usamos raw strings e concatenação para evitar erros de aspas
 code_paginas = r'''import os
@@ -18,6 +147,7 @@ OUTPUT_PREFIX = 'criacao-de-sites-em-'
 
 # Lista de Capitais e Estados
 locais = [
+    # --- CAPITAIS ---
     {"nome": "Rio Branco", "uf": "AC", "slug": "rio-branco"},
     {"nome": "Maceió", "uf": "AL", "slug": "maceio"},
     {"nome": "Macapá", "uf": "AP", "slug": "macapa"},
@@ -45,16 +175,114 @@ locais = [
     {"nome": "São Paulo", "uf": "SP", "slug": "sao-paulo"},
     {"nome": "Aracaju", "uf": "SE", "slug": "aracaju"},
     {"nome": "Palmas", "uf": "TO", "slug": "palmas"},
+    # --- INTERIOR SP ---
+    {"nome": "Guarulhos", "uf": "SP", "slug": "guarulhos"},
     {"nome": "Campinas", "uf": "SP", "slug": "campinas"},
+    {"nome": "São Bernardo do Campo", "uf": "SP", "slug": "sao-bernardo-do-campo"},
+    {"nome": "Santo André", "uf": "SP", "slug": "santo-andre"},
     {"nome": "São José dos Campos", "uf": "SP", "slug": "sao-jose-dos-campos"},
+    {"nome": "Osasco", "uf": "SP", "slug": "osasco"},
     {"nome": "Ribeirão Preto", "uf": "SP", "slug": "ribeirao-preto"},
     {"nome": "Sorocaba", "uf": "SP", "slug": "sorocaba"},
+    {"nome": "Mauá", "uf": "SP", "slug": "maua"},
+    {"nome": "São José do Rio Preto", "uf": "SP", "slug": "sao-jose-do-rio-preto"},
     {"nome": "Santos", "uf": "SP", "slug": "santos"},
-    {"nome": "Guarulhos", "uf": "SP", "slug": "guarulhos"},
-    {"nome": "Niterói", "uf": "RJ", "slug": "niteroi"},
+    {"nome": "Mogi das Cruzes", "uf": "SP", "slug": "mogi-das-cruzes"},
+    {"nome": "Diadema", "uf": "SP", "slug": "diadema"},
+    {"nome": "Jundiaí", "uf": "SP", "slug": "jundiai"},
+    {"nome": "Carapicuíba", "uf": "SP", "slug": "carapicuiba"},
+    {"nome": "Piracicaba", "uf": "SP", "slug": "piracicaba"},
+    {"nome": "Bauru", "uf": "SP", "slug": "bauru"},
+    {"nome": "São Vicente", "uf": "SP", "slug": "sao-vicente"},
+    {"nome": "Itaquaquecetuba", "uf": "SP", "slug": "itaquaquecetuba"},
+    {"nome": "Franca", "uf": "SP", "slug": "franca"},
+    {"nome": "Guarujá", "uf": "SP", "slug": "guaruja"},
+    {"nome": "Taubaté", "uf": "SP", "slug": "taubate"},
+    {"nome": "Limeira", "uf": "SP", "slug": "limeira"},
+    {"nome": "Praia Grande", "uf": "SP", "slug": "praia-grande"},
+    {"nome": "Suzano", "uf": "SP", "slug": "suzano"},
+    {"nome": "Taboão da Serra", "uf": "SP", "slug": "taboao-da-serra"},
+    {"nome": "Sumaré", "uf": "SP", "slug": "sumare"},
+    {"nome": "Barueri", "uf": "SP", "slug": "barueri"},
+    {"nome": "Embu das Artes", "uf": "SP", "slug": "embu-das-artes"},
+    {"nome": "São Carlos", "uf": "SP", "slug": "sao-carlos"},
+    {"nome": "Marília", "uf": "SP", "slug": "marilia"},
+    {"nome": "Americana", "uf": "SP", "slug": "americana"},
+    {"nome": "Indaiatuba", "uf": "SP", "slug": "indaiatuba"},
+    {"nome": "Cotia", "uf": "SP", "slug": "cotia"},
+    {"nome": "Jacareí", "uf": "SP", "slug": "jacarei"},
+    {"nome": "Araraquara", "uf": "SP", "slug": "araraquara"},
+    {"nome": "Presidente Prudente", "uf": "SP", "slug": "presidente-prudente"},
+    {"nome": "Itapevi", "uf": "SP", "slug": "itapevi"},
+    {"nome": "Hortolândia", "uf": "SP", "slug": "hortolandia"},
+    {"nome": "Rio Claro", "uf": "SP", "slug": "rio-claro"},
+    {"nome": "Araçatuba", "uf": "SP", "slug": "aracatuba"},
+    {"nome": "Santa Bárbara d'Oeste", "uf": "SP", "slug": "santa-barbara-doeste"},
+    {"nome": "Ferraz de Vasconcelos", "uf": "SP", "slug": "ferraz-de-vasconcelos"},
+    {"nome": "Francisco Morato", "uf": "SP", "slug": "francisco-morato"},
+    {"nome": "Itapecerica da Serra", "uf": "SP", "slug": "itapecerica-da-serra"},
+    {"nome": "Itu", "uf": "SP", "slug": "itu"},
+    {"nome": "Bragança Paulista", "uf": "SP", "slug": "braganca-paulista"},
+    {"nome": "Pindamonhangaba", "uf": "SP", "slug": "pindamonhangaba"},
+    {"nome": "Itapetininga", "uf": "SP", "slug": "itapetininga"},
+    {"nome": "São Caetano do Sul", "uf": "SP", "slug": "sao-caetano-do-sul"},
+    {"nome": "Mogi Guaçu", "uf": "SP", "slug": "mogi-guacu"},
+    {"nome": "Franco da Rocha", "uf": "SP", "slug": "franco-da-rocha"},
+    {"nome": "Jaú", "uf": "SP", "slug": "jau"},
+    {"nome": "Botucatu", "uf": "SP", "slug": "botucatu"},
+    {"nome": "Atibaia", "uf": "SP", "slug": "atibaia"},
+    {"nome": "Araras", "uf": "SP", "slug": "araras"},
+    {"nome": "Cubatão", "uf": "SP", "slug": "cubatao"},
+    {"nome": "Sertãozinho", "uf": "SP", "slug": "sertaozinho"},
+    {"nome": "Valinhos", "uf": "SP", "slug": "valinhos"},
+    {"nome": "Ribeirão Pires", "uf": "SP", "slug": "ribeirao-pires"},
+    {"nome": "Barretos", "uf": "SP", "slug": "barretos"},
+    {"nome": "Catanduva", "uf": "SP", "slug": "catanduva"},
+    {"nome": "Jandira", "uf": "SP", "slug": "jandira"},
+    {"nome": "Birigui", "uf": "SP", "slug": "birigui"},
+    {"nome": "Guaratinguetá", "uf": "SP", "slug": "guaratingueta"},
+    {"nome": "Votorantim", "uf": "SP", "slug": "votorantim"},
+    {"nome": "Tatuí", "uf": "SP", "slug": "tatui"},
+    {"nome": "Salto", "uf": "SP", "slug": "salto"},
+    {"nome": "Poá", "uf": "SP", "slug": "poa"},
+    {"nome": "Santana de Parnaíba", "uf": "SP", "slug": "santana-de-parnaiba"},
+    {"nome": "Itatiba", "uf": "SP", "slug": "itatiba"},
+    {"nome": "Ourinhos", "uf": "SP", "slug": "ourinhos"},
+    {"nome": "Assis", "uf": "SP", "slug": "assis"},
+    {"nome": "Leme", "uf": "SP", "slug": "leme"},
+    {"nome": "Paulínia", "uf": "SP", "slug": "paulinia"},
+    {"nome": "Caieiras", "uf": "SP", "slug": "caieiras"},
+    {"nome": "Mairiporã", "uf": "SP", "slug": "mairipora"},
+    {"nome": "Itanhaém", "uf": "SP", "slug": "itanhaem"},
+    {"nome": "Caçapava", "uf": "SP", "slug": "cacapava"},
+    {"nome": "Votuporanga", "uf": "SP", "slug": "votuporanga"},
+    # --- RJ ---
     {"nome": "São Gonçalo", "uf": "RJ", "slug": "sao-goncalo"},
+    {"nome": "Duque de Caxias", "uf": "RJ", "slug": "duque-de-caxias"},
+    {"nome": "Nova Iguaçu", "uf": "RJ", "slug": "nova-iguacu"},
+    {"nome": "Niterói", "uf": "RJ", "slug": "niteroi"},
+    {"nome": "Belford Roxo", "uf": "RJ", "slug": "belford-roxo"},
+    {"nome": "Campos dos Goytacazes", "uf": "RJ", "slug": "campos-dos-goytacazes"},
+    {"nome": "São João de Meriti", "uf": "RJ", "slug": "sao-joao-de-meriti"},
+    {"nome": "Petrópolis", "uf": "RJ", "slug": "petropolis"},
+    {"nome": "Volta Redonda", "uf": "RJ", "slug": "volta-redonda"},
+    {"nome": "Magé", "uf": "RJ", "slug": "mage"},
+    {"nome": "Macaé", "uf": "RJ", "slug": "macae"},
+    {"nome": "Itaboraí", "uf": "RJ", "slug": "itaborai"},
+    {"nome": "Cabo Frio", "uf": "RJ", "slug": "cabo-frio"},
+    {"nome": "Nova Friburgo", "uf": "RJ", "slug": "nova-friburgo"},
+    {"nome": "Angra dos Reis", "uf": "RJ", "slug": "angra-dos-reis"},
+    {"nome": "Barra Mansa", "uf": "RJ", "slug": "barra-mansa"},
+    {"nome": "Teresópolis", "uf": "RJ", "slug": "teresopolis"},
+    {"nome": "Mesquita", "uf": "RJ", "slug": "mesquita"},
+    {"nome": "Nilópolis", "uf": "RJ", "slug": "nilopolis"},
+    {"nome": "Maricá", "uf": "RJ", "slug": "marica"},
+    # --- MG ---
     {"nome": "Uberlândia", "uf": "MG", "slug": "uberlandia"},
     {"nome": "Contagem", "uf": "MG", "slug": "contagem"},
+    {"nome": "Juiz de Fora", "uf": "MG", "slug": "juiz-de-fora"},
+    {"nome": "Betim", "uf": "MG", "slug": "betim"},
+    # --- SC/PR/RS ---
     {"nome": "Joinville", "uf": "SC", "slug": "joinville"},
     {"nome": "Londrina", "uf": "PR", "slug": "londrina"},
     {"nome": "Caxias do Sul", "uf": "RS", "slug": "caxias-do-sul"}
@@ -98,8 +326,11 @@ def gerar_paginas():
     template = template.replace('Atendemos empresas de todos os estados do Brasil', 'Atendemos empresas de [[CIDADE]]')
     template = template.replace('empresas de todo o Brasil', 'empresas de [[CIDADE]]')
     template = template.replace('Atendimento em todo o território nacional', 'Atendimento especializado em [[CIDADE]]')
-    template = template.replace('>Sites que transformam<', '>Criação de Sites em [[CIDADE]]<')
-    template = template.replace('data-text="Sites que transformam"', 'data-text="Criação de Sites em [[CIDADE]]"')
+    
+    # CORREÇÃO H1: Usa o texto exato do index.html atual
+    template = template.replace('>Criação de Sites<', '>Criação de Sites em [[CIDADE]]<')
+    template = template.replace('data-text="Criação de Sites"', 'data-text="Criação de Sites em [[CIDADE]]"')
+    
     template = template.replace('Vocês atendem minha cidade?', 'Vocês atendem em [[CIDADE]]?')
     template = template.replace('Atendemos empresas de todos os estados do Brasil de forma 100% remota', 'Sim! Atendemos empresas de [[CIDADE]] de forma 100% remota')
     template = re.sub(r'<link\s+rel=["\']canonical["\']\s+href=["\']https://www\.cybernexinnovatech\.com\.br/?["\']\s*/?>', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">', template)
@@ -163,7 +394,11 @@ def gerar_paginas():
         if '<section id="faq">' in conteudo:
             conteudo = conteudo.replace('<section id="faq">', secao + '\n<section id="faq">')
 
-        conteudo = conteudo.replace('"name": "Brazil"', f'"name": "{local["nome"]} - {local["uf"]}"').replace('"@type": "Country"', '"@type": "City"')
+        # CORREÇÃO JSON-LD: Garante que substitui Brasil ou Brazil
+        conteudo = conteudo.replace('"name": "Brasil"', f'"name": "{local["nome"]} - {local["uf"]}"')
+        conteudo = conteudo.replace('"name": "Brazil"', f'"name": "{local["nome"]} - {local["uf"]}"')
+        conteudo = conteudo.replace('"@type": "Country"', '"@type": "City"')
+        
         conteudo = conteudo.replace('[[CIDADE]]', local['nome']).replace('[[UF]]', local['uf']).replace('[[FILENAME]]', filename)
 
         with open(filename, 'w', encoding='utf-8') as f:
@@ -192,8 +427,8 @@ def gerar_paginas():
     template_seg = html_base
     template_seg = template_seg.replace('Criação de Sites para Todo o Brasil', 'Criação de Sites para [[SEGMENTO_PLURAL]]')
     template_seg = template_seg.replace('Atendemos empresas de todos os estados do Brasil', 'Especialistas em Sites para [[SEGMENTO_PLURAL]]')
-    template_seg = template_seg.replace('>Sites que transformam<', '>Sites para [[SEGMENTO_PLURAL]]<')
-    template_seg = template_seg.replace('data-text="Sites que transformam"', 'data-text="Sites para [[SEGMENTO_PLURAL]]"')
+    template_seg = template_seg.replace('>Criação de Sites<', '>Sites para [[SEGMENTO_PLURAL]]<')
+    template_seg = template_seg.replace('data-text="Criação de Sites"', 'data-text="Sites para [[SEGMENTO_PLURAL]]"')
     template_seg = re.sub(r'<link\s+rel=["\']canonical["\']\s+href=["\']https://www\.cybernexinnovatech\.com\.br/?["\']\s*/?>', '<link rel="canonical" href="https://www.cybernexinnovatech.com.br/[[FILENAME]]">', template_seg)
 
     for seg in segmentos:
@@ -324,6 +559,7 @@ def run_step(script_name):
 def main():
     print("--- 🚀 AUTO-BUILD & SERVER ---")
     
+    run_step("seo_booster.py") # Executa primeiro para atualizar o index.html
     run_step("gerar_paginas.py")
     run_step("gerar_blog.py")
     run_step("gerar_sitemap.py")
@@ -352,6 +588,11 @@ if __name__ == "__main__":
 
 def reparar():
     print("--- 🛠️ Reparando arquivos do sistema... ---")
+    
+    # Reescreve seo_booster.py (Novo)
+    with open('seo_booster.py', 'w', encoding='utf-8') as f:
+        f.write(code_seo_booster)
+    print("✅ seo_booster.py restaurado.")
     
     # Reescreve gerar_paginas.py (Limpo)
     with open('gerar_paginas.py', 'w', encoding='utf-8') as f:

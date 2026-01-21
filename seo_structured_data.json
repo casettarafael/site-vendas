@@ -19,6 +19,18 @@
       "latitude": -23.55052,
       "longitude": -46.633308
     },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Brasil"
+    },
+    "knowsAbout": [
+      "Web Development",
+      "SEO",
+      "Digital Marketing",
+      "E-commerce",
+      "QA Automation",
+      "Performance Tuning"
+    ],
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
