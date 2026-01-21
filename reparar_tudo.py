@@ -140,6 +140,8 @@ if __name__ == "__main__":
 code_paginas = r'''import os
 import re
 import random
+import json
+import datetime
 
 # Configurações
 SOURCE_FILE = 'index.html'
