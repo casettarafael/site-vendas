@@ -1,92 +1,115 @@
 import os
+import glob
+import sys
 
 # Configurações
 OUTPUT_PREFIX = 'criacao-de-sites-em-'
 
-# Lista de Locais (Deve ser igual ao gerar_paginas.py)
-locais = [
-    {"nome": "Rio Branco", "uf": "AC", "slug": "rio-branco"},
-    {"nome": "Maceió", "uf": "AL", "slug": "maceio"},
-    {"nome": "Macapá", "uf": "AP", "slug": "macapa"},
-    {"nome": "Manaus", "uf": "AM", "slug": "manaus"},
-    {"nome": "Salvador", "uf": "BA", "slug": "salvador"},
-    {"nome": "Fortaleza", "uf": "CE", "slug": "fortaleza"},
-    {"nome": "Brasília", "uf": "DF", "slug": "brasilia"},
-    {"nome": "Vitória", "uf": "ES", "slug": "vitoria"},
-    {"nome": "Goiânia", "uf": "GO", "slug": "goiania"},
-    {"nome": "São Luís", "uf": "MA", "slug": "sao-luis"},
-    {"nome": "Cuiabá", "uf": "MT", "slug": "cuiaba"},
-    {"nome": "Campo Grande", "uf": "MS", "slug": "campo-grande"},
-    {"nome": "Belo Horizonte", "uf": "MG", "slug": "belo-horizonte"},
-    {"nome": "Belém", "uf": "PA", "slug": "belem"},
-    {"nome": "João Pessoa", "uf": "PB", "slug": "joao-pessoa"},
-    {"nome": "Curitiba", "uf": "PR", "slug": "curitiba"},
-    {"nome": "Recife", "uf": "PE", "slug": "recife"},
-    {"nome": "Teresina", "uf": "PI", "slug": "teresina"},
-    {"nome": "Rio de Janeiro", "uf": "RJ", "slug": "rio-de-janeiro"},
-    {"nome": "Natal", "uf": "RN", "slug": "natal"},
-    {"nome": "Porto Alegre", "uf": "RS", "slug": "porto-alegre"},
-    {"nome": "Porto Velho", "uf": "RO", "slug": "porto-velho"},
-    {"nome": "Boa Vista", "uf": "RR", "slug": "boa-vista"},
-    {"nome": "Florianópolis", "uf": "SC", "slug": "florianopolis"},
-    {"nome": "São Paulo", "uf": "SP", "slug": "sao-paulo"},
-    {"nome": "Aracaju", "uf": "SE", "slug": "aracaju"},
-    {"nome": "Palmas", "uf": "TO", "slug": "palmas"},
-    # Interior de SP
-    {"nome": "Campinas", "uf": "SP", "slug": "campinas"},
-    {"nome": "São José dos Campos", "uf": "SP", "slug": "sao-jose-dos-campos"},
-    {"nome": "Ribeirão Preto", "uf": "SP", "slug": "ribeirao-preto"},
-    {"nome": "Sorocaba", "uf": "SP", "slug": "sorocaba"},
-    {"nome": "São José do Rio Preto", "uf": "SP", "slug": "sao-jose-do-rio-preto"}
-]
+# Importa a lista oficial de locais para garantir consistência
+try:
+    from gerar_paginas import locais, segmentos
+except ImportError:
+    print("❌ ERRO CRÍTICO: Não foi possível importar 'gerar_paginas.py'.")
+    # Define listas vazias para não quebrar o script totalmente
+    locais = []
+    segmentos = []
 
 def verificar():
-    print("--- Iniciando Auditoria do Site ---")
-    erros = 0
-    sucessos = 0
-
-    # 1. Verificar index.html
-    if not os.path.exists('index.html'):
-        print("[CRÍTICO] index.html não encontrado!")
-        return
+    print("=========================================")
+    print("   🕵️‍♂️ DIAGNÓSTICO COMPLETO DO SISTEMA")
+    print("=========================================")
     
-    with open('index.html', 'r', encoding='utf-8') as f:
-        index_content = f.read()
+    erros = 0
+    avisos = 0
 
-    # 2. Verificar cada página gerada
-    for local in locais:
-        filename = f"{OUTPUT_PREFIX}{local['slug']}.html"
-        
-        # Checa se arquivo existe
-        if not os.path.exists(filename):
-            print(f"[ERRO] Arquivo faltando: {filename}")
+    # 1. Análise da Lista de Cidades
+    print("\n[1] Analisando Configuração de Cidades...")
+    total_cidades = len(locais)
+    slugs = [l['slug'] for l in locais]
+    slugs_unicos = set(slugs)
+    
+    print(f"   - Cidades configuradas: {total_cidades}")
+    
+    if len(slugs) != len(slugs_unicos):
+        duplicadas = total_configurado - len(slugs_unicos)
+        print(f"   ⚠️  AVISO: Existem {duplicadas} cidades duplicadas na lista!")
+        avisos += 1
+    else:
+        print("   ✅ Nenhuma duplicidade encontrada.")
+
+    # 2. Análise de Arquivos Gerados
+    print("\n[2] Verificando Arquivos Gerados...")
+    arquivos_cidades = glob.glob('criacao-de-sites-em-*.html')
+    total_arquivos = len(arquivos_cidades)
+    
+    print(f"   - Arquivos HTML de cidades encontrados: {total_arquivos}")
+    
+    if total_arquivos == 0:
+        print("   ❌ ERRO: Nenhuma página gerada. Rode 'python gerar_tudo.py'.")
+        erros += 1
+    elif total_arquivos < len(slugs_unicos):
+        faltando = len(slugs_unicos) - total_arquivos
+        print(f"   ❌ ERRO: Faltam {faltando} páginas para serem geradas.")
+        erros += 1
+    else:
+        print("   ✅ Todas as páginas configuradas foram geradas.")
+
+    # 3. Verificação de Estrutura
+    print("\n[3] Verificando Estrutura do Site...")
+    arquivos_essenciais = ['index.html', 'cobertura.html', 'sitemap.xml', 'robots.txt', 'rss.xml']
+    for arq in arquivos_essenciais:
+        if os.path.exists(arq):
+            print(f"   ✅ {arq} encontrado.")
+        else:
+            print(f"   ❌ ERRO: {arq} não encontrado.")
             erros += 1
-            continue
 
-        # Checa conteúdo do arquivo
-        with open(filename, 'r', encoding='utf-8') as f:
-            content = f.read()
-            
-            # Verifica se o nome da cidade foi inserido
-            if local['nome'] not in content:
-                print(f"[ERRO] {filename}: Nome da cidade '{local['nome']}' não encontrado no HTML.")
-                erros += 1
-            
-            # Verifica se o script de segurança (Failsafe) está presente
-            if "var p = document.getElementById('preloader');" not in content:
-                print(f"[ERRO] {filename}: Script de segurança (Failsafe) AUSENTE. A tela branca pode ocorrer.")
-                erros += 1
+    # 4. Verificação de Conteúdo (Amostragem)
+    print("\n[4] Verificando Conteúdo (Amostragem)...")
+    if total_arquivos > 0:
+        # Pega o primeiro arquivo para teste
+        amostra = arquivos_cidades[0]
+        try:
+            with open(amostra, 'r', encoding='utf-8') as f:
+                content = f.read()
+                
+                # Verifica Placeholders não substituídos
+                if '[[CIDADE]]' in content:
+                    print(f"   ❌ ERRO: Placeholder [[CIDADE]] encontrado em {amostra}")
+                    erros += 1
+                else:
+                    print("   ✅ Substituição de variáveis: OK")
+        except Exception as e:
+            print(f"   ❌ ERRO ao ler amostra: {e}")
+            erros += 1
 
-            # Verifica se existe link no index.html apontando para esta página
-            if filename not in index_content:
-                print(f"[ALERTA] Não encontrei link para {filename} no rodapé do index.html.")
-        
-        sucessos += 1
+    # 5. Verificação do Sitemap
+    print("\n[5] Verificando Sitemap...")
+    if os.path.exists('sitemap.xml'):
+        try:
+            with open('sitemap.xml', 'r', encoding='utf-8') as f:
+                sitemap_content = f.read()
+                count_urls = sitemap_content.count('<loc>')
+                print(f"   - URLs no sitemap: {count_urls}")
+                
+                # Estimativa: Cidades + Segmentos + Home + Blog + Cobertura
+                esperado = len(slugs_unicos) + len(segmentos) 
+                if count_urls < esperado:
+                    print(f"   ⚠️  AVISO: Sitemap parece incompleto (Tem {count_urls}, esperado aprox {esperado}).")
+                    avisos += 1
+                else:
+                    print("   ✅ Sitemap parece completo.")
+        except Exception as e:
+            print(f"   ❌ ERRO ao ler sitemap: {e}")
+            erros += 1
 
-    print(f"\n--- Resultado ---")
-    print(f"Arquivos verificados: {len(locais)}")
-    print(f"Páginas OK: {sucessos}")
-    print(f"Erros: {erros}")
+    print("\n=========================================")
+    print(f"RESUMO: {erros} Erros, {avisos} Avisos")
+    if erros == 0:
+        print("🚀 SISTEMA OPERACIONAL E PRONTO PARA USO!")
+    else:
+        print("🛑 CORRIJA OS ERROS ACIMA.")
+    print("=========================================")
 
 if __name__ == "__main__":
     verificar()

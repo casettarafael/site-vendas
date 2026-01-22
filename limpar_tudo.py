@@ -14,7 +14,7 @@ def limpar():
             print(f"Erro ao remover {f}: {e}")
 
     # 2. Remove scripts de geração/verificação antigos
-    scripts = ['gerar_paginas.py', 'verificar_site.py']
+    scripts = ['verificar_site.py']
     for s in scripts:
         if os.path.exists(s):
             os.remove(s)
