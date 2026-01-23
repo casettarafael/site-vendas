@@ -588,6 +588,54 @@ if __name__ == "__main__":
     main()
 """
 
+# --- 4. CONTEÚDO DE GERAR_SITEMAP.PY ---
+code_sitemap = r'''import os
+import glob
+import datetime
+
+# Configurações
+BASE_URL = "https://www.cybernexinnovatech.com.br"
+SITEMAP_FILE = "sitemap.xml"
+
+def gerar_sitemap():
+    print("--- Gerando Sitemap.xml ---")
+    
+    today = datetime.date.today().isoformat()
+    urls = []
+    
+    # 1. Home
+    urls.append({"loc": f"{BASE_URL}/", "priority": "1.00"})
+    
+    # 2. Cobertura
+    if os.path.exists("cobertura.html"):
+        urls.append({"loc": f"{BASE_URL}/cobertura.html", "priority": "0.80"})
+
+    # 3. Cidades
+    for arq in glob.glob("criacao-de-sites-em-*.html"):
+        urls.append({"loc": f"{BASE_URL}/{os.path.basename(arq)}", "priority": "0.80"})
+        
+    # 4. Segmentos
+    for arq in glob.glob("site-para-*.html"):
+        urls.append({"loc": f"{BASE_URL}/{os.path.basename(arq)}", "priority": "0.90"})
+
+    # 5. Blog
+    for arq in glob.glob("artigo-*.html"):
+        urls.append({"loc": f"{BASE_URL}/{os.path.basename(arq)}", "priority": "0.80"})
+
+    # Gerar XML
+    xml_content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for url in urls:
+        xml_content += f'  <url>\n    <loc>{url["loc"]}</loc>\n    <lastmod>{today}</lastmod>\n    <priority>{url["priority"]}</priority>\n  </url>\n'
+    xml_content += '</urlset>'
+    
+    with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
+        f.write(xml_content)
+    print(f"✅ Sitemap gerado com {len(urls)} URLs.")
+
+if __name__ == "__main__":
+    gerar_sitemap()
+'''
+
 def reparar():
     print("--- 🛠️ Reparando arquivos do sistema... ---")
     
@@ -610,6 +658,11 @@ def reparar():
     with open('gerar_tudo.py', 'w', encoding='utf-8') as f:
         f.write(code_tudo)
     print("✅ gerar_tudo.py restaurado.")
+    
+    # Reescreve gerar_sitemap.py
+    with open('gerar_sitemap.py', 'w', encoding='utf-8') as f:
+        f.write(code_sitemap)
+    print("✅ gerar_sitemap.py restaurado.")
 
     print("\n--- 🚀 Iniciando execução... ---")
     try:
