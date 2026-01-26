@@ -343,17 +343,86 @@ def gerar_paginas():
         "Design profissional e código otimizado para empresas de [[CIDADE]] que buscam o próximo nível de faturamento.",
         "Desenvolvimento de sites de alta performance para negócios em [[CIDADE]] que desejam crescer na internet.",
         "Soluções web estratégicas para empresas de [[CIDADE]]. Sites rápidos e seguros.",
-        "Criação de sites modernos e otimizados para o Google para empresas de [[CIDADE]]."
+        "Criação de sites modernos e otimizados para o Google para empresas de [[CIDADE]].",
+        "Transforme visitantes em clientes com um site exclusivo para sua empresa em [[CIDADE]].",
+        "Aumente sua autoridade em [[CIDADE]] com um site profissional e veloz.",
+        "Web design focado em conversão para negócios locais de [[CIDADE]].",
+        "Sua empresa em [[CIDADE]] merece um site que vende 24 horas por dia.",
+        "Sua marca em destaque em [[CIDADE]] com um site de alta conversão.",
+        "Conquiste o mercado de [[CIDADE]] com tecnologia web de ponta.",
+        "Sites que carregam rápido e vendem mais para o público de [[CIDADE]].",
+        "Acelere o crescimento da sua empresa em [[CIDADE]] com um site otimizado.",
+        "Não perca mais clientes em [[CIDADE]]. Tenha um site profissional hoje.",
+        "Destaque-se da concorrência em [[CIDADE]] com um design exclusivo.",
+        "Sites institucionais e lojas virtuais para empresas de [[CIDADE]].",
+        "A melhor solução em criação de sites para o mercado de [[CIDADE]].",
+        "Tenha um site que funciona e vende para seu público em [[CIDADE]].",
+        "Desenvolvimento web sob medida para negócios de [[CIDADE]].",
+        "Sua vitrine digital em [[CIDADE]] aberta 24 horas por dia.",
+        "Atraia mais clientes qualificados em [[CIDADE]] com SEO local.",
+        "Tecnologia e design unidos para impulsionar seu negócio em [[CIDADE]]."
     ]
     
-    variacoes_cta = ["Quero um Site Profissional", "Solicitar Orçamento Agora", "Aumentar Minhas Vendas", "Falar com Especialista"]
-    variacoes_atendimento = ["Atendimento especializado em [[CIDADE]]", "Suporte dedicado para empresas de [[CIDADE]]", "Soluções digitais em [[CIDADE]]"]
+    variacoes_cta = [
+        "Quero um Site Profissional", "Solicitar Orçamento Agora", "Aumentar Minhas Vendas", 
+        "Falar com Especialista", "Pedir Cotação", "Começar Agora", "Quero Vender Mais",
+        "Solicitar Proposta", "Ver Planos Disponíveis", "Quero Crescer Online", "Fale Conosco"
+    ]
     
-    variacoes_titulo_extra = ["Por que sua empresa em [[CIDADE]] precisa de um site?", "Destaque-se no mercado de [[CIDADE]]", "Aumente suas vendas em [[CIDADE]]"]
+    variacoes_atendimento = [
+        "Atendimento especializado em [[CIDADE]]", "Suporte dedicado para empresas de [[CIDADE]]", 
+        "Soluções digitais em [[CIDADE]]", "Parceiro digital em [[CIDADE]]", "Consultoria web em [[CIDADE]]",
+        "Agência focada em [[CIDADE]]", "Desenvolvimento web para [[CIDADE]]", "Seu parceiro de tecnologia em [[CIDADE]]"
+    ]
+    
+    variacoes_titulo_extra = [
+        "Por que sua empresa em [[CIDADE]] precisa de um site?", "Destaque-se no mercado de [[CIDADE]]", 
+        "Aumente suas vendas em [[CIDADE]]", "Domine o Google em [[CIDADE]]", "Como crescer seu negócio em [[CIDADE]]",
+        "A importância de um site para empresas de [[CIDADE]]", "Saia na frente da concorrência em [[CIDADE]]"
+    ]
+    
     variacoes_texto_extra = [
         "O mercado em <strong>[[CIDADE]]</strong> está cada vez mais digital. Ter um site otimizado garante que sua empresa seja encontrada.",
         "Não deixe seu negócio fora do mapa digital de <strong>[[CIDADE]]</strong> (DDD [[DDD]]). A internet é sua maior vitrine.",
-        "Empresas de <strong>[[CIDADE]]</strong> que não estão na internet estão perdendo dinheiro. Um site rápido é a chave para captar novos clientes."
+        "Empresas de <strong>[[CIDADE]]</strong> que não estão na internet estão perdendo dinheiro. Um site rápido é a chave para captar novos clientes.",
+        "Em <strong>[[CIDADE]]</strong>, a concorrência está online. Garanta seu espaço com uma presença digital forte e profissional.",
+        "Seus clientes em <strong>[[CIDADE]]</strong> estão buscando no Google agora. Sua empresa aparece lá? Nós resolvemos isso.",
+        "Para se destacar em <strong>[[CIDADE]]</strong>, você precisa de mais que um cartão de visitas. Precisa de uma máquina de vendas online.",
+        "Aumente a credibilidade da sua marca em <strong>[[CIDADE]]</strong> com um site que transmite confiança e profissionalismo."
+    ]
+
+    variacoes_servicos_titulo = [
+        "Soluções digitais para seu negócio",
+        "Nossos serviços especializados",
+        "Como posso ajudar sua empresa",
+        "O que oferecemos para você", 
+        "Estratégias para o seu crescimento",
+        "Serviços de alta performance",
+        "O que fazemos por você",
+        "Tecnologia para o seu sucesso"
+    ]
+
+    variacoes_servicos_subtitulo = [
+        "Estruturas otimizadas para captar leads e gerar oportunidades de negócio.",
+        "Tecnologia de ponta para destacar sua marca no mercado digital.",
+        "Desenvolvimento focado em resultados reais e aumento de faturamento.",
+        "Não entrego apenas \"um site\". Entrego uma ferramenta de vendas pronta para o Google.",
+        "Sites rápidos, seguros e preparados para converter visitantes em clientes.",
+        "Soluções completas, do design ao código, focadas na experiência do usuário."
+    ]
+
+    # --- NOVAS VARIAÇÕES PARA SEO (ANTI-SPAM) ---
+    variacoes_meta = [
+        "Criação de sites profissionais e Landing Pages para empresas de [[CIDADE]]. Desenvolvimento web de alta performance, SEO e tráfego pago. Peça seu orçamento!",
+        "Procurando Criação de Sites em [[CIDADE]]? Desenvolvemos sites rápidos e otimizados para o Google. Aumente suas vendas hoje!",
+        "Agência de Criação de Sites focada em [[CIDADE]]. Sites Institucionais e Lojas Virtuais que convertem visitantes em clientes.",
+        "Desenvolvimento de Sites Profissionais em [[CIDADE]]. Tenha um site moderno, responsivo e pronto para SEO. Solicite um orçamento.",
+        "Especialistas em Web Design e SEO em [[CIDADE]]. Transforme sua presença digital com um site que vende 24h por dia.",
+        "Empresa de desenvolvimento de sites em [[CIDADE]]. Criamos sites rápidos, seguros e otimizados para o Google. Solicite seu orçamento agora!",
+        "Melhore a presença digital da sua empresa em [[CIDADE]]. Sites profissionais, Landing Pages e E-commerce. Resultados reais.",
+        "Especialistas em criação de sites e SEO em [[CIDADE]]. Aumente sua visibilidade e vendas com um site de alta performance.",
+        "Seu negócio em [[CIDADE]] precisa de um site profissional. Desenvolvemos soluções web personalizadas para você.",
+        "Criação de sites em [[CIDADE]] com foco em vendas. Design moderno e tecnologia de ponta para destacar sua marca."
     ]
 
     template_secao_extra = """
@@ -383,6 +452,15 @@ def gerar_paginas():
             
         conteudo = conteudo.replace("Quero um Site Profissional", random.choice(variacoes_cta))
         conteudo = conteudo.replace("Atendimento especializado em [[CIDADE]]", random.choice(variacoes_atendimento))
+
+        # Variações de Serviços para evitar conteúdo duplicado
+        conteudo = conteudo.replace("Soluções digitais para seu negócio", random.choice(variacoes_servicos_titulo))
+        conteudo = conteudo.replace("Estruturas otimizadas para captar leads e gerar oportunidades de negócio.", random.choice(variacoes_servicos_subtitulo))
+
+        # 1. Variação da Meta Description (Crucial para o Google)
+        meta_content = random.choice(variacoes_meta).replace('[[CIDADE]]', local['nome'])
+        # Substitui a meta tag inteira para garantir que pegue a versão correta
+        conteudo = re.sub(r'<meta name="description" content="[^"]+">', f'<meta name="description" content="{meta_content}">', conteudo)
 
         cidades_mesmo_estado = [l for l in locais if l['uf'] == local['uf'] and l['slug'] != local['slug']]
         vizinhos = random.sample(cidades_mesmo_estado, min(len(cidades_mesmo_estado), 4))
