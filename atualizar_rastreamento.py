@@ -5,7 +5,7 @@ import glob
 # O script que queremos injetar
 SCRIPT_TRACKING = """
     <script>
-      fetch('http://localhost:5678/webhook-test/visita-site', {
+      fetch('http://localhost:5678/webhook/visita-site', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -20,7 +20,7 @@ SCRIPT_TRACKING = """
 """
 
 def main():
-    print("--- 🔄 Injetando Script de Rastreamento em Massa ---")
+    print("--- 🔄 Atualizando Rastreamento para Produção (Webhook) ---")
     
     # Busca todos os arquivos .html na pasta atual
     arquivos = glob.glob("*.html")
@@ -31,9 +31,18 @@ def main():
             with open(arquivo, 'r', encoding='utf-8') as f:
                 conteudo = f.read()
             
-            # Verifica se já tem o script para não duplicar
+            # 1. Se já tem a versão de produção, pula
+            if "webhook/visita-site" in conteudo:
+                print(f"✅ {arquivo} já está na versão de produção.")
+                continue
+
+            # 2. Se tem a versão de teste, substitui
             if "webhook-test/visita-site" in conteudo:
-                print(f"⏭️  {arquivo} já possui o script.")
+                novo_conteudo = conteudo.replace("webhook-test/visita-site", "webhook/visita-site")
+                with open(arquivo, 'w', encoding='utf-8') as f:
+                    f.write(novo_conteudo)
+                print(f"🔄 {arquivo} atualizado de TESTE para PRODUÇÃO.")
+                count += 1
                 continue
                 
             # Injeta antes do fechamento do body
