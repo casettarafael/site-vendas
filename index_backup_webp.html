@@ -937,5 +937,19 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
     <script src="script.js" defer></script>
+
+    <script>
+      fetch('http://localhost:5678/webhook-test/visita-site', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: window.location.href,
+          cidade: document.title,
+          timestamp: new Date().toLocaleString()
+        })
+      })
+      .then(response => console.log('Radar Cybernex: Sinal enviado!'))
+      .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));
+    </script>
 </body>
 </html>

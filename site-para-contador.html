@@ -1074,5 +1074,19 @@
             window.open(url, '_blank');
         }
     </script>
+
+    <script>
+      fetch('http://localhost:5678/webhook-test/visita-site', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: window.location.href,
+          cidade: document.title,
+          timestamp: new Date().toLocaleString()
+        })
+      })
+      .then(response => console.log('Radar Cybernex: Sinal enviado!'))
+      .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));
+    </script>
 </body>
 </html>
