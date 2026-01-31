@@ -853,6 +853,10 @@
                     <div id="roi-result" style="margin-top: 20px; display: none; padding: 15px; background: #ecfdf5; border-radius: 8px; border: 1px solid #10b981;">
                         <p style="color: #065f46; margin-bottom: 5px;">💰 Economia Mensal: <strong id="roi-monthly" style="font-size: 1.2rem;"></strong></p>
                         <p style="color: #065f46;">📅 Economia Anual: <strong id="roi-yearly" style="font-size: 1.2rem;"></strong></p>
+                        <button onclick="shareROI()" style="margin-top: 10px; background: #25D366; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; width: 100%; justify-content: center;">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.01-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.381a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Compartilhar Resultado
+                        </button>
                     </div>
                 </div>
 
@@ -883,6 +887,47 @@
                     <div id="quote-result" style="margin-top: 20px; display: none; padding: 15px; background: #eff6ff; border-radius: 8px; border: 1px solid #3b82f6;">
                         <p style="color: #1e40af; text-align: center;">Valor Sugerido:</p>
                         <p id="quote-final" style="color: #1e3a8a; font-size: 2rem; font-weight: 800; text-align: center; margin-top: 5px;"></p>
+                        <button onclick="shareQuote()" style="margin: 10px auto 0; background: #25D366; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; width: 100%; justify-content: center;">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.01-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.381a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Compartilhar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Simulador de Lucro (Ads) -->
+                <div class="tool-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 4px solid #f59e0b;">
+                    <h3 style="color: #4b5563; margin-bottom: 20px; font-size: 1.4rem;"> Simulador de Lucro (Ads)</h3>
+                    <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 20px;">Estime o retorno financeiro de campanhas de tráfego pago.</p>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Investimento em Mídia (R$)</label>
+                        <input type="number" id="ads-invest" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 1000">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600; font-size: 0.85rem;">CPC Médio (R$)</label>
+                            <input type="number" id="ads-cpc" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 2.00">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600; font-size: 0.85rem;">Conv. Site (%)</label>
+                            <input type="number" id="ads-conv" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 1.5">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Valor do seu Produto (Ticket)</label>
+                        <input type="number" id="ads-ticket" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 150">
+                    </div>
+                    
+                    <button onclick="calculateAds()" class="btn btn-secondary" style="width: 100%; cursor: pointer; background-color: #f59e0b; color: white; border: none; padding: 12px 30px; border-radius: 5px; font-weight: 600;">Simular Resultado</button>
+                    
+                    <div id="ads-result" style="margin-top: 20px; display: none; padding: 15px; background: #fffbeb; border-radius: 8px; border: 1px solid #fcd34d;">
+                        <p style="color: #92400e; margin-bottom: 5px;">💰 Faturamento: <strong id="ads-revenue" style="font-size: 1.1rem;"></strong></p>
+                        <p style="color: #92400e; margin-bottom: 5px;">🤑 Lucro Bruto: <strong id="ads-profit" style="font-size: 1.1rem;"></strong></p>
+                        <p style="color: #92400e;">📈 ROAS: <strong id="ads-roas" style="font-size: 1.1rem;"></strong></p>
+                        <button onclick="shareAds()" style="margin: 10px auto 0; background: #25D366; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; width: 100%; justify-content: center;">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.01-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.381a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Compartilhar
+                        </button>
                     </div>
                 </div>
 
@@ -1194,6 +1239,13 @@
             document.getElementById('roi-result').style.display = 'block';
         }
 
+        function shareROI() {
+            const monthly = document.getElementById('roi-monthly').innerText;
+            const yearly = document.getElementById('roi-yearly').innerText;
+            const text = `Olha só! Com a automação da Cybernex, posso economizar ${monthly} por mês e ${yearly} por ano! 🚀`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
         function calculateQuote() {
             const rate = parseFloat(document.getElementById('quote-rate').value) || 0;
             const hours = parseFloat(document.getElementById('quote-hours').value) || 0;
@@ -1205,6 +1257,39 @@
 
             document.getElementById('quote-final').innerText = finalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             document.getElementById('quote-result').style.display = 'block';
+        }
+
+        function shareQuote() {
+            const price = document.getElementById('quote-final').innerText;
+            const text = `Acabei de gerar um orçamento: O valor sugerido para o projeto é ${price}. Calculado via Cybernex.`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function calculateAds() {
+            const invest = parseFloat(document.getElementById('ads-invest').value) || 0;
+            const cpc = parseFloat(document.getElementById('ads-cpc').value) || 0;
+            const ticket = parseFloat(document.getElementById('ads-ticket').value) || 0;
+            const conv = parseFloat(document.getElementById('ads-conv').value) || 0;
+
+            if (invest === 0 || cpc === 0) return;
+
+            const clicks = invest / cpc;
+            const sales = clicks * (conv / 100);
+            const revenue = sales * ticket;
+            const profit = revenue - invest;
+            const roas = (revenue / invest).toFixed(1);
+
+            document.getElementById('ads-revenue').innerText = revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('ads-profit').innerText = profit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('ads-roas').innerText = roas + "x";
+            
+            document.getElementById('ads-result').style.display = 'block';
+        }
+
+        function shareAds() {
+            const profit = document.getElementById('ads-profit').innerText;
+            const text = `Fiz uma simulação na Cybernex: Com um site otimizado, posso ter um lucro estimado de ${profit} com anúncios! 🚀`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
         }
     </script>
 </body>
