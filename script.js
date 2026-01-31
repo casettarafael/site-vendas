@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.add('loaded');
         }
     }
-    setTimeout(removePreloader, 100);
+    removePreloader();
     window.addEventListener('load', removePreloader);
 
     // Lógica do Accordion (FAQ)
