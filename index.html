@@ -822,6 +822,74 @@
         </div>
     </section>
 
+    <!-- 6.9. Ferramentas Gratuitas -->
+    <section id="ferramentas" class="tools-section" style="background-color: #f8fafc; padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title">Ferramentas Gratuitas</h2>
+            <p class="section-subtitle">Potencialize seus resultados com nossas calculadoras exclusivas.</p>
+            
+            <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                
+                <!-- Calculadora de ROI -->
+                <div class="tool-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 4px solid #7c3aed;">
+                    <h3 style="color: #4b5563; margin-bottom: 20px; font-size: 1.4rem;">🤖 Calculadora de ROI (Automação)</h3>
+                    <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 20px;">Descubra quanto você pode economizar automatizando processos manuais.</p>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Horas gastas por semana (manual)</label>
+                        <input type="number" id="roi-hours" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 10">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Valor da hora do funcionário (R$)</label>
+                        <input type="number" id="roi-rate" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 50">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Custo da Automação (R$/mês)</label>
+                        <input type="number" id="roi-cost" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 200">
+                    </div>
+                    
+                    <button onclick="calculateROI()" class="btn btn-primary" style="width: 100%; cursor: pointer;">Calcular Economia</button>
+                    
+                    <div id="roi-result" style="margin-top: 20px; display: none; padding: 15px; background: #ecfdf5; border-radius: 8px; border: 1px solid #10b981;">
+                        <p style="color: #065f46; margin-bottom: 5px;">💰 Economia Mensal: <strong id="roi-monthly" style="font-size: 1.2rem;"></strong></p>
+                        <p style="color: #065f46;">📅 Economia Anual: <strong id="roi-yearly" style="font-size: 1.2rem;"></strong></p>
+                    </div>
+                </div>
+
+                <!-- Gerador de Orçamento -->
+                <div class="tool-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 4px solid #2563eb;">
+                    <h3 style="color: #4b5563; margin-bottom: 20px; font-size: 1.4rem;">💼 Gerador de Orçamento</h3>
+                    <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 20px;">Calcule rapidamente o valor ideal para cobrar pelos seus serviços.</p>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Valor da sua hora (R$)</label>
+                        <input type="number" id="quote-rate" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 100">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Horas estimadas do projeto</label>
+                        <input type="number" id="quote-hours" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 20">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Custos extras (Software/Terceiros)</label>
+                        <input type="number" id="quote-extra" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 150">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 600;">Margem de Lucro (%)</label>
+                        <input type="number" id="quote-margin" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;" placeholder="Ex: 30">
+                    </div>
+                    
+                    <button onclick="calculateQuote()" class="btn btn-secondary" style="width: 100%; cursor: pointer; background-color: #2563eb; color: white; border: none; padding: 12px 30px; border-radius: 5px; font-weight: 600;">Gerar Valor</button>
+                    
+                    <div id="quote-result" style="margin-top: 20px; display: none; padding: 15px; background: #eff6ff; border-radius: 8px; border: 1px solid #3b82f6;">
+                        <p style="color: #1e40af; text-align: center;">Valor Sugerido:</p>
+                        <p id="quote-final" style="color: #1e3a8a; font-size: 2rem; font-weight: 800; text-align: center; margin-top: 5px;"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- 7. FAQ -->
     <section id="faq">
         <div class="container">
@@ -1110,6 +1178,34 @@
       .then(response => console.log('Radar Cybernex: Sinal enviado!'))
       .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));
       */
+
+      // Scripts das Ferramentas Gratuitas
+      function calculateROI() {
+            const hours = parseFloat(document.getElementById('roi-hours').value) || 0;
+            const rate = parseFloat(document.getElementById('roi-rate').value) || 0;
+            const cost = parseFloat(document.getElementById('roi-cost').value) || 0;
+
+            const monthlyManualCost = hours * 4 * rate; // 4 semanas
+            const monthlySavings = monthlyManualCost - cost;
+            const yearlySavings = monthlySavings * 12;
+
+            document.getElementById('roi-monthly').innerText = monthlySavings.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('roi-yearly').innerText = yearlySavings.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('roi-result').style.display = 'block';
+        }
+
+        function calculateQuote() {
+            const rate = parseFloat(document.getElementById('quote-rate').value) || 0;
+            const hours = parseFloat(document.getElementById('quote-hours').value) || 0;
+            const extra = parseFloat(document.getElementById('quote-extra').value) || 0;
+            const margin = parseFloat(document.getElementById('quote-margin').value) || 0;
+
+            const costBase = (rate * hours) + extra;
+            const finalPrice = costBase * (1 + (margin / 100));
+
+            document.getElementById('quote-final').innerText = finalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('quote-result').style.display = 'block';
+        }
     </script>
 </body>
 </html>
