@@ -2,22 +2,8 @@ import os
 import glob
 
 def main():
-    # Padrão exato do código que queremos comentar
-    # Importante: A indentação (espaços) deve ser exata conforme está nos arquivos HTML
-    target_code = """      fetch('https://huffier-kenogenetically-delbert.ngrok-free.dev/webhook/visita-site', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          url: window.location.href,
-          cidade: document.title,
-          timestamp: new Date().toLocaleString()
-        })
-      })
-      .then(response => console.log('Radar Cybernex: Sinal enviado!'))
-      .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));"""
-
-    # Versão comentada que substituirá o código acima
-    replacement_code = """      /* Este é o código do radar. Está desativado temporariamente.
+    # O código que está atualmente nos arquivos (comentado e com URL antiga)
+    target_code = """      /* Este é o código do radar. Está desativado temporariamente.
       fetch('https://huffier-kenogenetically-delbert.ngrok-free.dev/webhook/visita-site', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -31,11 +17,24 @@ def main():
       .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));
       */"""
 
+    # O novo código que queremos (ativo e com a nova URL)
+    replacement_code = """      fetch('http://187.77.40.40:5678/webhook/f45658e9-96d7-42ba-ae55-f436c072e328', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: window.location.href,
+          cidade: document.title,
+          timestamp: new Date().toLocaleString()
+        })
+      })
+      .then(response => console.log('Radar Cybernex: Sinal enviado!'))
+      .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));"""
+
     # Busca todos os arquivos .html na pasta atual
     files = glob.glob("*.html")
     count = 0
 
-    print(f"🔍 Iniciando verificação em {len(files)} arquivos HTML...")
+    print(f"🔍 Iniciando atualização de Webhook em {len(files)} arquivos HTML...")
 
     for file_path in files:
         try:
@@ -48,10 +47,10 @@ def main():
                     f.write(new_content)
                 print(f"✅ Atualizado: {file_path}")
                 count += 1
-            elif "/* Este é o código do radar" in content:
-                print(f"ℹ️  Já estava comentado: {file_path}")
+            elif "http://187.77.40.40:5678" in content:
+                print(f"ℹ️  Já atualizado: {file_path}")
             else:
-                print(f"⚠️  Código não encontrado em: {file_path} (Verifique a formatação)")
+                print(f"⚠️  Código alvo não encontrado em: {file_path}")
 
         except Exception as e:
             print(f"❌ Erro em {file_path}: {e}")
