@@ -1078,15 +1078,14 @@
     <script>
       fetch('http://187.77.40.40:5678/webhook/f45658e9-96d7-42ba-ae55-f436c072e328', {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          origem: document.title,
           url: window.location.href,
-          cidade: document.title,
-          timestamp: new Date().toLocaleString()
+          mensagem: "Visita capturada pelo Radar Cybernex"
         })
-      })
-      .then(response => console.log('Radar Cybernex: Sinal enviado!'))
-      .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));
+      });
     </script>
 </body>
 </html>
