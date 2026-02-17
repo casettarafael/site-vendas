@@ -1,9 +1,12 @@
 import os
 import glob
+import re
 
 def main():
-    # 1. Código antigo (comentado) - Caso ainda não tenha sido atualizado
-    old_commented_code = """      /* Este é o código do radar. Está desativado temporariamente.
+    # 1. Definição dos padrões de código
+
+    # Padrão exato do código antigo com Ngrok (comentado)
+    old_ngrok_code = """      /* Este é o código do radar. Está desativado temporariamente.
       fetch('https://huffier-kenogenetically-delbert.ngrok-free.dev/webhook/visita-site', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -17,7 +20,7 @@ def main():
       .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));
       */"""
 
-    # 2. Código da tentativa anterior (sem no-cors) - Caso já tenha rodado o script antes
+    # Padrão da tentativa anterior (IP novo, mas sem no-cors)
     previous_attempt_code = """      fetch('http://187.77.40.40:5678/webhook/f45658e9-96d7-42ba-ae55-f436c072e328', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -30,7 +33,7 @@ def main():
       .then(response => console.log('Radar Cybernex: Sinal enviado!'))
       .catch(err => console.error('Radar Cybernex: Erro ao enviar', err));"""
 
-    # 3. Novo código correto (com no-cors e body ajustado)
+    # Novo código correto (com no-cors)
     new_correct_code = """      fetch('http://187.77.40.40:5678/webhook/f45658e9-96d7-42ba-ae55-f436c072e328', {
         method: 'POST',
         mode: 'no-cors',
@@ -46,7 +49,7 @@ def main():
     files = glob.glob("*.html")
     count = 0
 
-    print(f"🔍 Iniciando correção do Webhook em {len(files)} arquivos HTML...")
+    print(f"🔍 Iniciando limpeza do Ngrok e atualização do Webhook em {len(files)} arquivos HTML...")
 
     for file_path in files:
         try:
@@ -56,14 +59,22 @@ def main():
             new_content = content
             updated = False
 
-            # Tenta substituir o código comentado antigo
-            if old_commented_code in new_content:
-                new_content = new_content.replace(old_commented_code, new_correct_code)
+            # 1. Substituição por String Exata (Mais seguro)
+            if old_ngrok_code in new_content:
+                new_content = new_content.replace(old_ngrok_code, new_correct_code)
                 updated = True
             
-            # Tenta substituir o código da tentativa anterior
             if previous_attempt_code in new_content:
                 new_content = new_content.replace(previous_attempt_code, new_correct_code)
+                updated = True
+
+            # 2. Varredura de Segurança (Regex) para remover qualquer resquício de Ngrok
+            if "ngrok-free.dev" in new_content:
+                print(f"⚠️  Detectado Ngrok residual em {file_path}. Aplicando limpeza forçada...")
+                # Remove blocos comentados com ngrok
+                new_content = re.sub(r'/\*.*?ngrok-free\.dev.*?\*/', new_correct_code, new_content, flags=re.DOTALL)
+                # Remove fetchs ativos com ngrok
+                new_content = re.sub(r'fetch\([\'"].*?ngrok-free\.dev.*?\}\)\s*\.then.*?\.catch.*?;', new_correct_code, new_content, flags=re.DOTALL)
                 updated = True
 
             if updated:
