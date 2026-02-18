@@ -1,6 +1,7 @@
 import os
 import re
 import random
+import glob
 
 # Configurações
 SOURCE_FILE = 'index.html'
@@ -425,7 +426,7 @@ locais = [
     {"nome": "Paulo Afonso", "uf": "BA", "slug": "paulo-afonso"},
     {"nome": "Eunápolis", "uf": "BA", "slug": "eunapolis"},
     {"nome": "Santo Antônio de Jesus", "uf": "BA", "slug": "santo-antonio-de-jesus"},
-    {"nome": "Valença", "uf": "BA", "slug": "valenca"},
+    {"nome": "Valença", "uf": "BA", "slug": "valenca-ba"},
     {"nome": "Candeias", "uf": "BA", "slug": "candeias"},
     {"nome": "Guanambi", "uf": "BA", "slug": "guanambi"},
     {"nome": "Jacobina", "uf": "BA", "slug": "jacobina"},
@@ -959,6 +960,11 @@ def gerar_paginas():
 
     with open(SOURCE_FILE, 'r', encoding='utf-8') as f:
         html_base = f.read()
+    
+    print("🧹 Limpando arquivos antigos de cidades...")
+    files = glob.glob(f"{OUTPUT_PREFIX}*.html")
+    for f in files:
+        os.remove(f)
     
     html_base = re.sub(r'local\.html\?geo=([a-z0-9-]+)', r'criacao-de-sites-em-\1.html', html_base)
 

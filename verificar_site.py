@@ -31,7 +31,7 @@ def verificar():
     print(f"   - Cidades configuradas: {total_cidades}")
     
     if len(slugs) != len(slugs_unicos):
-        duplicadas = total_configurado - len(slugs_unicos)
+        duplicadas = total_cidades - len(slugs_unicos)
         print(f"   ⚠️  AVISO: Existem {duplicadas} cidades duplicadas na lista!")
         avisos += 1
     else:
@@ -50,6 +50,10 @@ def verificar():
     elif total_arquivos < len(slugs_unicos):
         faltando = len(slugs_unicos) - total_arquivos
         print(f"   ❌ ERRO: Faltam {faltando} páginas para serem geradas.")
+        erros += 1
+    elif total_arquivos > len(slugs_unicos):
+        extras = total_arquivos - len(slugs_unicos)
+        print(f"   ⚠️  AVISO: Existem {extras} arquivos a mais do que o configurado (lixo antigo?).")
         erros += 1
     else:
         print("   ✅ Todas as páginas configuradas foram geradas.")
@@ -76,6 +80,9 @@ def verificar():
                 # Verifica Placeholders não substituídos
                 if '[[CIDADE]]' in content:
                     print(f"   ❌ ERRO: Placeholder [[CIDADE]] encontrado em {amostra}")
+                    erros += 1
+                elif 'Sim! Sim!' in content:
+                    print(f"   ❌ ERRO: Texto duplicado 'Sim! Sim!' encontrado em {amostra}")
                     erros += 1
                 else:
                     print("   ✅ Substituição de variáveis: OK")
