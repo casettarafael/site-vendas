@@ -39,6 +39,317 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="logo.webp" type="image/png">
+
+    <style>
+        /* --- Estilos Específicos da Página de IA --- */
+        .hero-ia {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-ia .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .hero-content .highlight {
+            color: #25D366; /* WhatsApp Green */
+            text-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+            background-color: #22c55e;
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Chat Mockup */
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 320px;
+            height: 580px;
+            background: #fff;
+            border-radius: 40px;
+            border: 12px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: #333;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+
+        .screen {
+            height: 100%;
+            background: #e5ddd5; /* WhatsApp BG color */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: #075e54;
+            padding: 40px 15px 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-header .avatar {
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .chat-header .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header .name { font-weight: bold; font-size: 0.9rem; }
+        .chat-header .status { font-size: 0.7rem; opacity: 0.8; }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            position: relative;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #111;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .message.received {
+            background: white;
+            align-self: flex-start;
+            border-top-left-radius: 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .message.sent {
+            background: #dcf8c6;
+            align-self: flex-end;
+            border-top-right-radius: 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .chat-input {
+            background: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-placeholder {
+            flex: 1;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .send-btn-mock {
+            width: 40px;
+            height: 40px;
+            background: #075e54;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Setores Grid */
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .sector-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .sector-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .sector-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .sector-card p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        @media (max-width: 900px) {
+            .hero-ia .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content { margin-bottom: 40px; }
+            .hero-buttons { justify-content: center; }
+            .phone-mockup { width: 280px; height: 500px; }
+        }
+        
+        /* Marquee Animation */
+        .sectors-marquee { overflow: hidden; width: 100%; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); padding: 20px 0; }
+        .sectors-track { display: flex; gap: 30px; width: max-content; animation: scroll 40s linear infinite; }
+        .sectors-track:hover { animation-play-state: paused; }
+        @keyframes scroll { to { transform: translateX(calc(-50% - 15px)); } }
+        
+        /* Update Sector Card for Marquee */
+        .sector-card {
+            min-width: 280px;
+            /* Existing styles will apply, just ensuring width */
+            display: flex; flex-direction: column; justify-content: center;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator { padding: 15px 20px; display: flex; gap: 5px; align-items: center; width: fit-content; min-height: 20px; }
+        .typing-indicator .dot { width: 6px; height: 6px; background: #999; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
+        .typing-indicator .dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator .dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+
+        /* Use Cases Section */
+        .use-case-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tab-btn { padding: 12px 24px; border: 2px solid #e2e8f0; background: white; border-radius: 50px; cursor: pointer; font-weight: 600; color: #64748b; transition: all 0.3s; font-family: 'Inter', sans-serif; font-size: 1rem; }
+        .tab-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
+        .tab-btn.active { background: var(--primary-color); color: white; border-color: var(--primary-color); box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3); }
+        
+        .use-case-content { display: none; animation: fadeIn 0.5s ease; justify-content: center; }
+        .use-case-content.active { display: flex; }
+        
+        .chat-mockup-static {
+            width: 100%; max-width: 380px; background: #e5ddd5; border-radius: 20px; padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 8px solid #333; position: relative; display: flex; flex-direction: column;
+        }
+        .chat-mockup-static::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 100px; height: 8px; background: #333; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
+        .chat-mockup-static .message { margin-bottom: 12px; width: fit-content; max-width: 85%; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+
+        /* Testimonials Section */
+        .ia-testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .ia-testimonial-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: transform 0.3s; }
+        .ia-testimonial-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .ia-testimonial-text { font-style: italic; color: #4b5563; margin-bottom: 20px; font-size: 1rem; line-height: 1.6; }
+        .ia-testimonial-author { display: flex; align-items: center; gap: 15px; }
+        .ia-author-avatar { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+        .ia-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .ia-author-info h5 { margin: 0; color: #1f2937; font-size: 1rem; font-weight: 700; }
+        .ia-author-info span { font-size: 0.85rem; color: #6b7280; }
+    </style>
 </head>
 <body>
 
@@ -85,20 +396,45 @@
 
     <main>
     <!-- 2. Hero Section -->
-    <section class="hero">
-        <canvas id="particles-canvas"></canvas>
+    <section class="hero-ia">
+        <canvas id="particles-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.3;"></canvas>
         <div class="container">
-            <h1>
-                <span class="glitch" data-text="Agente de IA para WhatsApp">Agente de IA para WhatsApp</span> <br>
-                <span class="highlight">Atendimento 24h Humanizado</span>
-            </h1>
-            <p>Automatize seu suporte e vendas com uma Inteligência Artificial treinada especificamente para o seu negócio. Responda clientes instantaneamente, agende reuniões e qualifique leads sem intervenção humana.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#contato" class="btn btn-cta">Quero Automatizar Meu WhatsApp</a>
-                <a href="#funcionalidades" class="btn btn-secondary">Ver Como Funciona</a>
-                <a href="https://wa.me/5511976678655?text=Ol%C3%A1!%20Quero%20testar%20o%20agente%20de%20IA." target="_blank" class="btn btn-primary" style="background-color: #25D366; border-color: #25D366;">
-                    Testar IA Agora
-                </a>
+            <div class="hero-content">
+                <h1>
+                    <span class="glitch" data-text="Agente de IA">Agente de IA</span> <br>
+                    <span class="highlight">para WhatsApp</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Automatize seu suporte e vendas com uma Inteligência Artificial que <strong>conversa, negocia e vende</strong> como um humano. 24 horas por dia, 7 dias por semana.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/5511976678655?text=Ol%C3%A1!%20Quero%20testar%20o%20agente%20de%20IA." target="_blank" class="btn btn-whatsapp">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Testar IA no WhatsApp
+                    </a>
+                    <a href="#contato" class="btn btn-outline">Solicitar Orçamento</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Chat Mockup Animation -->
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <div class="chat-header">
+                            <div class="avatar">🤖</div>
+                            <div class="user-info">
+                                <span class="name">Agente Cybernex</span>
+                                <span class="status">Online agora</span>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="chat-animation">
+                            <!-- Messages will be injected by JS -->
+                        </div>
+                        <div class="chat-input">
+                            <div class="input-placeholder">Digite uma mensagem...</div>
+                            <div class="send-btn-mock">➤</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -137,6 +473,31 @@
                     </div>
                     <h3>Envio de Áudios</h3>
                     <p>Para parecer ainda mais humano, a IA pode enviar áudios curtos pré-gravados ou gerados na hora, aumentando a conexão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3.5 Como Funciona -->
+    <section id="como-funciona" style="padding: 80px 0; background: #fff; color: #333;">
+        <div class="container">
+            <h2 class="section-title">Como Funciona?</h2>
+            <p class="section-subtitle">Implementação simples em 3 passos.</p>
+            <div class="steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div class="step-card" style="text-align: center; padding: 20px;">
+                    <div style="font-size: 4rem; color: #e2e8f0; font-weight: 800; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">01</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">Conexão</h3>
+                    <p>Conectamos a IA ao seu número de WhatsApp Business (via API oficial ou QR Code).</p>
+                </div>
+                <div class="step-card" style="text-align: center; padding: 20px;">
+                    <div style="font-size: 4rem; color: #e2e8f0; font-weight: 800; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">02</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">Treinamento</h3>
+                    <p>Enviamos seus PDFs, site e histórico de conversas para a IA aprender sobre seu negócio.</p>
+                </div>
+                <div class="step-card" style="text-align: center; padding: 20px;">
+                    <div style="font-size: 4rem; color: #e2e8f0; font-weight: 800; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">03</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">Automação</h3>
+                    <p>Pronto! A IA começa a atender, qualificar e vender para seus clientes 24/7.</p>
                 </div>
             </div>
         </div>
@@ -183,22 +544,181 @@
     <section class="local-market-section">
         <div class="container">
             <h2 class="section-title">Ideal para diversos setores</h2>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px;">
-                <div style="background: #fff; padding: 20px; border-radius: 10px; width: 200px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                    <h4 style="color: var(--primary-color);">Clínicas</h4>
-                    <p style="font-size: 0.9rem; color: #666;">Agendamento de consultas e tira-dúvidas de procedimentos.</p>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 40px;">Veja como a IA pode transformar o atendimento no seu nicho.</p>
+            
+            <div class="sectors-marquee">
+                <div class="sectors-track">
+                    <!-- Set 1 -->
+                    <div class="sector-card">
+                        <h4>🏥 Clínicas</h4>
+                        <p>Agendamento de consultas e tira-dúvidas de procedimentos.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🏠 Imobiliárias</h4>
+                        <p>Qualificação de interessados e agendamento de visitas.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>⚖️ Advocacia</h4>
+                        <p>Triagem inicial de casos e agendamento com advogados.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🛍️ E-commerce</h4>
+                        <p>Recuperação de carrinho, rastreio e suporte pós-venda.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🎓 Educação</h4>
+                        <p>Matrículas, renovações e tira-dúvidas de alunos.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🛡️ Seguros</h4>
+                        <p>Cotações automáticas e renovação de apólices.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🍽️ Restaurantes</h4>
+                        <p>Envio de cardápio, reservas de mesa e delivery.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>✈️ Turismo</h4>
+                        <p>Venda de pacotes, roteiros e suporte ao viajante.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>💇 Beleza</h4>
+                        <p>Agendamento de horários e catálogo de serviços.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>💰 Financeiro</h4>
+                        <p>Negociação de dívidas e simulação de empréstimos.</p>
+                    </div>
+
+                    <!-- Set 2 (Duplicate for Loop) -->
+                    <div class="sector-card">
+                        <h4>🏥 Clínicas</h4>
+                        <p>Agendamento de consultas e tira-dúvidas de procedimentos.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🏠 Imobiliárias</h4>
+                        <p>Qualificação de interessados e agendamento de visitas.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>⚖️ Advocacia</h4>
+                        <p>Triagem inicial de casos e agendamento com advogados.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🛍️ E-commerce</h4>
+                        <p>Recuperação de carrinho, rastreio e suporte pós-venda.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🎓 Educação</h4>
+                        <p>Matrículas, renovações e tira-dúvidas de alunos.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🛡️ Seguros</h4>
+                        <p>Cotações automáticas e renovação de apólices.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>🍽️ Restaurantes</h4>
+                        <p>Envio de cardápio, reservas de mesa e delivery.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>✈️ Turismo</h4>
+                        <p>Venda de pacotes, roteiros e suporte ao viajante.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>💇 Beleza</h4>
+                        <p>Agendamento de horários e catálogo de serviços.</p>
+                    </div>
+                    <div class="sector-card">
+                        <h4>💰 Financeiro</h4>
+                        <p>Negociação de dívidas e simulação de empréstimos.</p>
+                    </div>
                 </div>
-                <div style="background: #fff; padding: 20px; border-radius: 10px; width: 200px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                    <h4 style="color: var(--primary-color);">Imobiliárias</h4>
-                    <p style="font-size: 0.9rem; color: #666;">Qualificação de interessados e agendamento de visitas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5. Casos de Uso (Tabs) -->
+    <section id="casos-uso" style="padding: 80px 0; background: #f9fafb;">
+        <div class="container">
+            <h2 class="section-title">Veja a IA em Ação</h2>
+            <p class="section-subtitle">Exemplos reais de conversas em diferentes nichos.</p>
+
+            <div class="use-case-tabs">
+                <button class="tab-btn active" onclick="openUseCase(event, 'imobiliaria')">🏠 Imobiliária</button>
+                <button class="tab-btn" onclick="openUseCase(event, 'clinica')">🏥 Clínica</button>
+                <button class="tab-btn" onclick="openUseCase(event, 'ecommerce')">🛍️ E-commerce</button>
+            </div>
+
+            <div class="use-case-display">
+                <!-- Imobiliária -->
+                <div id="imobiliaria" class="use-case-content active">
+                    <div class="chat-mockup-static">
+                        <div class="message received">Olá! Vi um anúncio de um apartamento no Centro. Ainda está disponível? <span class="time">10:00</span></div>
+                        <div class="message sent">Olá! 👋 Sim, o apartamento no Edifício Solar (Ref: 204) está disponível. Ele tem 3 quartos e 2 vagas. Gostaria de ver as fotos ou agendar uma visita? <span class="time">10:00</span></div>
+                        <div class="message received">Gostaria de visitar amanhã à tarde. <span class="time">10:02</span></div>
+                        <div class="message sent">Perfeito! Tenho horário às 14h30 ou 16h. Qual prefere? <span class="time">10:02</span></div>
+                        <div class="message sent">Também preciso do seu nome completo para o cadastro na portaria. <span class="time">10:02</span></div>
+                    </div>
                 </div>
-                <div style="background: #fff; padding: 20px; border-radius: 10px; width: 200px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                    <h4 style="color: var(--primary-color);">Advocacia</h4>
-                    <p style="font-size: 0.9rem; color: #666;">Triagem inicial de casos e agendamento com advogados.</p>
+
+                <!-- Clínica -->
+                <div id="clinica" class="use-case-content">
+                    <div class="chat-mockup-static">
+                        <div class="message received">Qual o valor da consulta com dermatologista? <span class="time">14:15</span></div>
+                        <div class="message sent">Olá! A consulta particular é R$ 250. Aceitamos também Unimed e Bradesco Saúde. Gostaria de agendar? <span class="time">14:15</span></div>
+                        <div class="message received">Tem horário para sexta? <span class="time">14:16</span></div>
+                        <div class="message sent">Sim, sexta-feira tenho às 09:30 e 14:00 com a Dra. Ana. Posso confirmar algum desses? <span class="time">14:16</span></div>
+                    </div>
                 </div>
-                <div style="background: #fff; padding: 20px; border-radius: 10px; width: 200px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                    <h4 style="color: var(--primary-color);">E-commerce</h4>
-                    <p style="font-size: 0.9rem; color: #666;">Recuperação de carrinho, rastreio e suporte pós-venda.</p>
+
+                <!-- E-commerce -->
+                <div id="ecommerce" class="use-case-content">
+                    <div class="chat-mockup-static">
+                        <div class="message received">Onde está meu pedido #1234? <span class="time">18:30</span></div>
+                        <div class="message sent">Deixe-me verificar... 📦 Seu pedido #1234 já está com a transportadora! A previsão de entrega é para quinta-feira, dia 15. <span class="time">18:30</span></div>
+                        <div class="message sent">Quer receber atualizações automáticas por aqui? <span class="time">18:30</span></div>
+                        <div class="message received">Sim, obrigado. <span class="time">18:31</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.8. Depoimentos IA -->
+    <section id="depoimentos-ia" style="padding: 80px 0; background: #fff;">
+        <div class="container">
+            <h2 class="section-title">Quem usa, recomenda</h2>
+            <p class="section-subtitle">Veja como empresas estão escalando com nossa IA.</p>
+            
+            <div class="ia-testimonials-grid">
+                <div class="ia-testimonial-card">
+                    <p class="ia-testimonial-text">"A IA triplicou nossos agendamentos de visita. Antes perdíamos leads no fim de semana, agora o atendimento é imediato e muito cordial."</p>
+                    <div class="ia-testimonial-author">
+                        <div class="ia-author-avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Carlos Mendes"></div>
+                        <div class="ia-author-info">
+                            <h5>Carlos Mendes</h5>
+                            <span>Diretor de Imobiliária</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ia-testimonial-card">
+                    <p class="ia-testimonial-text">"Minha secretária ficava sobrecarregada confirmando horários. O agente de IA assumiu isso e agora ela foca 100% no atendimento presencial."</p>
+                    <div class="ia-testimonial-author">
+                        <div class="ia-author-avatar"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=100&q=80" alt="Dra. Fernanda Costa"></div>
+                        <div class="ia-author-info">
+                            <h5>Dra. Fernanda Costa</h5>
+                            <span>Clínica de Estética</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ia-testimonial-card">
+                    <p class="ia-testimonial-text">"Reduzimos o tempo de resposta de 2 horas para 5 segundos. O cliente tira dúvidas sobre compatibilidade de peças e compra na hora."</p>
+                    <div class="ia-testimonial-author">
+                        <div class="ia-author-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Lucas Pereira"></div>
+                        <div class="ia-author-info">
+                            <h5>Lucas Pereira</h5>
+                            <span>E-commerce Automotivo</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -338,6 +858,66 @@
 
         // Ano Atual
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Chat Animation Script
+        const chatContainer = document.getElementById('chat-animation');
+        const messages = [
+            { text: "Olá! Bem-vindo à Cybernex. Como posso ajudar?", type: "received", delay: 1000 },
+            { text: "Gostaria de saber o preço do site.", type: "sent", delay: 2500 },
+            { text: "typing...", type: "typing", delay: 3500 },
+            { text: "Temos planos a partir de R$ 599. Gostaria de ver os detalhes?", type: "received", delay: 4500 },
+            { text: "Sim, por favor.", type: "sent", delay: 6000 },
+            { text: "typing...", type: "typing", delay: 7000 },
+            { text: "Ótimo! Aqui estão nossas opções...", type: "received", delay: 8000 }
+        ];
+
+        function addMessage(msg) {
+            // Remove typing indicator if exists
+            const typingIndicator = chatContainer.querySelector('.typing-indicator');
+            if (typingIndicator) typingIndicator.remove();
+
+            if (msg.type === 'typing') {
+                const div = document.createElement('div');
+                div.className = 'message received typing-indicator';
+                div.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+                chatContainer.appendChild(div);
+            } else {
+                const div = document.createElement('div');
+                div.className = `message ${msg.type}`;
+                div.innerHTML = `${msg.text} <span class="time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>`;
+                chatContainer.appendChild(div);
+            }
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function startChatAnimation() {
+            chatContainer.innerHTML = '';
+            messages.forEach(msg => {
+                setTimeout(() => addMessage(msg), msg.delay);
+            });
+        }
+
+        // Start animation when page loads
+        startChatAnimation();
+        // Restart every 15 seconds
+        setInterval(startChatAnimation, 18000);
+
+        // Script para Abas de Casos de Uso
+        function openUseCase(evt, caseName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("use-case-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(caseName).style.display = "flex";
+            document.getElementById(caseName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
     </script>
 
     <script>
